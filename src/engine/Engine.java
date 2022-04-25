@@ -46,7 +46,7 @@ public class Engine extends ConsoleProgram {
     pause(DELAY);
     while (!gameEnded) {
       println();
-      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"东南西北\"进入下一个地点）");
+      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看行李\"查看道具）（输入\"东南西北\"进入下一个地点）");
       print("> ");
 
       String direction = readLine();
