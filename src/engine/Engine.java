@@ -22,28 +22,7 @@ public class Engine extends ConsoleProgram {
   /** 主循环。只要玩家不选择退出，游戏就一直运行下去 */
   private void mainLoop() {
     gameEnded = false;
-    println("欢迎你来到精灵世界！");
-    pause(DELAY);
-    println("我叫空木，作为精灵博士受到尊敬");
-    pause(DELAY);
-    println("在精灵的世界里，被称为精灵的生物，无所不在。");
-    pause(DELAY);
-    println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
-    pause(DELAY);
-    println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
-    pause(DELAY);
-    println("对了，快告诉我你叫什么名字？");
-    pause(DELAY);
-    print("请输入你的名字：");
-    pause(DELAY);
-    playername = readLine();
-    println(playername+"祝你好运，希望你能抓住全部的精灵！");
-    pause(DELAY);
-    moveTo(currPlace);
-    println("妈妈：喂 "+playername+" 空木博士在找你。可能是要你帮忙。忘了！给，你的电话修理好了");
-    pause(DELAY);
-    println("输入搜索获得修理好的电话");
-    pause(DELAY);
+    opentalking();
     while (!gameEnded) {
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看行李\"查看道具）（输入\"东南西北\"进入下一个地点）");
@@ -94,7 +73,33 @@ public class Engine extends ConsoleProgram {
       }
     }
   }
-
+  /**
+   * 开场白
+   */
+  private void opentalking() {
+    println("欢迎你来到精灵世界！");
+    pause(DELAY);
+    println("我叫空木，作为精灵博士受到尊敬");
+    pause(DELAY);
+    println("在精灵的世界里，被称为精灵的生物，无所不在。");
+    pause(DELAY);
+    println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
+    pause(DELAY);
+    println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
+    pause(DELAY);
+    println("对了，快告诉我你叫什么名字？");
+    pause(DELAY);
+    print("请输入你的名字：");
+    pause(DELAY);
+    playername = readLine();
+    println(playername+"祝你好运，希望你能抓住全部的精灵！");
+    pause(DELAY);
+    moveTo(currPlace);
+    println("妈妈：喂 "+playername+" 空木博士在找你。可能是要你帮忙。忘了！给，你的电话修理好了");
+    pause(DELAY);
+    println("输入搜索获得修理好的电话");
+    pause(DELAY);
+  }
   /**
    * 移动到一个新的地点
    *
