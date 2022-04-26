@@ -62,7 +62,7 @@ public class Engine extends ConsoleProgram {
         enemypokemon.generateRandomEnemy();
       }
       println();
-      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看道具）（输入\"东南西北\"进入下一个地点）");
+      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
 
       print("> ");
 
@@ -99,8 +99,11 @@ public class Engine extends ConsoleProgram {
         case "搜索":
           sousuo(currPlace);
           break;
-        case "查看道具":
+        case "道具":
           chakan(currPlace);
+          break;
+        case "宝可梦":
+          checkYourPokemon();
           break;
         case "退出":
           gameEnded = true;
@@ -332,6 +335,20 @@ private void loadEnemypokemon(){
       for (int k = 0; k < daojus.size(); k++) {
         int l = k + 1;
         println(l + "." + daojus.get(k));
+      }
+    }
+  }
+  /**
+   * 查看你的宝可梦数量
+   */
+  private void checkYourPokemon() {
+    if (playerpokemon.isEmpty()) {
+      println("你没有宝可梦。");
+    } else {
+      println("你现在共有" + playerpokemon.size() + "只宝可梦，依次是：");
+      for (int k = 0; k < playerpokemon.size(); k++) {
+        int l = k + 1;
+        println(l + "." + playerpokemon.get(k).getName()+" 等级："+playerpokemon.get(k).getLevel());
       }
     }
   }

@@ -37,6 +37,12 @@ public class pokemon {
     public int getCurHp() {
         return curHp;
     }
+    public String getName() {
+        return name;
+    }
+    public int getLevel() {
+        return level;
+    }
 
     /**
      * 设置当前血量，不能超过该生物的最大血量
