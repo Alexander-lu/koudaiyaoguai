@@ -1,12 +1,15 @@
 package engine;
 import acm.program.ConsoleProgram;
+import acm.util.RandomGenerator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Engine extends ConsoleProgram {
+  public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
+  Enemypokemon enemypokemon = new Enemypokemon();
   int daoll = 0;
 //  统计玩家到达研究所的次数,以此触发博士和我的对话.
   int yanJiuSuoCount = 1;
@@ -27,14 +30,17 @@ public class Engine extends ConsoleProgram {
     gameEnded = false;
     opentalking();
     while (!gameEnded) {
-//      如果玩家第一次到研究所,触发和博士的对话
+      /** 如果玩家第一次到研究所,触发和博士的对话 */
       if (yanJiuSuoCount==1){
         if(currPlace.getbianhao()== 1){
           boShiTalking();
           yanJiuSuoCount++;
         }
       }
-      // 如果玩家第一次到研究所,触发和博士的对话
+      /** 如果玩家进入草丛，触发战斗 */
+      if (currPlace.getbianhao()>4){
+
+      }
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看道具）（输入\"东南西北\"进入下一个地点）");
       print("> ");
@@ -271,5 +277,128 @@ public class Engine extends ConsoleProgram {
         println(l + "." + daojus.get(k));
       }
     }
+  }
+  /**
+   * 玩家和敌人对战
+   */
+  private void battle() {
+    // 回合制循环进行，直至某一方阵亡
+    while (true) {
+      println();
+      // 每一回合都首先从玩家开始行动
+      String userChoice = choose("请选择你的行动", "攻击", "逃跑", "补血", "查看状态");
+      if (userChoice.equals("查看状态")) {
+//        printPlayerStatus();
+        continue;
+      } else if (userChoice.equals("补血")) {
+//        useHealthPotion();
+//        printPlayerStatus();
+        continue;
+      } else if (userChoice.equals("逃跑")) {
+        boolean success = randomGenerator.nextBoolean();
+        if (success) {
+          println("逃跑成功！");
+          break;
+        } else {
+          println("逃跑失败！");
+        }
+      } else if (userChoice.equals("攻击")) {
+//        attackEnemy();
+//        printEnemyStatus();
+      }
+      if (isEnemyDead()) {
+        // 如果敌人阵亡，玩家经验值提升
+        println(String.format("你杀死了%s。\n", enemypokemon.name));
+//        println("你获得了" + player.gainXp(enemy) + "点经验值。");
+//        if(player.checkLevelUp()){
+//          println("你升级了！血量恢复满格！");
+//        }
+//        println("你当前拥有" + playerpokemon.xp + "点经验值。");
+//        printPlayer();
+        break;
+      } else {
+        // 没阵亡则轮到敌人行动
+//        attackPlayer();
+//        printPlayerStatus();
+        // 如果敌人将玩家打死，游戏结束
+//        if (isPlayerDead()) {
+//          println("你挂了！");
+//          break;
+//        }
+      }
+    }
+  }
+  /**
+   * 提示用户做选择，如果用户的选择无效，就让用户重新输入
+   *
+   * @param prompt  提示语
+   * @param choices 允许的几种选择
+   * @return 玩家最终的选择
+   */
+  public final String choose(String prompt, String... choices) {
+    // 将选择用逗号连起来
+    String concatenatedChoices = String.join(", ", choices);
+    // 最终的提示语
+    String actualPrompt = String.format("%s (%s): ", prompt, concatenatedChoices);
+
+    // 如果玩家的输入无效，就提示玩家重新输入
+    while (true) {
+      print(actualPrompt);
+      String userChoice = readLine();
+
+      // 逐个对比，看是否相等
+      for (String choice : choices) {
+        if (userChoice.equals(choice)) {
+          return choice;
+        }
+      }
+
+      println("您的选择无效，请重新输入。");
+    }
+  }
+  /**
+   * 打印玩家信息
+   */
+//  private void printPlayer() {
+//    String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
+//            player.name, player.level, player.role, player.curHp,player.maxHp, player.minAtt, player.maxAtt);
+//    println(message);
+//  }
+  /**
+   * 打印敌人信息
+   */
+  private void printEnemy() {
+    String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
+            enemypokemon.name, enemypokemon.level, enemypokemon.role, enemypokemon.curHp,enemypokemon.maxHp, enemypokemon.minAtt, enemypokemon.maxAtt);
+    println(message);
+  }
+  /**
+   * 打印玩家的宝可梦的状态：名字，当前血量
+   */
+//  private void printPlayerStatus() {
+//    String message = String.format("%s当前血量%d/%d。", player.name, player.curHp, player.maxHp);
+//    println(message);
+//  }
+  /**
+   * 打印敌人状态：名字，当前血量
+   */
+  private void printEnemyStatus() {
+    String message = String.format("%s当前血量%d/%d。", enemypokemon.name, enemypokemon.curHp, enemypokemon.maxHp);
+    println(message);
+  }
+
+  /**
+   * 判断玩家的宝可梦是否已经死亡
+   * @return 死亡返回true，未死亡返回false
+   */
+//  private boolean isPlayerDead() {
+//    return player.curHp <= 0;
+//  }
+  /**
+   * 判断敌人是否已经死亡
+   * @return 死亡返回true，未死亡返回false
+   */
+  private boolean isEnemyDead() {
+    return enemypokemon.curHp <= 0;
   }
 }
