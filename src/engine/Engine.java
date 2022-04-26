@@ -7,27 +7,37 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Engine extends ConsoleProgram {
+  /** 定义窗口的宽度和高度 */
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
   public static final int APPLICATION_HEIGHT = 800;//窗口高度
-//Font f = new Font("仿宋",Font.BOLD,20);
+  //Font f = new Font("仿宋",Font.BOLD,20);
+  /** 定义地图和延时帧率 */
   public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
   Enemypokemon enemypokemon = new Enemypokemon();
+  /** daoll保存地图中所有道具的数量 */
   int daoll = 0;
-//  统计玩家到达研究所的次数,以此触发博士和我的对话.
+  /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
   int yanJiuSuoCount = 1;
-  private Place currPlace; // 当前所处的地点
-  ArrayList<Place> places; // 保存所有的地点
-  ArrayList<String> daojus = new ArrayList<>(); // 保存所有的道具
+  private Place currPlace;
+  // 当前所处的地点
+  ArrayList<Place> places;
+  // 保存所有的地点
+  ArrayList<String> daojus = new ArrayList<>();
+  // 保存所有的道具
   ArrayList<Playerpokemon> playerpokemon = new ArrayList<>();
-  boolean gameEnded; // 玩家是否退出游戏
+  // 保存所有捕获的宝可梦
+  boolean gameEnded;
+  // 玩家是否退出游戏
   public String playername;
+  // 保存玩家的名字
   public void run() {
     getConsole().setBackground(Color.gray);//设定窗口背景色
     getConsole().setForeground(Color.WHITE);//设定窗口字体颜色
-//    getConsole().setFont(f);
+    //getConsole().setFont(f);
     this.setResizable(false);
+    // 窗口大小不可更改
     Charactors.gameStart(this);
     if (loadGame()) {
       mainLoop();
@@ -271,13 +281,13 @@ private void loadEnemypokemon(){
     currPlace = places.get(0);
   }
   /**
-   * 读取宝物
+   * 读取道具
    *
    * @param scanner 用来读取输入的scanner对象
    */
   private void loadDaoju(Scanner scanner) {
-    // 读取宝物
-    int nPlaces = scanner.nextInt(); // 宝物的数量
+    // 读取道具
+    int nPlaces = scanner.nextInt(); // 道具的数量
     String a = scanner.next();
     // 读取所有地点
     for (int i = 0; i < nPlaces; i++) {
