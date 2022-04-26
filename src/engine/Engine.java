@@ -115,21 +115,21 @@ public class Engine extends ConsoleProgram {
    * 开场白
    */
   private void opentalking() {
+    pause(DELAY);
+    pause(DELAY);
+    pause(DELAY);
     println("欢迎你来到精灵世界！");
-    pause(DELAY);
-    pause(DELAY);
     pause(DELAY);
     Charactors.doctor(this);
     println("我叫空木，作为精灵博士受到尊敬");
     pause(DELAY);
     println("");
     println("在精灵的世界里，被称为精灵的生物，无所不在。");
-    Charactors.pokemonMouse01(this);
     pause(DELAY);
     println("");
     println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
-    Charactors.pokemonMouse02(this);
     pause(DELAY);
+    println("");
     println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
     pause(DELAY);
     Charactors.player(this);
@@ -141,34 +141,45 @@ public class Engine extends ConsoleProgram {
     println(playername+"祝你好运，希望你能抓住全部的精灵！");
     pause(DELAY);
     moveTo(currPlace);
+    Charactors.mother(this);
     println("妈妈：喂 "+playername+" 空木博士在找你。可能是要你帮忙。忘了！给，你的电话修理好了");
     pause(DELAY);
+    println("");
     println("输入搜索获得修理好的电话");
     pause(DELAY);
+    println("");
   }
   /**
    * 博士和我的对话
    */
   private void boShiTalking() {
+    Charactors.doctor(this);
     println("喂！"+playername+"来啦。今天找你，是要你帮忙！");
     pause(DELAY);
+    println("");
     println("朋友中有位精灵爷爷，发现了奇怪的东西。");
     pause(DELAY);
+    println("");
     println("现在我们的研究工作很忙。希望你能去，当然要给你配一个精灵搭档。");
     pause(DELAY);
+    println("");
     println("最近找到的珍贵的精灵，你选一个吧，有小锯鳄，火球鼠和菊草叶");
     pause(DELAY);
+    println("");
 //    输出3只精灵的图片
 //    小锯鳄为城都地区中，空木博士给新人训练家的三只神奇宝贝之一，个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间.
 //    火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。
 //    菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。
     println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
     pause(DELAY);
+    println("");
     println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
     pause(DELAY);
     pause(DELAY);
+    println("");
     println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
     pause(DELAY);
+    println("");
   }
   /**
    * 移动到一个新的地点
