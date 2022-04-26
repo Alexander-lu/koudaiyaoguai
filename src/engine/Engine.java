@@ -1,10 +1,15 @@
 package engine;
 import acm.program.ConsoleProgram;
+
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Engine extends ConsoleProgram {
+  public static final int APPLICATION_WIDTH = 1200; //窗口宽度
+  public static final int APPLICATION_HEIGHT = 1000;//窗口高度
+//Font f = new Font("仿宋",Font.BOLD,20);
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
   int daoll = 0;
@@ -17,6 +22,11 @@ public class Engine extends ConsoleProgram {
   boolean gameEnded; // 玩家是否退出游戏
   public String playername;
   public void run() {
+    getConsole().setBackground(Color.gray);//设定窗口背景色
+    getConsole().setForeground(Color.WHITE);//设定窗口字体颜色
+//    getConsole().setFont(f);
+    this.setResizable(false);
+    Charactors.gameStart(this);
     if (loadGame()) {
       mainLoop();
     }
@@ -25,6 +35,7 @@ public class Engine extends ConsoleProgram {
   /** 主循环。只要玩家不选择退出，游戏就一直运行下去 */
   private void mainLoop() {
     gameEnded = false;
+
     opentalking();
     while (!gameEnded) {
 //      如果玩家第一次到研究所,触发和博士的对话
@@ -37,6 +48,7 @@ public class Engine extends ConsoleProgram {
       // 如果玩家第一次到研究所,触发和博士的对话
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看道具）（输入\"东南西北\"进入下一个地点）");
+
       print("> ");
 
       String direction = readLine();
@@ -90,14 +102,22 @@ public class Engine extends ConsoleProgram {
   private void opentalking() {
     println("欢迎你来到精灵世界！");
     pause(DELAY);
+    pause(DELAY);
+    pause(DELAY);
+    Charactors.doctor(this);
     println("我叫空木，作为精灵博士受到尊敬");
     pause(DELAY);
+    println("");
     println("在精灵的世界里，被称为精灵的生物，无所不在。");
+    Charactors.pokemonMouse01(this);
     pause(DELAY);
+    println("");
     println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
+    Charactors.pokemonMouse02(this);
     pause(DELAY);
     println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
     pause(DELAY);
+    Charactors.player(this);
     println("对了，快告诉我你叫什么名字？");
     pause(DELAY);
     print("请输入你的名字：");
