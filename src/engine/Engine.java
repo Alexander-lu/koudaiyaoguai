@@ -39,7 +39,7 @@ public class Engine extends ConsoleProgram {
       }
       /** 如果玩家进入草丛，触发战斗 */
       if (currPlace.getbianhao()>4){
-
+        enemypokemon.generateRandomEnemy();
       }
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看道具）（输入\"东南西北\"进入下一个地点）");
@@ -166,6 +166,7 @@ public class Engine extends ConsoleProgram {
     places = new ArrayList<>();
     try {
       Scanner scanner = new Scanner(new File(GAME_FILE));
+      loadEnemypokemon();
       loadPlaces(scanner);
       loadRoutes(scanner);
       loadDaoju(scanner);
@@ -210,7 +211,23 @@ public class Engine extends ConsoleProgram {
     }
     // 设置初始地点，也就是读进来的第一个地点
   }
-
+  /**
+   * 读取宝可梦的信息
+   */
+private void loadEnemypokemon(){
+//  代号美后
+    Enemypokemon meiHou = new Enemypokemon();
+    meiHou.name="美后";
+    meiHou.level=3;
+//    代号菊草叶
+    Enemypokemon juYeChao = new Enemypokemon();
+    juYeChao.name="菊草叶";
+    juYeChao.level=5;
+//    代号阿童
+    Enemypokemon xiaoNiao = new Enemypokemon();
+    xiaoNiao.name="小鸟";
+    xiaoNiao.level = 3;
+}
   /**
    * 读取地点
    *

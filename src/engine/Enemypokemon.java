@@ -3,12 +3,10 @@ package engine;
 import acm.util.RandomGenerator;
 
 public class Enemypokemon extends pokemon {
-
-
     private final RandomGenerator randomGenerator = RandomGenerator.getInstance();
     private static final String[] ENEMY_NAMES = {"甲", "乙", "丙"};           // 敌人名字
     private static final String[] ENEMY_ROLES = {"路人", "步兵", "盗贼"};     // 敌人角色
-    public void generateRandomEnemy(Playerpokemon player) {
+    public void generateRandomEnemy() {
         int index;  // 用于储存数组下标
 
         // 随机选择一个名字
@@ -58,11 +56,11 @@ public class Enemypokemon extends pokemon {
         maxAtt = (randomGenerator.nextInt(1, 6) + baseAttack);
         minAtt = (maxAtt - 3);
 
-        // 让该敌人升到跟玩家同一等级，以保持游戏的平衡性
-        for (level = 1; level < player.level; level++) {
-            maxHp += randomGenerator.nextInt(0, hpMaxIncrease);
-            maxAtt += randomGenerator.nextInt(0, attackMaxIncrease);;
-        }
+//        // 让该敌人升到跟玩家同一等级，以保持游戏的平衡性
+//        for (level = 1; level < player.level; level++) {
+//            maxHp += randomGenerator.nextInt(0, hpMaxIncrease);
+//            maxAtt += randomGenerator.nextInt(0, attackMaxIncrease);;
+//        }
 
         // 将该敌人设置为满血
         curHp = maxHp;

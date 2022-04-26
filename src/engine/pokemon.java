@@ -3,7 +3,6 @@ package engine;
 import static engine.RPG.randomGenerator;
 
 public class pokemon {
-
     public String name;     // 玩家和敌人都有名字
     public String role;     // 玩家和敌人都有角色
     public int level;       // 玩家和敌人都有等级
