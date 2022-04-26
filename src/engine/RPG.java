@@ -6,8 +6,8 @@ import acm.util.RandomGenerator;
 public class RPG extends ConsoleProgram {
 
     public static final RandomGenerator randomGenerator = RandomGenerator.getInstance();
-    Player player = new Player();
-    Enemy enemy = new Enemy();
+    Playerpokemon player = new Playerpokemon();
+    Enemypokemon enemy = new Enemypokemon();
 
     public void run() {
 

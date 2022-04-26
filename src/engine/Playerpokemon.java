@@ -2,25 +2,21 @@ package engine;
 
 import static engine.RPG.randomGenerator;
 
-public class Player extends Creature{
-
+public class Playerpokemon extends pokemon {
     public int xp;
+//    宝可梦的经验值
     public int hpPotions;
-
-    public Player() {
-
-    };
-
-    public Player(String name, String role) {
+//    宝可梦的血瓶
+    public Playerpokemon() {};
+    public Playerpokemon(String name, String role) {
         super(name, role, 1);
     }
-
     /**
      * 获得经验值
      * @param enemy 被玩家杀死的敌人
      * @return      增长的经验值
      */
-    public int gainXp(Creature enemy) {
+    public int gainXp(pokemon enemy) {
         int baseXp = 20;
         int randomXp = randomGenerator.nextInt(0, 40);
         int gainedXp = enemy.level * (baseXp + randomXp);

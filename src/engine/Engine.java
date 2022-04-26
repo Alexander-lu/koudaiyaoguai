@@ -12,7 +12,8 @@ public class Engine extends ConsoleProgram {
   int yanJiuSuoCount = 1;
   private Place currPlace; // 当前所处的地点
   ArrayList<Place> places; // 保存所有的地点
-  ArrayList<String> daojus = new ArrayList<>(); // 保存所有的地点
+  ArrayList<String> daojus = new ArrayList<>(); // 保存所有的道具
+  ArrayList<Playerpokemon> playerpokemon = new ArrayList<>();
   boolean gameEnded; // 玩家是否退出游戏
   public String playername;
   public void run() {
@@ -26,12 +27,14 @@ public class Engine extends ConsoleProgram {
     gameEnded = false;
     opentalking();
     while (!gameEnded) {
+//      如果玩家第一次到研究所,触发和博士的对话
       if (yanJiuSuoCount==1){
         if(currPlace.getbianhao()== 1){
           boShiTalking();
           yanJiuSuoCount++;
         }
       }
+      // 如果玩家第一次到研究所,触发和博士的对话
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看道具）（输入\"东南西北\"进入下一个地点）");
       print("> ");

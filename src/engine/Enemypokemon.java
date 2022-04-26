@@ -2,13 +2,13 @@ package engine;
 
 import acm.util.RandomGenerator;
 
-public class Enemy extends Creature {
+public class Enemypokemon extends pokemon {
 
 
     private final RandomGenerator randomGenerator = RandomGenerator.getInstance();
     private static final String[] ENEMY_NAMES = {"甲", "乙", "丙"};           // 敌人名字
     private static final String[] ENEMY_ROLES = {"路人", "步兵", "盗贼"};     // 敌人角色
-    public void generateRandomEnemy(Player player) {
+    public void generateRandomEnemy(Playerpokemon player) {
         int index;  // 用于储存数组下标
 
         // 随机选择一个名字

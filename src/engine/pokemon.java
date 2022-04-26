@@ -2,7 +2,7 @@ package engine;
 
 import static engine.RPG.randomGenerator;
 
-public class Creature {
+public class pokemon {
 
     public String name;     // 玩家和敌人都有名字
     public String role;     // 玩家和敌人都有角色
@@ -13,10 +13,10 @@ public class Creature {
     public int minAtt;      // 玩家和敌人都有攻击力上限
 
 
-    public Creature() {
+    public pokemon() {
     }
 
-    public Creature(String name, String role, int level) {
+    public pokemon(String name, String role, int level) {
         this.name = name;
         this.role = role;
         this.level = level;
@@ -29,7 +29,7 @@ public class Creature {
      * @param other 被攻击的生物
      * @return 本次攻击造成的伤害值
      */
-    public int attack(Creature other) {
+    public int attack(pokemon other) {
         int damage = randomGenerator.nextInt(minAtt, maxAtt);
         other.curHp -= damage;
         return damage;
