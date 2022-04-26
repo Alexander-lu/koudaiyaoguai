@@ -4,7 +4,6 @@ import static engine.RPG.randomGenerator;
 
 public class pokemon {
     public String name;     // 玩家和敌人都有名字
-    public String role;     // 玩家和敌人都有角色
     public int level;       // 玩家和敌人都有等级
     public int maxHp;       // 玩家和敌人都有最大血量
     public int curHp;       // 玩家和敌人都有当前血量
@@ -15,9 +14,8 @@ public class pokemon {
     public pokemon() {
     }
 
-    public pokemon(String name, String role, int level) {
+    public pokemon(String name, int level) {
         this.name = name;
-        this.role = role;
         this.level = level;
         initialize();
     }
@@ -62,7 +60,7 @@ public class pokemon {
      * @return 包含了所有信息的字符串
      */
     public String toString() {
-        return "『" + name + "』" + "是等级为" + level + "的" + role + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + minAtt + "-" + maxAtt;
+        return "『" + name + "』" + "是等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + minAtt + "-" + maxAtt;
     }
 
     /**

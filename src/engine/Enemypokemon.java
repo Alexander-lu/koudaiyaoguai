@@ -15,7 +15,7 @@ public class Enemypokemon extends pokemon {
 
         // 随机选择一个角色
         index = randomGenerator.nextInt(0, ENEMY_ROLES.length - 1);
-        role = ENEMY_ROLES[index];
+//        role = ENEMY_ROLES[index];
 
         // 该敌人的各种属性
         int baseHp;                 // 基础血量
@@ -24,37 +24,37 @@ public class Enemypokemon extends pokemon {
         int attackMaxIncrease;      // 每升一级，攻击力最大增加多少
 
         // 不同角色有不同的基础属性和成长属性
-        switch (role) {
-            case "路人":
-                baseHp = 16;
-                baseAttack = 10;
-                hpMaxIncrease = 12;
-                attackMaxIncrease = 7;
-                break;
-            case "步兵":
-                baseHp = 13;
-                baseAttack = 13;
-                hpMaxIncrease = 10;
-                attackMaxIncrease = 9;
-                break;
-            case "盗贼":
-                baseHp = 12;
-                baseAttack = 14;
-                hpMaxIncrease = 8;
-                attackMaxIncrease = 11;
-                break;
-            default:
-                baseHp = 0;
-                baseAttack = 0;
-                hpMaxIncrease = 0;
-                attackMaxIncrease = 0;
-                break;
-        }
+//        switch (role) {
+//            case "路人":
+//                baseHp = 16;
+//                baseAttack = 10;
+//                hpMaxIncrease = 12;
+//                attackMaxIncrease = 7;
+//                break;
+//            case "步兵":
+//                baseHp = 13;
+//                baseAttack = 13;
+//                hpMaxIncrease = 10;
+//                attackMaxIncrease = 9;
+//                break;
+//            case "盗贼":
+//                baseHp = 12;
+//                baseAttack = 14;
+//                hpMaxIncrease = 8;
+//                attackMaxIncrease = 11;
+//                break;
+//            default:
+//                baseHp = 0;
+//                baseAttack = 0;
+//                hpMaxIncrease = 0;
+//                attackMaxIncrease = 0;
+//                break;
+//        }
 
         // 随机生成该敌人1级时的属性
-        maxHp = (randomGenerator.nextInt(1, 6) + baseHp);
-        maxAtt = (randomGenerator.nextInt(1, 6) + baseAttack);
-        minAtt = (maxAtt - 3);
+//        maxHp = (randomGenerator.nextInt(1, 6) + baseHp);
+//        maxAtt = (randomGenerator.nextInt(1, 6) + baseAttack);
+//        minAtt = (maxAtt - 3);
 
 //        // 让该敌人升到跟玩家同一等级，以保持游戏的平衡性
 //        for (level = 1; level < player.level; level++) {

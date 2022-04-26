@@ -161,8 +161,8 @@ public class Charactors {
 
     public static void mother(ConsoleProgram program) {
         program.println(
-                "                                                                                                                    ▯▯▯▯▯  \n" +
-                        "                                                                                                                  ▯▯▯▯▯▯▯▯▯\n" +
+                        "                                                                                                                    ▯▯▯▯▯  \n" +
+                        "                                                                                                                 ▯▯▯▯▯▯▯▯▯\n" +
                         "                                                                                                                    #▮ ▮#  \n" +
                         "                                                                                                                    ◢###◣  \n" +
                         "                                                                                                                     ###   "

@@ -63,9 +63,7 @@ public class Engine extends ConsoleProgram {
       }
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
-
       print("> ");
-
       String direction = readLine();
       switch (direction) {
         case "东":
@@ -101,6 +99,40 @@ public class Engine extends ConsoleProgram {
           break;
         case "道具":
           chakan(currPlace);
+          break;
+        case "小锯鳄":
+          println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
+          pause(DELAY);
+          println("");
+          println("输入小锯鳄Yes 来获得小锯鳄");
+
+          break;
+        case "小锯鳄Yes":
+          Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+          playerpokemon.add(xiaoJuE);
+          break;
+        case "火球鼠":
+          println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
+          pause(DELAY);
+          println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
+          pause(DELAY);
+          println("");
+          println("输入火球鼠Yes 来获得小锯鳄");
+          break;
+        case "火球鼠Yes":
+          Playerpokemon huoQiuShu = new Playerpokemon("小锯鳄");
+          playerpokemon.add(xiaoJuE);
+          break;
+        case "小锯鳄":
+          println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
+          pause(DELAY);
+          println("");
+          println("输入小锯鳄Yes 来获得小锯鳄");
+
+          break;
+        case "小锯鳄Yes":
+          Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+          playerpokemon.add(xiaoJuE);
           break;
         case "宝可梦":
           checkYourPokemon();
@@ -173,16 +205,19 @@ public class Engine extends ConsoleProgram {
 //    小锯鳄为城都地区中，空木博士给新人训练家的三只神奇宝贝之一，个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间.
 //    火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。
 //    菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。
-    println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
-    pause(DELAY);
-    println("");
-    println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
-    pause(DELAY);
-    pause(DELAY);
-    println("");
-    println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
-    pause(DELAY);
-    println("");
+//    println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
+//    pause(DELAY);
+//    println("");
+
+//    println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
+//    pause(DELAY);
+//    println("");
+//    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+//    playerpokemon.add(xiaoJuE);
+//    Playerpokemon huoJuShu = new Playerpokemon("小锯鳄");
+//    playerpokemon.add(xiaoJuE);
+//    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+//    playerpokemon.add(xiaoJuE);
   }
   /**
    * 移动到一个新的地点
@@ -443,7 +478,7 @@ private void loadEnemypokemon(){
    */
   private void printEnemy() {
     String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
-            enemypokemon.name, enemypokemon.level, enemypokemon.role, enemypokemon.curHp,enemypokemon.maxHp, enemypokemon.minAtt, enemypokemon.maxAtt);
+            enemypokemon.name, enemypokemon.level, enemypokemon.name, enemypokemon.curHp,enemypokemon.maxHp, enemypokemon.minAtt, enemypokemon.maxAtt);
     println(message);
   }
   /**
