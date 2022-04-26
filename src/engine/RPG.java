@@ -77,7 +77,7 @@ public class RPG extends ConsoleProgram {
                 println("胜败乃兵家常事，大侠请重新来过。");
                 break;
             }
-            enemy.generateRandomEnemy(player);
+//            enemy.generateRandomEnemy(player);
             println();
             println("你遇到了" + enemy.role + enemy.name + "。");
             battle();
