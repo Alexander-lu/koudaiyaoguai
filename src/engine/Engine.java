@@ -20,6 +20,8 @@ public class Engine extends ConsoleProgram {
   int daoll = 0;
   /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
   int yanJiuSuoCount = 1;
+  /** 统计玩家到初始选择小精灵 */
+  int ifStopThisWhile = 0;
   private Place currPlace;
   // 当前所处的地点
   ArrayList<Place> places;
@@ -32,6 +34,7 @@ public class Engine extends ConsoleProgram {
   // 玩家是否退出游戏
   public String playername;
   // 保存玩家的名字
+  @Override
   public void run() {
     getConsole().setBackground(Color.gray);//设定窗口背景色
     getConsole().setForeground(Color.WHITE);//设定窗口字体颜色
@@ -47,105 +50,116 @@ public class Engine extends ConsoleProgram {
   /** 主循环。只要玩家不选择退出，游戏就一直运行下去 */
   private void mainLoop() {
     gameEnded = false;
-
     opentalking();
     while (!gameEnded) {
       /** 如果玩家第一次到研究所,触发和博士的对话 */
-      if (yanJiuSuoCount==1){
-        if(currPlace.getbianhao()== 1){
+      if (yanJiuSuoCount == 1) {
+        if (currPlace.getbianhao() == 1) {
           boShiTalking();
           yanJiuSuoCount++;
+          while (ifStopThisWhile == 0){
+            println("你要？（输入小锯鳄，火球鼠和菊草叶来挑选你的精良伴侣）");
+            print("> ");
+            String d1 = readLine();
+            switch (d1) {
+              case "小锯鳄":
+                println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
+                pause(DELAY);
+                println("输入小锯鳄Yes 来获得小锯鳄");
+                println("");
+                break;
+                case "小锯鳄Yes":
+                    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+                    playerpokemon.add(xiaoJuE);
+                    ifStopThisWhile = 1;
+                    break;
+              case "火球鼠":
+                println(
+                        "火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
+                pause(DELAY);
+                println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
+                pause(DELAY);
+                println("输入火球鼠Yes 来获得火球鼠");
+                println("");
+                break;
+                  case "火球鼠Yes":
+                    Playerpokemon huoQiuShu = new Playerpokemon("火球鼠");
+                    playerpokemon.add(huoQiuShu);
+                    ifStopThisWhile = 1;
+                    break;
+              case "菊草叶":
+                println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
+                pause(DELAY);
+                println("输入菊草叶Yes 来获得菊草叶");
+                println("");
+                break;
+                  case "菊草叶Yes":
+                    Playerpokemon juCaoYe = new Playerpokemon("菊草叶");
+                    playerpokemon.add(juCaoYe);
+                    ifStopThisWhile = 1;
+                    break;
+              default:
+                println("你输入的命令有误，请重新输入");
+            }
+          }
+}
+        }
+        /** 如果玩家进入草丛，触发战斗 */
+        if (currPlace.getbianhao() > 4) {
+          enemypokemon.generateRandomEnemy();
+        }
+        println();
+        println(
+            "你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
+        print("> ");
+        String direction = readLine();
+        switch (direction) {
+          case "东":
+            if (currPlace.getEast() != null) {
+              moveTo(currPlace.getEast());
+            } else {
+              println("那边好像无路可走了……");
+            }
+            break;
+          case "南":
+            if (currPlace.getSouth() != null) {
+              moveTo(currPlace.getSouth());
+            } else {
+              println("那边好像无路可走了……");
+            }
+            break;
+          case "西":
+            if (currPlace.getWest() != null) {
+              moveTo(currPlace.getWest());
+            } else {
+              println("那边好像无路可走了……");
+            }
+            break;
+          case "北":
+            if (currPlace.getNorth() != null) {
+              moveTo(currPlace.getNorth());
+            } else {
+              println("那边好像无路可走了……");
+            }
+            break;
+          case "搜索":
+            sousuo(currPlace);
+            break;
+          case "道具":
+            chakan(currPlace);
+            break;
+          case "宝可梦":
+            checkYourPokemon();
+            break;
+          case "退出":
+            gameEnded = true;
+            println("欢迎再来！");
+            break;
+          default:
+            println("你输入的命令有误，请重新输入");
         }
       }
-      /** 如果玩家进入草丛，触发战斗 */
-      if (currPlace.getbianhao()>4){
-        enemypokemon.generateRandomEnemy();
-      }
-      println();
-      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
-      print("> ");
-      String direction = readLine();
-      switch (direction) {
-        case "东":
-          if (currPlace.getEast() != null) {
-            moveTo(currPlace.getEast());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "南":
-          if (currPlace.getSouth() != null) {
-            moveTo(currPlace.getSouth());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "西":
-          if (currPlace.getWest() != null) {
-            moveTo(currPlace.getWest());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "北":
-          if (currPlace.getNorth() != null) {
-            moveTo(currPlace.getNorth());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "搜索":
-          sousuo(currPlace);
-          break;
-        case "道具":
-          chakan(currPlace);
-          break;
-        case "小锯鳄":
-          println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
-          pause(DELAY);
-          println("");
-          println("输入小锯鳄Yes 来获得小锯鳄");
-
-          break;
-        case "小锯鳄Yes":
-          Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
-          playerpokemon.add(xiaoJuE);
-          break;
-        case "火球鼠":
-          println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
-          pause(DELAY);
-          println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
-          pause(DELAY);
-          println("");
-          println("输入火球鼠Yes 来获得小锯鳄");
-          break;
-        case "火球鼠Yes":
-          Playerpokemon huoQiuShu = new Playerpokemon("小锯鳄");
-          playerpokemon.add(xiaoJuE);
-          break;
-        case "小锯鳄":
-          println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
-          pause(DELAY);
-          println("");
-          println("输入小锯鳄Yes 来获得小锯鳄");
-
-          break;
-        case "小锯鳄Yes":
-          Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
-          playerpokemon.add(xiaoJuE);
-          break;
-        case "宝可梦":
-          checkYourPokemon();
-          break;
-        case "退出":
-          gameEnded = true;
-          println("欢迎再来！");
-          break;
-        default:
-          println("你输入的命令有误，请重新输入");
-      }
     }
-  }
   /**
    * 开场白
    */
@@ -209,9 +223,7 @@ public class Engine extends ConsoleProgram {
 //    pause(DELAY);
 //    println("");
 
-//    println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
-//    pause(DELAY);
-//    println("");
+
 //    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
 //    playerpokemon.add(xiaoJuE);
 //    Playerpokemon huoJuShu = new Playerpokemon("小锯鳄");
