@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Engine extends ConsoleProgram {
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
-  public static final int APPLICATION_HEIGHT = 1000;//窗口高度
+  public static final int APPLICATION_HEIGHT = 800;//窗口高度
 //Font f = new Font("仿宋",Font.BOLD,20);
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
@@ -114,6 +114,15 @@ public class Engine extends ConsoleProgram {
     println("");
     println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
     Charactors.pokemonMouse02(this);
+    Charactors.jucaoye(this);
+    Charactors.jucaoyeFight(this);
+    Charactors.huoqiushu(this);
+    Charactors.huoqiushuFight(this);
+    Charactors.xiaojue(this);
+    Charactors.xiaojueFight(this);
+    Charactors.kedaDuck(this);
+    Charactors.dishu(this);
+
     pause(DELAY);
     println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
     pause(DELAY);
