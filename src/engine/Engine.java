@@ -8,6 +8,8 @@ public class Engine extends ConsoleProgram {
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
   int daoll = 0;
+//  统计玩家到达研究所的次数,以此触发博士和我的对话.
+  int yanJiuSuoCount = 1;
   private Place currPlace; // 当前所处的地点
   ArrayList<Place> places; // 保存所有的地点
   ArrayList<String> daojus = new ArrayList<>(); // 保存所有的地点
@@ -24,8 +26,14 @@ public class Engine extends ConsoleProgram {
     gameEnded = false;
     opentalking();
     while (!gameEnded) {
+      if (yanJiuSuoCount==1){
+        if(currPlace.getbianhao()== 1){
+          boShiTalking();
+          yanJiuSuoCount++;
+        }
+      }
       println();
-      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看行李\"查看道具）（输入\"东南西北\"进入下一个地点）");
+      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"查看道具）（输入\"东南西北\"进入下一个地点）");
       print("> ");
 
       String direction = readLine();
@@ -61,7 +69,7 @@ public class Engine extends ConsoleProgram {
         case "搜索":
           sousuo(currPlace);
           break;
-        case "查看行李":
+        case "查看道具":
           chakan(currPlace);
           break;
         case "退出":
@@ -241,7 +249,7 @@ public class Engine extends ConsoleProgram {
 
   private void chakan(Place place) {
     if (daojus.isEmpty()) {
-      println("你的行李箱内空无一物。");
+      println("你的道具箱内空无一物。");
     } else {
       println("你现在共有" + daojus.size() + "个道具，依次是：");
       for (int k = 0; k < daojus.size(); k++) {
