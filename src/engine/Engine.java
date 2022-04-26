@@ -101,6 +101,19 @@ public class Engine extends ConsoleProgram {
     pause(DELAY);
   }
   /**
+   * 博士和我的对话
+   */
+  private void boShiTalking() {
+    println("喂！"+playername+"来啦。今天找你，是要你帮忙！");
+    pause(DELAY);
+    println("朋友中有位精灵爷爷，发现了奇怪的东西。");
+    pause(DELAY);
+    println("现在我们的研究工作很忙。希望你能去，当然要成为精灵搭档。");
+    pause(DELAY);
+    println("最近找到的珍贵的精灵，你选一个吧");
+    pause(DELAY);
+  }
+  /**
    * 移动到一个新的地点
    *
    * @param place 要移动到的目的地
