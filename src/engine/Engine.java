@@ -15,7 +15,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
   public static final int APPLICATION_HEIGHT = 800;//窗口高度
 
-  public static final String GAME_FILE = "res/map-starting-area.txt";
+  public static final String GAME_FILE = "res/map-startingareafinal.txt";
   private static final int DELAY = 1600;
 //  Enemypokemon enemypokemon = new Enemypokemon();
   /** 判断是否有紫金石 */
