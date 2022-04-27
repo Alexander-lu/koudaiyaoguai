@@ -1,12 +1,12 @@
 package engine;
 
-public class Skill {
+public final class Skill {
     public String skillName;
     public String skillIntroduction;
     /**
      * 菊叶草的技能
      */
-    public void  撞击(Pokemon pokemon){
+    public static void  撞击(Pokemon pokemon){
         pokemon.curHp -= 40;
     }
     public void  叫声(Pokemon pokemon){

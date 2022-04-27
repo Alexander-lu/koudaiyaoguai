@@ -7,7 +7,6 @@ public class Pokemon {
     public int attack;      // 玩家和敌人都有攻击力
     public int deFence;
 
-
     public Pokemon() {
     }
 

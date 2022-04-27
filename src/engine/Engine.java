@@ -114,6 +114,8 @@ public class Engine extends ConsoleProgram {
       }
         /** 如果玩家进入草丛，触发战斗 */
         if (currPlace.getbianhao() > 4) {
+          Pokemon pokemon = new Pokemon();
+          battle(pokemon);
 //          enemypokemon.generateRandomEnemy();
         }
         println();
@@ -433,20 +435,70 @@ private void loadEnemypokemon(){
   /**
    * 玩家和敌人对战
    */
-  private void battle() {
+  private void battle(Pokemon pokemon) {
+    Playerpokemon currPokemon;
+    checkYourPokemon();
+    println("输入数字来选择出战的宝可梦");
+    print("> ");
+    String pickYourPokemon = readLine();
+    switch (pickYourPokemon) {
+      case "1":
+         currPokemon = playerpokemon.get(0);
+        break;
+      case "2":
+        currPokemon = playerpokemon.get(1);
+        break;
+      case "3":
+        currPokemon = playerpokemon.get(2);
+        break;
+      case "4":
+        currPokemon = playerpokemon.get(3);
+        break;
+      case "5":
+        currPokemon = playerpokemon.get(4);
+        break;
+      case "6":
+        currPokemon = playerpokemon.get(5);
+        break;
+      case "7":
+        currPokemon = playerpokemon.get(6);
+        break;
+      case "8":
+        currPokemon = playerpokemon.get(7);
+        break;
+      case "9":
+        currPokemon = playerpokemon.get(8);
+        break;
+      case "10":
+        currPokemon = playerpokemon.get(9);
+        break;
+      case "11":
+        currPokemon = playerpokemon.get(10);
+        break;
+      default:
+        println("你输入的命令有误，请重新输入");
+    }
     // 回合制循环进行，直至某一方阵亡
     while (true) {
       println();
       // 每一回合都首先从玩家开始行动
-      String userChoice = choose("请选择你的行动", "攻击", "逃跑", "补血", "查看状态");
-      if (userChoice.equals("查看状态")) {
-//        printPlayerStatus();
+      String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
+      if (userChoice.equals("战斗")) {
+        String attackChoice = choose("请选择技能", "战斗", "背包", "精灵", "逃跑");
+        Skill.撞击(pokemon);
+        //        attackEnemy();
+//        printEnemyStatus();
         continue;
-      } else if (userChoice.equals("补血")) {
+      } else if (userChoice.equals("背包")) {
 //        useHealthPotion();
 //        printPlayerStatus();
         continue;
-      } else if (userChoice.equals("逃跑")) {
+      } else if (userChoice.equals("精灵")) {
+        checkYourPokemon();
+//        useHealthPotion();
+//        printPlayerStatus();
+        continue;
+      }else if (userChoice.equals("逃跑")) {
 //        boolean success = randomGenerator.nextBoolean();
 //        if (success) {
 //          println("逃跑成功！");
@@ -454,9 +506,6 @@ private void loadEnemypokemon(){
 //        } else {
 //          println("逃跑失败！");
 //        }
-      } else if (userChoice.equals("攻击")) {
-//        attackEnemy();
-//        printEnemyStatus();
       }
 //      if (isEnemyDead()) {
 //        // 如果敌人阵亡，玩家经验值提升
@@ -492,19 +541,16 @@ private void loadEnemypokemon(){
     String concatenatedChoices = String.join(", ", choices);
     // 最终的提示语
     String actualPrompt = String.format("%s (%s): ", prompt, concatenatedChoices);
-
     // 如果玩家的输入无效，就提示玩家重新输入
     while (true) {
       print(actualPrompt);
       String userChoice = readLine();
-
       // 逐个对比，看是否相等
       for (String choice : choices) {
         if (userChoice.equals(choice)) {
           return choice;
         }
       }
-
       println("您的选择无效，请重新输入。");
     }
   }
