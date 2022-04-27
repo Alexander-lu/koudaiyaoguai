@@ -1,5 +1,7 @@
 package engine;
 import acm.program.ConsoleProgram;
+import acm.util.RandomGenerator;
+
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Engine extends ConsoleProgram implements Backgroundmusic2{
+  RandomGenerator randomGenerator = RandomGenerator.getInstance();
   /** 定义窗口的宽度和高度 */
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
   public static final int APPLICATION_HEIGHT = 800;//窗口高度
@@ -113,7 +116,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
         }
       }
         /** 如果玩家进入草丛，触发战斗 */
-        if (currPlace.getbianhao() > 4) {
+        if (currPlace.getbianhao() == 15) {
           Pokemon 美后 = new Pokemon("美后",3,40,40,20,20);
           battle(美后);
 //          enemypokemon.generateRandomEnemy();
@@ -434,6 +437,7 @@ private void loadEnemypokemon(){
    * 玩家和敌人对战
    */
   private void battle(Pokemon pokemon) {
+    int key = -1;
     Playerpokemon currPokemon = new Playerpokemon();
     checkYourPokemon();
     println("输入数字来选择出战的宝可梦");
@@ -442,36 +446,47 @@ private void loadEnemypokemon(){
     switch (pickYourPokemon) {
       case "1":
          currPokemon = playerpokemon.get(0);
+         key=0;
         break;
       case "2":
         currPokemon = playerpokemon.get(1);
+        key=1;
         break;
       case "3":
         currPokemon = playerpokemon.get(2);
+        key=2;
         break;
       case "4":
         currPokemon = playerpokemon.get(3);
+        key=3;
         break;
       case "5":
         currPokemon = playerpokemon.get(4);
+        key=4;
         break;
       case "6":
         currPokemon = playerpokemon.get(5);
+        key=5;
         break;
       case "7":
         currPokemon = playerpokemon.get(6);
+        key=6;
         break;
       case "8":
         currPokemon = playerpokemon.get(7);
+        key=7;
         break;
       case "9":
         currPokemon = playerpokemon.get(8);
+        key=8;
         break;
       case "10":
         currPokemon = playerpokemon.get(9);
+        key=9;
         break;
       case "11":
         currPokemon = playerpokemon.get(10);
+        key=10;
         break;
       default:
         println("你输入的命令有误，请重新输入");
@@ -481,6 +496,17 @@ private void loadEnemypokemon(){
       println(currPokemon.toString());
       println(pokemon.toString());
       println();
+      if (isEnemyDead(pokemon)) {
+        // 如果敌人阵亡，玩家经验值提升
+        println(String.format("你杀死了%s。\n", pokemon.name));
+//        if (currPokemon.checkLevelUp()) {
+//          playerpokemon.get(key).level++;
+//          println("你升级了！血量恢复满格！");
+//        }
+        println("你当前拥有" + currPokemon.xp + "点经验值。");
+//        printPlayer();
+        break;
+      }
       // 每一回合都首先从玩家开始行动
       String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
       if (userChoice.equals("战斗")) {
@@ -499,24 +525,15 @@ private void loadEnemypokemon(){
 //        printPlayerStatus();
         continue;
       }else if (userChoice.equals("逃跑")) {
-//        boolean success = randomGenerator.nextBoolean();
-//        if (success) {
-//          println("逃跑成功！");
-//          break;
-//        } else {
-//          println("逃跑失败！");
-//        }
+        boolean success = randomGenerator.nextBoolean();
+        if (success) {
+          println("逃跑成功！");
+          break;
+        } else {
+          println("逃跑失败！");
+        }
       }
-//      if (isEnemyDead()) {
-//        // 如果敌人阵亡，玩家经验值提升
-//        println(String.format("你杀死了%s。\n", enemypokemon.name));
-//        println("你获得了" + player.gainXp(enemy) + "点经验值。");
-//        if(player.checkLevelUp()){
-//          println("你升级了！血量恢复满格！");
-//        }
-//        println("你当前拥有" + playerpokemon.xp + "点经验值。");
-//        printPlayer();
-        break;
+
 //      } else {
 //        // 没阵亡则轮到敌人行动
 ////        attackPlayer();
@@ -528,6 +545,12 @@ private void loadEnemypokemon(){
 ////        }
 //      }
     }
+  }
+  private boolean isEnemyDead(Pokemon pokemon){
+    if(pokemon.curHp==0){
+      return true;
+    }
+    return false;
   }
   /**
    * 提示用户做选择，如果用户的选择无效，就让用户重新输入
