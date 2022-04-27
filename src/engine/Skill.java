@@ -25,14 +25,14 @@ public class Skill {
         pokemon.curHp -= 40;
     }
     public void  瞪眼(Pokemon pokemon){
-        pokemon.deFence -= 40;
+        pokemon.defence -= 40;
     }
     public void  舍身冲撞(Pokemon pokemon,Playerpokemon playerpokemon){
         pokemon.curHp -= 120;
         playerpokemon.curHp -= 40;
     }
     public void  变圆(Playerpokemon playerpokemon){
-        playerpokemon.deFence += 40;
+        playerpokemon.defence += 40;
     }
     /**
      * 小锯鳄的技能
@@ -45,11 +45,11 @@ public class Skill {
     }
     public void  咬碎(Pokemon pokemon){
         pokemon.curHp -= 40;
-        pokemon.deFence -= 40;
+        pokemon.defence -= 40;
     }
     public void  蛮力(Pokemon pokemon,Playerpokemon playerpokemon){
         pokemon.curHp -= 120;
-        playerpokemon.deFence -= 40;
+        playerpokemon.defence -= 40;
         playerpokemon.attack -= 40;
     }
     /**
@@ -59,10 +59,10 @@ public class Skill {
         pokemon.curHp -= 40;
     }
     public void  瞬间失忆(Playerpokemon playerpokemon){
-        playerpokemon.deFence += 40;
+        playerpokemon.defence += 40;
     }
     public void  摇尾巴(Pokemon pokemon){
-        pokemon.deFence -= 40;
+        pokemon.defence -= 40;
     }
     public void  水泡(Pokemon pokemon){
         pokemon.curHp -= 120;
@@ -84,7 +84,7 @@ public class Skill {
         pokemon.curHp -= 40;
     }
     public void  龙卷风(Pokemon pokemon){
-        pokemon.deFence -= 40;
+        pokemon.defence -= 40;
     }
     public void  羽毛舞风(Pokemon pokemon){
         pokemon.attack -= 40;

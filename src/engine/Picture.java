@@ -2,6 +2,11 @@ package engine;
 import acm.program.ConsoleProgram;
 import java.awt.*;
 
+
+
+
+/** 角色精灵图片库，直接在需要的地方调用方法即可
+ 例子：     * */
 public class Picture {
     public static void gameStart(ConsoleProgram program) {
         program.println(
@@ -52,7 +57,7 @@ public class Picture {
                 , Color.black);
     }
 
-    public static void doctor(ConsoleProgram program) {
+    public static void 博士(ConsoleProgram program) {
         program.println(
                 "                                                                                                              **          \n" +
                         "                                                                                                             ********     \n" +
@@ -74,29 +79,29 @@ public class Picture {
 
     }
 
-    public static void player(ConsoleProgram program) {
+    public static void 玩家(ConsoleProgram program) {
         program.println(
 
-                        "            ***        \n" +
-                        "          *******      \n" +
-                        "         *********     \n" +
-                        "        **#▮#▮##****   \n" +
-                        "          ##▬####      \n" +
-                        "           *##****     \n" +
-                        "         %*******%%%%  \n" +
-                        "       %%%********%%%% \n" +
-                        "      %%%*********%%%%%\n" +
-                        "      %%%**||||***%%%% \n" +
-                        "       %%*||||||**%    \n" +
-                        "         *********     \n" +
-                        "         *********     \n" +
-                        "          ###  ###     \n" +
-                        "         %%%%  %%%     \n" +
-                        "        %%%%%  %%%%    "
+                        "                                                                                                     ***        \n"                                                                                          +
+                        "                                                                                                   *******      \n"                                                                                          +
+                        "                                                                                                  *********     \n"                                                                                          +
+                        "                                                                                                 **#▮#▮##****   \n"                                                                                          +
+                        "                                                                                                   ##▬####      \n"                                                                                          +
+                        "                                                                                                    *##****     \n"                                                                                          +
+                        "                                                                                                  %*******%%%%  \n"                                                                                          +
+                        "                                                                                                %%%********%%%% \n"                                                                                          +
+                        "                                                                                               %%%*********%%%%%\n"                                                                                          +
+                        "                                                                                               %%%**||||***%%%% \n"                                                                                          +
+                        "                                                                                                %%*||||||**%    \n"                                                                                          +
+                        "                                                                                                  *********     \n"                                                                                          +
+                        "                                                                                                  *********     \n"                                                                                          +
+                        "                                                                                                   ###  ###     \n"                                                                                          +
+                        "                                                                                                  %%%%  %%%     \n"                                                                                          +
+                        "                                                                                                 %%%%%  %%%%    "
         );
     }
 
-    public static void pokemonMouse01(ConsoleProgram progeam) {
+    public static void 尾立(ConsoleProgram progeam) {
         progeam.println(
                 "                                                                                                    *    *     \n" +
                         "                                                                                                    ***  **    \n" +
@@ -117,7 +122,7 @@ public class Picture {
         );
     }
 
-    public static void xiaolada(ConsoleProgram program) {
+    public static void 小拉达(ConsoleProgram program) {
         program.println(
                 "                                                                                                      ▮▮▮▮        \n" +
                         "                                                                                                      ▮▮▮▮▮▮▮▮    \n" +
@@ -135,7 +140,7 @@ public class Picture {
         );
     }
 
-    public static void pokemonBird01(ConsoleProgram program) {
+    public static void 波波(ConsoleProgram program) {
         program.println(
                 "                                                                                               //      **          / \n" +
                         "                                                                                                //  o *oooooo     ///\n" +
@@ -153,7 +158,7 @@ public class Picture {
     }
 
 
-    public static void mother(ConsoleProgram program) {
+    public static void 妈妈(ConsoleProgram program) {
         program.println(
                         "                                                                                                                    ▯▯▯▯▯  \n" +
                         "                                                                                                                 ▯▯▯▯▯▯▯▯▯\n" +
@@ -162,7 +167,7 @@ public class Picture {
                         "                                                                                                                     ###   "
         );
     }
-    public static void dishu(ConsoleProgram program) {
+    public static void 地鼠(ConsoleProgram program) {
         program.println(
                         "                                                                                                         ▮▮▮▮▮▮▮          \n"                                                                                                +
                         "                                                                                                      ▮▮▮▮▮▮▮▮▮▮▮▮▮       \n"                                                                                                +
@@ -181,7 +186,7 @@ public class Picture {
         );
     }
 
-    public static void kedaDuck(ConsoleProgram program) {
+    public static void 可达鸭(ConsoleProgram program) {
         program.println(
                        "                                                                                                                     /     /               \n"                                                                                                 +
                        "                                                                                                                     //   //               \n"                                                                                                 +
@@ -216,7 +221,7 @@ public class Picture {
     }
 
 
-    public static void xiaojueFight(ConsoleProgram program) {
+    public static void 小锯鳄战斗(ConsoleProgram program) {
         program.println(
                       "                             ▮▮▮▮ ▮▮▮▮        \n"                    +
                       "                           ▮▮▮▮▮▮▮▮▮▮ ▮▮ ▮▮▮  \n"                    +
@@ -234,7 +239,7 @@ public class Picture {
         );
     }
 
-    public static void xiaojue(ConsoleProgram program) {
+    public static void 小锯鳄(ConsoleProgram program) {
         program.println(
                        "                                                                                                       ▮▮▮▮▮▮          \n"                                                                                                 +
                        "                                                                                                     ▮▮▮▮▮▮▮▮▮         \n"                                                                                                 +
@@ -252,7 +257,7 @@ public class Picture {
         );
     }
 
-    public static void huoqiushuFight(ConsoleProgram program) {
+    public static void 火球鼠战斗(ConsoleProgram program) {
         program.println(
                        "                          \\ \\          \n"                     +
                        "                      \\   \\\\\\   \\      \n"                     +
@@ -267,7 +272,7 @@ public class Picture {
         );
     }
 
-    public static void huoqiushu(ConsoleProgram program) {
+    public static void 火球鼠(ConsoleProgram program) {
         program.println(
                         "                                                                                                                   //               \n"                                                                                                +
                         "                                                                                                          ▮▮▮     ///               \n"                                                                                                +
@@ -286,7 +291,7 @@ public class Picture {
                         "                                                                                                           ▮▮▮      ▮▮▮▮            "
         );
     }
-    public static void jucaoyeFight(ConsoleProgram program) {
+    public static void 菊草叶战斗(ConsoleProgram program) {
         program.println(
                         "                       ****        \n"               +
                         "                   ************    \n"               +
@@ -300,7 +305,7 @@ public class Picture {
         );
     }
 
-    public static void jucaoye(ConsoleProgram program) {
+    public static void 菊草叶(ConsoleProgram program) {
         program.println(
                 "                                                                                                  ******       \n" +
                         "                                                                                                ************   \n" +

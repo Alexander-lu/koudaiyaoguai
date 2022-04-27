@@ -6,13 +6,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static engine.RPG.randomGenerator;
+
 
 public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /** 定义窗口的宽度和高度 */
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
   public static final int APPLICATION_HEIGHT = 1000;//窗口高度
-//Font f = new Font("仿宋",Font.BOLD,20);
+
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
 //  Enemypokemon enemypokemon = new Enemypokemon();
@@ -40,10 +40,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   public void run() {
     getConsole().setBackground(Color.gray);//设定窗口背景色
     getConsole().setForeground(Color.WHITE);//设定窗口字体颜色
-   gamestart.run();
     this.setResizable(false);
     // 窗口大小不可更改
-    Picture.gameStart(this);
+    Picture.gameStart(this);//调用角色图片
+    Play gamestart = new Play("res/mp3/gamestart.mp3");//创建Play 对象，引入开场音乐
+    gamestart.start();//调用音乐播放方法
     if (loadGame()) {
       mainLoop();
     }
@@ -180,7 +181,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     pause(DELAY);
     println("欢迎你来到精灵世界！");
     pause(DELAY);
-    Picture.doctor(this);
+    Picture.博士(this);
     println("我叫空木，作为精灵博士受到尊敬");
     pause(DELAY);
     println("");
@@ -192,7 +193,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     println("");
     println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
     pause(DELAY);
-    Picture.player(this);
+    Picture.玩家(this);
     println("对了，快告诉我你叫什么名字？");
     pause(DELAY);
     print("请输入你的名字：");
@@ -201,7 +202,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     println(playername+"祝你好运，希望你能抓住全部的精灵！");
     pause(DELAY);
     moveTo(currPlace);
-    Picture.mother(this);
+    Picture.妈妈(this);
     println("妈妈：喂 "+playername+" 空木博士在找你。可能是要你帮忙。忘了！给，你的电话修理好了");
     pause(DELAY);
     println("");
@@ -213,7 +214,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    * 博士和我的第一次对话
    */
   private void boShiTalking() {
-    Picture.doctor(this);
+    Picture.博士(this);
     println("喂！"+playername+"来啦。今天找你，是要你帮忙！");
     pause(DELAY);
     println("");
@@ -234,7 +235,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    * 博士和我的第二次对话
    */
   private void boShiFinalTalking() {
-    Picture.doctor(this);
+    Picture.博士(this);
     println(playername+"你拿到紫金石了吗？");
     pause(DELAY);
     println("");
@@ -280,6 +281,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       loadPlaces(scanner);
       loadRoutes(scanner);
       loadDaoju(scanner);
+      Pokemon.loadPokemon();
     } catch (FileNotFoundException e) {
       println("游戏文件读取错误！");
       return false;
@@ -321,26 +323,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     }
     // 设置初始地点，也就是读进来的第一个地点
   }
-  /**
-   * 读取宝可梦的信息
-   */
-private void loadEnemypokemon(){
-//  代号美后
-    Pokemon 美后 = new Pokemon();
-    美后.name="美后";
-    美后.level=3;
-//    代号菊草叶
-  Pokemon 菊叶草 = new Pokemon();
-  菊叶草.name="菊草叶";
-  菊叶草.level=5;
-  菊叶草.maxHp=45;
-  菊叶草.attack=49;
-  菊叶草.deFence=65;
-//    代号阿童
-  Pokemon xiaoNiao = new Pokemon();
-    xiaoNiao.name="小鸟";
-    xiaoNiao.level = 3;
-}
+
   /**
    * 读取地点
    *
