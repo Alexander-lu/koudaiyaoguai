@@ -1,9 +1,11 @@
 package engine;
 import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,6 +36,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   public String playername;
   /** 用于循环播放歌曲和切换歌曲 */
   public Play gamestart;
+  /** 用Swing写一个打开地图的方法 */
+  JFrame frame;
+  JLabel label;
+  Image image = null;
 
   @Override
   public void run() {
@@ -55,6 +61,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /** 主循环。只要玩家不选择退出，游戏就一直运行下去 */
   private void mainLoop() {
     gameEnded = false;
+    openMap();
+    openMap1();
     opentalking();
     /** 切换歌曲 */
     changeMusic("res/mp3/Pokemon-fight.mp3");
@@ -232,6 +240,34 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
     }
     }
+  /** 打开地图 */
+    private void openMap(){
+      try {
+        image= ImageIO.read(new File("res/w.jpeg"));
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      frame=new JFrame();
+      label=new JLabel(new ImageIcon(image));
+      frame.getContentPane().add(label,BorderLayout.CENTER);
+      frame.pack();
+      frame.setVisible(true);
+      frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+  /** 打开地图 */
+  private void openMap1(){
+    try {
+      image= ImageIO.read(new File("res/w.jpg"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    frame=new JFrame();
+    label=new JLabel(new ImageIcon(image));
+    frame.getContentPane().add(label,BorderLayout.CENTER);
+    frame.pack();
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  }
   /** 切换歌曲的方法 */
     private void changeMusic(String file){
       gamestart.stop();
