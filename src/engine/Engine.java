@@ -13,7 +13,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   RandomGenerator randomGenerator = RandomGenerator.getInstance();
   /** 定义窗口的宽度和高度 */
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
-  public static final int APPLICATION_HEIGHT = 1000;//窗口高度
+  public static final int APPLICATION_HEIGHT = 800;//窗口高度
 
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
@@ -117,28 +117,32 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
             }
           }
         }
-      }
+
         /** 如果玩家进入草丛，触发战斗 */
         if (currPlace.getbianhao() == 15) {
-          boolean success = randomGenerator.nextBoolean();
-          if (success) {
-            break;
-          } else {
-            boolean success1 = randomGenerator.nextBoolean();
-            if (success1) {
-              boolean success2 = randomGenerator.nextBoolean();
-              if (success2) {
-                Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
-                battle(绿毛虫);
-                break;
-              } else {
-                Pokemon 小拉达 = new Pokemon("小拉达",3,"技能",30,30,25);
-                battle(小拉达);
-                break;
-              }
-            } else {
+          int change = randomGenerator.nextInt(0,6);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
               break;
-            }
+            case 1:
+              break;
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
+              break;
+            case 3:
+             break;
+            case 4:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
+              break;
+            case 5:
+              break;
+            case 6:
+              break;
+            default:
           }
         }
 //          enemypokemon.generateRandomEnemy();
@@ -193,7 +197,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
           default:
             println("你输入的命令有误，请重新输入");
         }
-      }
+      }}
   /**
    * 开场白
    */
