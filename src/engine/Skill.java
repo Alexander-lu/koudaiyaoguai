@@ -15,7 +15,7 @@ public final class Skill {
     public static void  飞叶快刀(Pokemon pokemon){
         pokemon.curHp -= 55;
     }
-    public static void  光合作用(Playerpokemon playerpokemon){
+    public static void  光合作用(Pokemon playerpokemon){
         playerpokemon.curHp += 40;
     }
     /**
@@ -27,11 +27,11 @@ public final class Skill {
     public static void  瞪眼(Pokemon pokemon){
         pokemon.defence -= 40;
     }
-    public static void  舍身冲撞(Pokemon pokemon,Playerpokemon playerpokemon){
+    public static void  舍身冲撞(Pokemon pokemon,Pokemon playerpokemon){
         pokemon.curHp -= 120;
         playerpokemon.curHp -= 40;
     }
-    public static void  变圆(Playerpokemon playerpokemon){
+    public static void  变圆(Pokemon playerpokemon){
         playerpokemon.defence += 40;
     }
     /**
@@ -47,7 +47,7 @@ public final class Skill {
         pokemon.curHp -= 40;
         pokemon.defence -= 40;
     }
-    public static void  蛮力(Pokemon pokemon,Playerpokemon playerpokemon){
+    public static void  蛮力(Pokemon pokemon,Pokemon playerpokemon){
         pokemon.curHp -= 120;
         playerpokemon.defence -= 40;
         playerpokemon.attack -= 40;
@@ -58,7 +58,7 @@ public final class Skill {
     public static void  乱抓(Pokemon pokemon){
         pokemon.curHp -= 40;
     }
-    public static void  瞬间失忆(Playerpokemon playerpokemon){
+    public static void  瞬间失忆(Pokemon playerpokemon){
         playerpokemon.defence += 40;
     }
     public static void  摇尾巴(Pokemon pokemon){
@@ -70,7 +70,7 @@ public final class Skill {
     /**
      * 小拉达的技能:撞击，摇尾巴，猛撞，咬碎
      */
-    public static void  猛撞(Pokemon pokemon,Playerpokemon playerpokemon){
+    public static void  猛撞(Pokemon pokemon,Pokemon playerpokemon){
         pokemon.curHp -= 120;
         playerpokemon.curHp -= 40;
     }

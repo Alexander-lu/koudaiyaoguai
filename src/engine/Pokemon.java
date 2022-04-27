@@ -4,21 +4,23 @@ public class Pokemon {
     public int level;       // 精灵等级
     public int maxHp;       // 精灵最大血量
     public int curHp;       // 精灵当前血量
-    public String skill;    // 精灵技能
     public int attack;      // 精灵都有攻击力
     public int defence;     // 精灵都有防御力
+    public int xp;
+    public String skill;    // 精灵技能
 
     public Pokemon() {
     }
 
-    public Pokemon(String name, int level,String skill,int maxHp,int attack,int defence) {
+    public Pokemon(String name, int level,int maxHp,int curHp,int attack,int defence,int xp,String skill) {
         this.name = name;
         this.level = level;
-        this.skill = skill;
         this.maxHp = maxHp;
+        this.curHp = curHp;
         this.attack = attack;
         this.defence = defence;
-        initialize();
+        this.xp = xp;
+        this.skill = skill;
     }
 
     /**
@@ -63,7 +65,6 @@ public class Pokemon {
      * 初始化玩家/敌人，此方法应该在子类中被overridden
      */
     void initialize() {
-        curHp = maxHp;
     }
 
     /** 精灵列表
@@ -73,18 +74,18 @@ public class Pokemon {
 
     public static void loadPokemon(){
         //  代号小锯鳄
-        Pokemon 小锯鳄 = new Pokemon("小锯鳄",5,"技能",43,46,55);
+        Pokemon 小锯鳄 = new Pokemon("小锯鳄",5,43,46,55,20,0,"技能");
         //    代号菊草叶
-        Pokemon 菊草叶 = new Pokemon("菊草叶",5,"技能",45,39,65);
+        Pokemon 菊草叶 = new Pokemon("菊草叶",5,45,39,65,20,0,"技能");
         //    代号火球鼠
-        Pokemon 火球鼠 = new Pokemon("火球鼠",5,"技能",50,43,60);
+        Pokemon 火球鼠 = new Pokemon("火球鼠",5,50,43,60,0,0,"技能");
         //波波
-        Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
-        Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
-        Pokemon 小拉达 = new Pokemon("小拉达",3,"技能",30,30,25);
-        Pokemon 地鼠 = new Pokemon("地鼠",4,"技能",40,25,35);
-        Pokemon 可达鸭 = new Pokemon("可达鸭",6,"技能",55,35,35);
-        Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+        Pokemon 波波 = new Pokemon("波波",3,30,25,30,0,0,"技能");
+        Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,25,20,23,0,0,"技能");
+        Pokemon 小拉达 = new Pokemon("小拉达",3,30,30,25,0,0,"技能");
+        Pokemon 地鼠 = new Pokemon("地鼠",4,40,25,35,0,0,"技能");
+        Pokemon 可达鸭 = new Pokemon("可达鸭",6,55,35,35,0,0,"技能");
+        Pokemon 尾立 = new Pokemon("尾立",3,35,30,34,0,0,"技能");
 
     }
 }
