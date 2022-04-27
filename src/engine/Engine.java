@@ -52,14 +52,15 @@ public class Engine extends ConsoleProgram {
     gameEnded = false;
     opentalking();
     while (!gameEnded) {
-      /** 如果玩家第一次到研究所,触发和博士的对话 */
+      /** 如果玩家第二次到研究所,触发和博士的对话 */
       if (yanJiuSuoCount == 2) {
         if (currPlace.getbianhao() == 1) {
           if (ifZijinStone){
           boShiFinalTalking();
           yanJiuSuoCount++;
           }
-}}
+          }
+          }
       /** 如果玩家第一次到研究所,触发和博士的对话 */
       if (yanJiuSuoCount == 1) {
         if (currPlace.getbianhao() == 1) {
@@ -331,7 +332,7 @@ private void loadEnemypokemon(){
   菊叶草.name="菊草叶";
   菊叶草.level=5;
   菊叶草.maxHp=45;
-  菊叶草.maxAtt=49;
+  菊叶草.attack=49;
   菊叶草.deFence=65;
 //    代号阿童
   Pokemon xiaoNiao = new Pokemon();

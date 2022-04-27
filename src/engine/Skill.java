@@ -10,7 +10,7 @@ public class Skill {
         pokemon.curHp -= 40;
     }
     public void  叫声(Pokemon pokemon){
-        pokemon.maxAtt -= 40;
+        pokemon.attack -= 40;
     }
     public void  飞叶快刀(Pokemon pokemon){
         pokemon.curHp -= 55;
@@ -50,7 +50,7 @@ public class Skill {
     public void  蛮力(Pokemon pokemon,Playerpokemon playerpokemon){
         pokemon.curHp -= 120;
         playerpokemon.deFence -= 40;
-        playerpokemon.maxAtt -= 40;
+        playerpokemon.attack -= 40;
     }
     /**
      * 可达鸭的技能
@@ -87,6 +87,6 @@ public class Skill {
         pokemon.deFence -= 40;
     }
     public void  羽毛舞风(Pokemon pokemon){
-        pokemon.maxAtt -= 40;
+        pokemon.attack -= 40;
     }
 }

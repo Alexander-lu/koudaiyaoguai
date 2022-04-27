@@ -4,8 +4,7 @@ public class Pokemon {
     public int level;       // 玩家和敌人都有等级
     public int maxHp;       // 玩家和敌人都有最大血量
     public int curHp;       // 玩家和敌人都有当前血量
-    public int maxAtt;      // 玩家和敌人都有攻击力下限
-    public int minAtt;      // 玩家和敌人都有攻击力上限
+    public int attack;      // 玩家和敌人都有攻击力
     public int deFence;
 
 
@@ -53,7 +52,7 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return "『" + name + "』" + "是等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + minAtt + "-" + maxAtt;
+        return "『" + name + "』" + "是等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + attack;
     }
 
     /**
