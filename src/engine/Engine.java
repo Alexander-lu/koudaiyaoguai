@@ -455,63 +455,51 @@ private void loadEnemypokemon(){
    */
   private void battle(Pokemon pokemon) {
     int key = -1;
-    Playerpokemon currPokemon = new Playerpokemon();
     checkYourPokemon();
     println("输入数字来选择出战的宝可梦");
     print("> ");
     String pickYourPokemon = readLine();
     switch (pickYourPokemon) {
       case "1":
-         currPokemon = playerpokemon.get(0);
          key=0;
         break;
       case "2":
-        currPokemon = playerpokemon.get(1);
         key=1;
         break;
       case "3":
-        currPokemon = playerpokemon.get(2);
         key=2;
         break;
       case "4":
-        currPokemon = playerpokemon.get(3);
         key=3;
         break;
       case "5":
-        currPokemon = playerpokemon.get(4);
         key=4;
         break;
       case "6":
-        currPokemon = playerpokemon.get(5);
         key=5;
         break;
       case "7":
-        currPokemon = playerpokemon.get(6);
         key=6;
         break;
       case "8":
-        currPokemon = playerpokemon.get(7);
         key=7;
         break;
       case "9":
-        currPokemon = playerpokemon.get(8);
         key=8;
         break;
       case "10":
-        currPokemon = playerpokemon.get(9);
         key=9;
         break;
       case "11":
-        currPokemon = playerpokemon.get(10);
         key=10;
         break;
       default:
         println("你输入的命令有误，请重新输入");
     }
     // 回合制循环进行，直至某一方阵亡
+    println(playerpokemon.get(key).toString());
+    println(pokemon.toString());
     while (true) {
-      println(currPokemon.toString());
-      println(pokemon.toString());
       println();
       if (isEnemyDead(pokemon)) {
         println("恭喜你成功击杀对面的宝可梦");
@@ -520,8 +508,40 @@ private void loadEnemypokemon(){
       // 每一回合都首先从玩家开始行动
       String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
       if (userChoice.equals("战斗")) {
-        Skill.撞击(pokemon);
-        println(pokemon.toString());
+        if (playerpokemon.get(key).name.equals("小锯鳄")) {
+          boolean ifStopThis = true;
+          while (ifStopThis) {
+            println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
+            println("（输入技能名称来使用技能");
+            print("> ");
+            String skillname1 = readLine();
+            switch (skillname1) {
+              case "抓":
+                Skill.抓(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "水枪":
+                Skill.水枪(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "咬碎":
+                Skill.咬碎(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "蛮力":
+                Skill.蛮力(pokemon, playerpokemon.get(key));
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              default:
+                println("你输入的命令有误，请重新输入");
+            }
+          }
+        }
+
         //        attackEnemy();
 //        printEnemyStatus();
         continue;
@@ -557,10 +577,7 @@ private void loadEnemypokemon(){
     }
   }
   private boolean isEnemyDead(Pokemon pokemon){
-    if(pokemon.curHp==0){
-      return true;
-    }
-    return false;
+    return pokemon.curHp<=0;
   }
   /**
    * 提示用户做选择，如果用户的选择无效，就让用户重新输入
