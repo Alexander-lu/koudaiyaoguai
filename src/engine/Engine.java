@@ -1,7 +1,6 @@
 package engine;
 import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
-
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -80,7 +79,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 println("");
                 break;
               case "小锯鳄Yes":
-                Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+                Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄",1,40,40,40,20,0);
                 playerpokemon.add(xiaoJuE);
                 ifStopThisWhile = 1;
                 break;
@@ -94,7 +93,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 println("");
                 break;
               case "火球鼠Yes":
-                Playerpokemon huoQiuShu = new Playerpokemon("火球鼠");
+                Playerpokemon huoQiuShu = new Playerpokemon("火球鼠",1,40,40,40,20,0);
                 playerpokemon.add(huoQiuShu);
                 ifStopThisWhile = 1;
                 break;
@@ -105,7 +104,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 println("");
                 break;
               case "菊草叶Yes":
-                Playerpokemon juCaoYe = new Playerpokemon("菊草叶");
+                Playerpokemon juCaoYe = new Playerpokemon("菊草叶",1,40,40,40,20,0);
                 playerpokemon.add(juCaoYe);
                 ifStopThisWhile = 1;
                 break;
@@ -117,8 +116,27 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
         /** 如果玩家进入草丛，触发战斗 */
         if (currPlace.getbianhao() == 15) {
-          Pokemon 美后 = new Pokemon("美后",3,40,40,20,20);
-          battle(美后);
+          boolean success = randomGenerator.nextBoolean();
+          if (success) {
+            break;
+          } else {
+            boolean success1 = randomGenerator.nextBoolean();
+            if (success1) {
+              boolean success2 = randomGenerator.nextBoolean();
+              if (success2) {
+                Pokemon 美后 = new Pokemon("美后", 3, 40, 40, 20, 20);
+                battle(美后);
+                break;
+              } else {
+                Pokemon 小拉达 = new Pokemon("小拉达", 3, 40, 40, 20, 20);
+                battle(小拉达);
+                break;
+              }
+            } else {
+              break;
+            }
+          }
+        }
 //          enemypokemon.generateRandomEnemy();
         }
         println();
@@ -172,7 +190,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
             println("你输入的命令有误，请重新输入");
         }
       }
-    }
   /**
    * 开场白
    */
@@ -497,14 +514,7 @@ private void loadEnemypokemon(){
       println(pokemon.toString());
       println();
       if (isEnemyDead(pokemon)) {
-        // 如果敌人阵亡，玩家经验值提升
-        println(String.format("你杀死了%s。\n", pokemon.name));
-//        if (currPokemon.checkLevelUp()) {
-//          playerpokemon.get(key).level++;
-//          println("你升级了！血量恢复满格！");
-//        }
-        println("你当前拥有" + currPokemon.xp + "点经验值。");
-//        printPlayer();
+        println("恭喜你成功击杀对面的宝可梦");
         break;
       }
       // 每一回合都首先从玩家开始行动
