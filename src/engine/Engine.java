@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-
 public class Engine extends ConsoleProgram implements Backgroundmusic2{
   RandomGenerator randomGenerator = RandomGenerator.getInstance();
   /** 定义窗口的宽度和高度 */
@@ -27,12 +25,16 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /** 统计玩家有没有选择初始小精灵 用于判断是否刷怪 */
   boolean ifStopThisWhile = true;
   boolean ifStopThisWhile1 = false;
+  /** currPlace表示玩家现在所处的位置 */
   private Place currPlace;
   ArrayList<Place> places;
   ArrayList<String> daojus = new ArrayList<>();
   ArrayList<Pokemon> playerpokemon = new ArrayList<>();
   boolean gameEnded;
   public String playername;
+  /** 用于循环播放歌曲和切换歌曲 */
+  public Play gamestart;
+
   @Override
   public void run() {
     /* 设定窗口背景色 */
@@ -43,8 +45,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     this.setResizable(false);
     /* 调用开场背景图片 */
     Picture.gameStart(this);
-    /* 创建Play 对象，引入开场音乐 */
-    Play gamestart = new Play("res/mp3/gamestart.mp3");
+    /* 设置背景音乐，并且无限循环播放 */
+    gamestart = new Play("res/mp3/gamestart.mp3");
     gamestart.start();//调用音乐播放方法
     if (loadGame()) {
       mainLoop();
@@ -54,6 +56,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   private void mainLoop() {
     gameEnded = false;
     opentalking();
+    /** 切换歌曲 */
+    changeMusic("res/mp3/Pokemon-fight.mp3");
     while (!gameEnded) {
       /** 如果玩家第二次到研究所,触发和博士的对话 */
       if (yanJiuSuoCount == 2) {
@@ -228,6 +232,12 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
     }
     }
+  /** 切换歌曲的方法 */
+    private void changeMusic(String file){
+      gamestart.stop();
+      gamestart = new Play(file);
+      gamestart.start();
+    }
   /**
    * 开场白
    */
@@ -321,7 +331,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     }
     currPlace = place;
   }
-
   /**
    * 读取游戏配置，如地图等
    *
@@ -341,7 +350,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     }
     return true;
   }
-
   /**
    * 读取道路
    *
@@ -376,7 +384,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     }
     // 设置初始地点，也就是读进来的第一个地点
   }
-
   /**
    * 读取地点
    *
@@ -422,7 +429,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     // 设置初始地点，也就是读进来的第一个地点
 
   }
-
+  /**
+   * 搜索
+   */
   private void sousuo(Place place) {
     if (place.getbaowu() != null) {
       println("DEBUG2 - 你找到了一个" + place.getbaowu() + "！");
