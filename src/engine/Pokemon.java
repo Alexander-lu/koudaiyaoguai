@@ -1,5 +1,5 @@
 package engine;
-public class pokemon {
+public class Pokemon {
     public String name;     // 玩家和敌人都有名字
     public int level;       // 玩家和敌人都有等级
     public int maxHp;       // 玩家和敌人都有最大血量
@@ -8,10 +8,10 @@ public class pokemon {
     public int minAtt;      // 玩家和敌人都有攻击力上限
 
 
-    public pokemon() {
+    public Pokemon() {
     }
 
-    public pokemon(String name, int level) {
+    public Pokemon(String name, int level) {
         this.name = name;
         this.level = level;
         initialize();
