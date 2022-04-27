@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Engine extends ConsoleProgram {
+
+import static engine.RPG.randomGenerator;
+
+public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /** 定义窗口的宽度和高度 */
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
   public static final int APPLICATION_HEIGHT = 1000;//窗口高度
@@ -37,7 +40,7 @@ public class Engine extends ConsoleProgram {
   public void run() {
     getConsole().setBackground(Color.gray);//设定窗口背景色
     getConsole().setForeground(Color.WHITE);//设定窗口字体颜色
-    //getConsole().setFont(f);
+   gamestart.run();
     this.setResizable(false);
     // 窗口大小不可更改
     Picture.gameStart(this);
