@@ -71,10 +71,10 @@ public class Playerpokemon extends Pokemon {
 //                baseAttack = 14;
 //                break;
 //        }
-        maxHp = randomGenerator.nextInt(1, 6) + baseHp;
-        curHp = maxHp;
-        maxAtt = randomGenerator.nextInt(1, 6) + baseAttack;
-        minAtt = maxAtt - 3;
+//        maxHp = randomGenerator.nextInt(1, 6) + baseHp;
+//        curHp = maxHp;
+//         = randomGenerator.nextInt(1, 6) + baseAttack;
+//        minAtt = maxAtt - 3;
 
 
     }
@@ -101,8 +101,8 @@ public class Playerpokemon extends Pokemon {
 //
 //        }
         maxHp += randomGenerator.nextInt(0, hpMaxIncrease);
-        maxAtt += randomGenerator.nextInt(0, attackMaxIncrease);
-        minAtt = maxAtt - 3;
+//        maxAtt += randomGenerator.nextInt(0, attackMaxIncrease);
+//        minAtt = maxAtt - 3;
         curHp = maxHp;
 
     }
