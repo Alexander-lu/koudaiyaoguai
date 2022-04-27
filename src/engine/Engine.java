@@ -128,11 +128,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
             if (success1) {
               boolean success2 = randomGenerator.nextBoolean();
               if (success2) {
-                Pokemon 绿毛虫 = new Pokemon("绿毛虫", 3, 40, 40, 20, 20);
+                Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
                 battle(绿毛虫);
                 break;
               } else {
-                Pokemon 小拉达 = new Pokemon("小拉达", 3, 40, 40, 20, 20);
+                Pokemon 小拉达 = new Pokemon("小拉达",3,"技能",30,30,25);
                 battle(小拉达);
                 break;
               }
@@ -299,7 +299,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     places = new ArrayList<>();
     try {
       Scanner scanner = new Scanner(new File(GAME_FILE));
-//      loadEnemypokemon();
       loadPlaces(scanner);
       loadRoutes(scanner);
       loadDaoju(scanner);

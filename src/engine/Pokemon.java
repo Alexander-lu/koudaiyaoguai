@@ -14,8 +14,8 @@ public class Pokemon {
     public Pokemon(String name, int level,String skill,int maxHp,int attack,int defence) {
         this.name = name;
         this.level = level;
-        this.maxHp = maxHp;
         this.skill = skill;
+        this.maxHp = maxHp;
         this.attack = attack;
         this.defence = defence;
         initialize();
@@ -63,6 +63,7 @@ public class Pokemon {
      * 初始化玩家/敌人，此方法应该在子类中被overridden
      */
     void initialize() {
+        curHp = maxHp;
     }
 
     /** 精灵列表
@@ -73,13 +74,10 @@ public class Pokemon {
     public static void loadPokemon(){
         //  代号小锯鳄
         Pokemon 小锯鳄 = new Pokemon("小锯鳄",5,"技能",43,46,55);
-
-//    代号菊草叶
+        //    代号菊草叶
         Pokemon 菊草叶 = new Pokemon("菊草叶",5,"技能",45,39,65);
-
-//    代号火球鼠
-        Pokemon 火球鼠 = new Pokemon("火球鼠",5,"技能",50,43,60);
-
+        //    代号火球鼠
+        Pokemon 火球鼠 = new Pokemon("火球鼠",5,"技能",50,43,60)
         //波波
         Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
         Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
