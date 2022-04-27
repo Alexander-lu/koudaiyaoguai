@@ -77,7 +77,7 @@ public class Pokemon {
         //    代号菊草叶
         Pokemon 菊草叶 = new Pokemon("菊草叶",5,"技能",45,39,65);
         //    代号火球鼠
-        Pokemon 火球鼠 = new Pokemon("火球鼠",5,"技能",50,43,60)
+        Pokemon 火球鼠 = new Pokemon("火球鼠",5,"技能",50,43,60);
         //波波
         Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
         Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
