@@ -10,10 +10,13 @@ public class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(String name, int level) {
+    public Pokemon(String name, int level,int curHp,int maxHp,int attack,int deFence) {
         this.name = name;
         this.level = level;
-        initialize();
+        this.curHp = curHp;
+        this.maxHp = maxHp;
+        this.attack = attack;
+        this.deFence = deFence;
     }
 
     /**
@@ -51,7 +54,7 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return "『" + name + "』" + "是等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + attack;
+        return "『" + name + "』" + "是等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + attack+"防御力是" + deFence;
     }
 
     /**

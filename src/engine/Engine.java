@@ -6,8 +6,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static engine.RPG.randomGenerator;
-
 public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /** 定义窗口的宽度和高度 */
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
@@ -40,7 +38,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   public void run() {
     getConsole().setBackground(Color.gray);//设定窗口背景色
     getConsole().setForeground(Color.WHITE);//设定窗口字体颜色
-   gamestart.run();
     this.setResizable(false);
     // 窗口大小不可更改
     Picture.gameStart(this);
@@ -117,8 +114,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
         /** 如果玩家进入草丛，触发战斗 */
         if (currPlace.getbianhao() > 4) {
-          Pokemon pokemon = new Pokemon();
-          battle(pokemon);
+          Pokemon 美后 = new Pokemon("美后",3,40,40,20,20);
+          battle(美后);
 //          enemypokemon.generateRandomEnemy();
         }
         println();
@@ -328,9 +325,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    */
 private void loadEnemypokemon(){
 //  代号美后
-    Pokemon 美后 = new Pokemon();
-    美后.name="美后";
-    美后.level=3;
+    Pokemon 美后 = new Pokemon("美后",3,40,40,20,20);
 //    代号菊草叶
   Pokemon 菊叶草 = new Pokemon();
   菊叶草.name="菊草叶";
@@ -439,7 +434,7 @@ private void loadEnemypokemon(){
    * 玩家和敌人对战
    */
   private void battle(Pokemon pokemon) {
-    Playerpokemon currPokemon;
+    Playerpokemon currPokemon = new Playerpokemon();
     checkYourPokemon();
     println("输入数字来选择出战的宝可梦");
     print("> ");
@@ -483,12 +478,14 @@ private void loadEnemypokemon(){
     }
     // 回合制循环进行，直至某一方阵亡
     while (true) {
+      println(currPokemon.toString());
+      println(pokemon.toString());
       println();
       // 每一回合都首先从玩家开始行动
       String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
       if (userChoice.equals("战斗")) {
-        String attackChoice = choose("请选择技能", "战斗", "背包", "精灵", "逃跑");
         Skill.撞击(pokemon);
+        println(pokemon.toString());
         //        attackEnemy();
 //        printEnemyStatus();
         continue;
