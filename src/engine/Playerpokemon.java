@@ -49,6 +49,7 @@ public class Playerpokemon extends pokemon {
     /**
      * 对玩家的各种属性进行初始化
      */
+    @Override
     public void initialize() {
         int baseHp = 0;
         int baseAttack = 0;
