@@ -14,6 +14,8 @@ public class Engine extends ConsoleProgram {
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
 //  Enemypokemon enemypokemon = new Enemypokemon();
+  /** 判断是否有紫金石 */
+  boolean ifZijinStone = false;
   /** daoll保存地图中所有道具的数量 */
   int daoll = 0;
   /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
@@ -51,6 +53,14 @@ public class Engine extends ConsoleProgram {
     opentalking();
     while (!gameEnded) {
       /** 如果玩家第一次到研究所,触发和博士的对话 */
+      if (yanJiuSuoCount == 2) {
+        if (currPlace.getbianhao() == 1) {
+          if (ifZijinStone){
+          boShiFinalTalking();
+          yanJiuSuoCount++;
+          }
+}}
+      /** 如果玩家第一次到研究所,触发和博士的对话 */
       if (yanJiuSuoCount == 1) {
         if (currPlace.getbianhao() == 1) {
           boShiTalking();
@@ -66,11 +76,11 @@ public class Engine extends ConsoleProgram {
                 println("输入小锯鳄Yes 来获得小锯鳄");
                 println("");
                 break;
-                case "小锯鳄Yes":
-                    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
-                    playerpokemon.add(xiaoJuE);
-                    ifStopThisWhile = 1;
-                    break;
+              case "小锯鳄Yes":
+                Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+                playerpokemon.add(xiaoJuE);
+                ifStopThisWhile = 1;
+                break;
               case "火球鼠":
                 println(
                         "火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
@@ -80,28 +90,28 @@ public class Engine extends ConsoleProgram {
                 println("输入火球鼠Yes 来获得火球鼠");
                 println("");
                 break;
-                  case "火球鼠Yes":
-                    Playerpokemon huoQiuShu = new Playerpokemon("火球鼠");
-                    playerpokemon.add(huoQiuShu);
-                    ifStopThisWhile = 1;
-                    break;
+              case "火球鼠Yes":
+                Playerpokemon huoQiuShu = new Playerpokemon("火球鼠");
+                playerpokemon.add(huoQiuShu);
+                ifStopThisWhile = 1;
+                break;
               case "菊草叶":
                 println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
                 pause(DELAY);
                 println("输入菊草叶Yes 来获得菊草叶");
                 println("");
                 break;
-                  case "菊草叶Yes":
-                    Playerpokemon juCaoYe = new Playerpokemon("菊草叶");
-                    playerpokemon.add(juCaoYe);
-                    ifStopThisWhile = 1;
-                    break;
+              case "菊草叶Yes":
+                Playerpokemon juCaoYe = new Playerpokemon("菊草叶");
+                playerpokemon.add(juCaoYe);
+                ifStopThisWhile = 1;
+                break;
               default:
                 println("你输入的命令有误，请重新输入");
             }
           }
-}
         }
+      }
         /** 如果玩家进入草丛，触发战斗 */
         if (currPlace.getbianhao() > 4) {
 //          enemypokemon.generateRandomEnemy();
@@ -197,20 +207,44 @@ public class Engine extends ConsoleProgram {
     println("");
   }
   /**
-   * 博士和我的对话
+   * 博士和我的第一次对话
    */
   private void boShiTalking() {
     Picture.doctor(this);
     println("喂！"+playername+"来啦。今天找你，是要你帮忙！");
     pause(DELAY);
     println("");
-    println("朋友中有位精灵爷爷，发现了奇怪的东西。");
+    println("我最近的研究需要用到一个东西，叫做紫金石。只有小镇东边的山洞里有");
     pause(DELAY);
     println("");
-    println("现在我们的研究工作很忙。希望你能去，当然要给你配一个精灵搭档。");
+    println("我想要你我带点紫金石回来给我");
+    pause(DELAY);
+    println("");
+    println("现在我的研究工作很忙，没法抽出身来。当然我会给你配一个精灵搭档。");
     pause(DELAY);
     println("");
     println("最近找到的珍贵的精灵，你选一个吧，有小锯鳄，火球鼠和菊草叶");
+    pause(DELAY);
+    println("");
+  }
+  /**
+   * 博士和我的第二次对话
+   */
+  private void boShiFinalTalking() {
+    Picture.doctor(this);
+    println(playername+"你拿到紫金石了吗？");
+    pause(DELAY);
+    println("");
+    println("哦，太感谢了。你帮了我一个大忙");
+    pause(DELAY);
+    println("");
+    println("有了紫金石，我的研究很快就能有结果了");
+    pause(DELAY);
+    println("");
+    println("你已经有这么多精灵搭档了啊，想要更多吗？");
+    pause(DELAY);
+    println("");
+    println("去京都吧，京都汇集了很多世界一流的精灵大师，去找他们切磋吧。");
     pause(DELAY);
     println("");
   }
@@ -371,6 +405,17 @@ private void loadEnemypokemon(){
       }
     }
   }
+  /**
+   * 查看你的物品里有没有紫金石
+   */
+  private void checkZiJinStone() {
+    for (int k = 0; k < daojus.size(); k++) {
+        int l = k + 1;
+        if (daojus.get(k).equals("紫金石")){
+          ifZijinStone = true;
+        }
+      }
+    }
   /**
    * 查看你的宝可梦数量
    */
