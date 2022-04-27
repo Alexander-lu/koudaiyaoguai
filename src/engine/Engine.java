@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /** 定义窗口的宽度和高度 */
   public static final int APPLICATION_WIDTH = 1200; //窗口宽度
-  public static final int APPLICATION_HEIGHT = 1000;//窗口高度
+  public static final int APPLICATION_HEIGHT = 800;//窗口高度
 //Font f = new Font("仿宋",Font.BOLD,20);
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
