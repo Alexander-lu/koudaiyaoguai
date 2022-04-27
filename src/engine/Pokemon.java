@@ -8,7 +8,6 @@ public class Pokemon {
     public int attack;      // 精灵都有攻击力
     public int defence;     // 精灵都有防御力
 
-
     public Pokemon() {
     }
 
@@ -57,7 +56,7 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return "『" + name + "』" + "是等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + attack;
+        return "『" + name + "』" + "是等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + attack+"防御力是" + deFence;
     }
 
     /**

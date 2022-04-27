@@ -9,9 +9,16 @@ public class Playerpokemon extends Pokemon {
     public int hpPotions;
 //    宝可梦的血瓶
     public Playerpokemon() {};
-//    public Playerpokemon(String name) {
-//        super("name", 1);
-//    }
+    public Playerpokemon(String name) {this.name = name;};
+    public Playerpokemon(String name, int level,int curHp,int maxHp,int attack,int deFence,int xp) {
+        this.name = name;
+        this.level = level;
+        this.curHp = curHp;
+        this.maxHp = maxHp;
+        this.attack = attack;
+        this.defence = defence;
+        this.xp = xp;
+    };
     /**
      * 获得经验值
      * @param enemy 被玩家杀死的敌人
