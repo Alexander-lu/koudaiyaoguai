@@ -27,7 +27,7 @@ public class RPG extends ConsoleProgram {
         print("请输入你的名字：");
         player.name = readLine();
 
-        player.role = choose("请选择角色", "战士", "游侠", "术士");
+        player.name = choose("请选择角色", "战士", "游侠", "术士");
         println("");
         player.initialize();
 
@@ -77,9 +77,9 @@ public class RPG extends ConsoleProgram {
                 println("胜败乃兵家常事，大侠请重新来过。");
                 break;
             }
-            enemy.generateRandomEnemy(player);
+//            enemy.generateRandomEnemy(player);
             println();
-            println("你遇到了" + enemy.role + enemy.name + "。");
+            println("你遇到了" + enemy.name + enemy.name + "。");
             battle();
         }
     }
@@ -166,7 +166,7 @@ public class RPG extends ConsoleProgram {
      */
     private void printPlayer() {
         String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
-                player.name, player.level, player.role, player.curHp,player.maxHp, player.minAtt, player.maxAtt);
+                player.name, player.level, player.name, player.curHp,player.maxHp, player.minAtt, player.maxAtt);
         println(message);
     }
     /**
@@ -174,7 +174,7 @@ public class RPG extends ConsoleProgram {
      */
     private void printEnemy() {
         String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
-                enemy.name, enemy.level, enemy.role, enemy.curHp,enemy.maxHp, enemy.minAtt, enemy.maxAtt);
+                enemy.name, enemy.level, enemy.name, enemy.curHp,enemy.maxHp, enemy.minAtt, enemy.maxAtt);
         println(message);
     }
     /**
