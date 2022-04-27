@@ -347,12 +347,12 @@ private void loadEnemypokemon(){
 //  代号美后
     Pokemon 美后 = new Pokemon("美后",3,40,40,20,20);
 //    代号菊草叶
-  Pokemon 菊叶草 = new Pokemon();
-  菊叶草.name="菊草叶";
-  菊叶草.level=5;
-  菊叶草.maxHp=45;
-  菊叶草.attack=49;
-  菊叶草.deFence=65;
+  Pokemon 菊草叶 = new Pokemon();
+  菊草叶.name="菊草叶";
+  菊草叶.level=5;
+  菊草叶.maxHp=45;
+  菊草叶.attack=49;
+  菊草叶.deFence=65;
 //    代号阿童
   Pokemon xiaoNiao = new Pokemon();
     xiaoNiao.name="小鸟";
@@ -533,6 +533,105 @@ private void loadEnemypokemon(){
                 break;
               case "蛮力":
                 Skill.蛮力(pokemon, playerpokemon.get(key));
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              default:
+                println("你输入的命令有误，请重新输入");
+            }
+          }
+        }
+        if (playerpokemon.get(key).name.equals("火球鼠")) {
+          boolean ifStopThis = true;
+          while (ifStopThis) {
+            println("火球鼠有技能：喷火 瞪眼 舍生冲撞 变圆");
+            println("（输入技能名称来使用技能");
+            print("> ");
+            String skillname1 = readLine();
+            switch (skillname1) {
+              case "喷火":
+                Skill.喷火(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "瞪眼":
+                Skill.瞪眼(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "舍身冲撞":
+                Skill.舍身冲撞(pokemon,playerpokemon.get(key));
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "变圆":
+                Skill.变圆(playerpokemon.get(key));
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              default:
+                println("你输入的命令有误，请重新输入");
+            }
+          }
+        }
+        if (playerpokemon.get(key).name.equals("菊草叶")) {
+          boolean ifStopThis = true;
+          while (ifStopThis) {
+            println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
+            println("（输入技能名称来使用技能");
+            print("> ");
+            String skillname1 = readLine();
+            switch (skillname1) {
+              case "撞击":
+                Skill.撞击(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "叫声":
+                Skill.叫声(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "飞叶快刀":
+                Skill.飞叶快刀(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "光合作用":
+                Skill.光合作用(playerpokemon.get(key));
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              default:
+                println("你输入的命令有误，请重新输入");
+            }
+          }
+        }
+        if (playerpokemon.get(key).name.equals("可达鸭")) {
+          boolean ifStopThis = true;
+          while (ifStopThis) {
+            println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
+            println("（输入技能名称来使用技能");
+            print("> ");
+            String skillname1 = readLine();
+            switch (skillname1) {
+              case "乱抓 ":
+                Skill.乱抓 (pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "瞬间失忆":
+                Skill.瞬间失忆(playerpokemon.get(key));
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "摇尾巴":
+                Skill.摇尾巴(pokemon);
+                println(pokemon.toString());
+                ifStopThis = false;
+                break;
+              case "水泡":
+                Skill.水泡(pokemon);
                 println(pokemon.toString());
                 ifStopThis = false;
                 break;
