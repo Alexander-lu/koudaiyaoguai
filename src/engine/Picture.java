@@ -1,14 +1,8 @@
 package engine;
-
 import acm.program.ConsoleProgram;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.awt.*;
 
-public class Charactors {
+public class Picture {
     public static void gameStart(ConsoleProgram program) {
         program.println(
                 "                                                                     ///                                                      \n" +
@@ -123,7 +117,7 @@ public class Charactors {
         );
     }
 
-    public static void pokemonMouse02(ConsoleProgram program) {
+    public static void xiaolada(ConsoleProgram program) {
         program.println(
                 "                                                                                                      ▮▮▮▮        \n" +
                         "                                                                                                      ▮▮▮▮▮▮▮▮    \n" +

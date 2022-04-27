@@ -1,6 +1,5 @@
 package engine;
 import acm.program.ConsoleProgram;
-import acm.util.RandomGenerator;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +15,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
 //Font f = new Font("仿宋",Font.BOLD,20);
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
-  Enemypokemon enemypokemon = new Enemypokemon();
+//  Enemypokemon enemypokemon = new Enemypokemon();
+  /** 判断是否有紫金石 */
+  boolean ifZijinStone = false;
   /** daoll保存地图中所有道具的数量 */
   int daoll = 0;
   /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
@@ -42,7 +43,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    gamestart.run();
     this.setResizable(false);
     // 窗口大小不可更改
-    Charactors.gameStart(this);
+    Picture.gameStart(this);
     if (loadGame()) {
       mainLoop();
     }
@@ -53,6 +54,15 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     gameEnded = false;
     opentalking();
     while (!gameEnded) {
+      /** 如果玩家第二次到研究所,触发和博士的对话 */
+      if (yanJiuSuoCount == 2) {
+        if (currPlace.getbianhao() == 1) {
+          if (ifZijinStone){
+          boShiFinalTalking();
+          yanJiuSuoCount++;
+          }
+          }
+          }
       /** 如果玩家第一次到研究所,触发和博士的对话 */
       if (yanJiuSuoCount == 1) {
         if (currPlace.getbianhao() == 1) {
@@ -69,11 +79,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 println("输入小锯鳄Yes 来获得小锯鳄");
                 println("");
                 break;
-                case "小锯鳄Yes":
-                    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
-                    playerpokemon.add(xiaoJuE);
-                    ifStopThisWhile = 1;
-                    break;
+              case "小锯鳄Yes":
+                Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
+                playerpokemon.add(xiaoJuE);
+                ifStopThisWhile = 1;
+                break;
               case "火球鼠":
                 println(
                         "火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
@@ -83,31 +93,31 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 println("输入火球鼠Yes 来获得火球鼠");
                 println("");
                 break;
-                  case "火球鼠Yes":
-                    Playerpokemon huoQiuShu = new Playerpokemon("火球鼠");
-                    playerpokemon.add(huoQiuShu);
-                    ifStopThisWhile = 1;
-                    break;
+              case "火球鼠Yes":
+                Playerpokemon huoQiuShu = new Playerpokemon("火球鼠");
+                playerpokemon.add(huoQiuShu);
+                ifStopThisWhile = 1;
+                break;
               case "菊草叶":
                 println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
                 pause(DELAY);
                 println("输入菊草叶Yes 来获得菊草叶");
                 println("");
                 break;
-                  case "菊草叶Yes":
-                    Playerpokemon juCaoYe = new Playerpokemon("菊草叶");
-                    playerpokemon.add(juCaoYe);
-                    ifStopThisWhile = 1;
-                    break;
+              case "菊草叶Yes":
+                Playerpokemon juCaoYe = new Playerpokemon("菊草叶");
+                playerpokemon.add(juCaoYe);
+                ifStopThisWhile = 1;
+                break;
               default:
                 println("你输入的命令有误，请重新输入");
             }
           }
-}
         }
+      }
         /** 如果玩家进入草丛，触发战斗 */
         if (currPlace.getbianhao() > 4) {
-          enemypokemon.generateRandomEnemy();
+//          enemypokemon.generateRandomEnemy();
         }
         println();
         println(
@@ -170,7 +180,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     pause(DELAY);
     println("欢迎你来到精灵世界！");
     pause(DELAY);
-    Charactors.doctor(this);
+    Picture.doctor(this);
     println("我叫空木，作为精灵博士受到尊敬");
     pause(DELAY);
     println("");
@@ -178,12 +188,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     pause(DELAY);
     println("");
     println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
-    Charactors.pokemonMouse02(this);
     pause(DELAY);
     println("");
     println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
     pause(DELAY);
-    Charactors.player(this);
+    Picture.player(this);
     println("对了，快告诉我你叫什么名字？");
     pause(DELAY);
     print("请输入你的名字：");
@@ -192,7 +201,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     println(playername+"祝你好运，希望你能抓住全部的精灵！");
     pause(DELAY);
     moveTo(currPlace);
-    Charactors.mother(this);
+    Picture.mother(this);
     println("妈妈：喂 "+playername+" 空木博士在找你。可能是要你帮忙。忘了！给，你的电话修理好了");
     pause(DELAY);
     println("");
@@ -201,37 +210,46 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     println("");
   }
   /**
-   * 博士和我的对话
+   * 博士和我的第一次对话
    */
   private void boShiTalking() {
-    Charactors.doctor(this);
+    Picture.doctor(this);
     println("喂！"+playername+"来啦。今天找你，是要你帮忙！");
     pause(DELAY);
     println("");
-    println("朋友中有位精灵爷爷，发现了奇怪的东西。");
+    println("我最近的研究需要用到一个东西，叫做紫金石。只有小镇东边的山洞里有");
     pause(DELAY);
     println("");
-    println("现在我们的研究工作很忙。希望你能去，当然要给你配一个精灵搭档。");
+    println("我想要你我带点紫金石回来给我");
+    pause(DELAY);
+    println("");
+    println("现在我的研究工作很忙，没法抽出身来。当然我会给你配一个精灵搭档。");
     pause(DELAY);
     println("");
     println("最近找到的珍贵的精灵，你选一个吧，有小锯鳄，火球鼠和菊草叶");
     pause(DELAY);
     println("");
-//    输出3只精灵的图片
-//    小锯鳄为城都地区中，空木博士给新人训练家的三只神奇宝贝之一，个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间.
-//    火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。
-//    菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。
-//    println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
-//    pause(DELAY);
-//    println("");
-
-
-//    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
-//    playerpokemon.add(xiaoJuE);
-//    Playerpokemon huoJuShu = new Playerpokemon("小锯鳄");
-//    playerpokemon.add(xiaoJuE);
-//    Playerpokemon xiaoJuE = new Playerpokemon("小锯鳄");
-//    playerpokemon.add(xiaoJuE);
+  }
+  /**
+   * 博士和我的第二次对话
+   */
+  private void boShiFinalTalking() {
+    Picture.doctor(this);
+    println(playername+"你拿到紫金石了吗？");
+    pause(DELAY);
+    println("");
+    println("哦，太感谢了。你帮了我一个大忙");
+    pause(DELAY);
+    println("");
+    println("有了紫金石，我的研究很快就能有结果了");
+    pause(DELAY);
+    println("");
+    println("你已经有这么多精灵搭档了啊，想要更多吗？");
+    pause(DELAY);
+    println("");
+    println("去京都吧，京都汇集了很多世界一流的精灵大师，去找他们切磋吧。");
+    pause(DELAY);
+    println("");
   }
   /**
    * 移动到一个新的地点
@@ -258,7 +276,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     places = new ArrayList<>();
     try {
       Scanner scanner = new Scanner(new File(GAME_FILE));
-      loadEnemypokemon();
+//      loadEnemypokemon();
       loadPlaces(scanner);
       loadRoutes(scanner);
       loadDaoju(scanner);
@@ -308,15 +326,18 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    */
 private void loadEnemypokemon(){
 //  代号美后
-    Enemypokemon meiHou = new Enemypokemon();
-    meiHou.name="美后";
-    meiHou.level=3;
+    Pokemon 美后 = new Pokemon();
+    美后.name="美后";
+    美后.level=3;
 //    代号菊草叶
-    Enemypokemon juYeChao = new Enemypokemon();
-    juYeChao.name="菊草叶";
-    juYeChao.level=5;
+  Pokemon 菊叶草 = new Pokemon();
+  菊叶草.name="菊草叶";
+  菊叶草.level=5;
+  菊叶草.maxHp=45;
+  菊叶草.attack=49;
+  菊叶草.deFence=65;
 //    代号阿童
-    Enemypokemon xiaoNiao = new Enemypokemon();
+  Pokemon xiaoNiao = new Pokemon();
     xiaoNiao.name="小鸟";
     xiaoNiao.level = 3;
 }
@@ -388,6 +409,17 @@ private void loadEnemypokemon(){
     }
   }
   /**
+   * 查看你的物品里有没有紫金石
+   */
+  private void checkZiJinStone() {
+    for (int k = 0; k < daojus.size(); k++) {
+        int l = k + 1;
+        if (daojus.get(k).equals("紫金石")){
+          ifZijinStone = true;
+        }
+      }
+    }
+  /**
    * 查看你的宝可梦数量
    */
   private void checkYourPokemon() {
@@ -418,20 +450,20 @@ private void loadEnemypokemon(){
 //        printPlayerStatus();
         continue;
       } else if (userChoice.equals("逃跑")) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          println("逃跑成功！");
-          break;
-        } else {
-          println("逃跑失败！");
-        }
+//        boolean success = randomGenerator.nextBoolean();
+//        if (success) {
+//          println("逃跑成功！");
+//          break;
+//        } else {
+//          println("逃跑失败！");
+//        }
       } else if (userChoice.equals("攻击")) {
 //        attackEnemy();
 //        printEnemyStatus();
       }
-      if (isEnemyDead()) {
-        // 如果敌人阵亡，玩家经验值提升
-        println(String.format("你杀死了%s。\n", enemypokemon.name));
+//      if (isEnemyDead()) {
+//        // 如果敌人阵亡，玩家经验值提升
+//        println(String.format("你杀死了%s。\n", enemypokemon.name));
 //        println("你获得了" + player.gainXp(enemy) + "点经验值。");
 //        if(player.checkLevelUp()){
 //          println("你升级了！血量恢复满格！");
@@ -439,16 +471,16 @@ private void loadEnemypokemon(){
 //        println("你当前拥有" + playerpokemon.xp + "点经验值。");
 //        printPlayer();
         break;
-      } else {
-        // 没阵亡则轮到敌人行动
-//        attackPlayer();
-//        printPlayerStatus();
-        // 如果敌人将玩家打死，游戏结束
-//        if (isPlayerDead()) {
-//          println("你挂了！");
-//          break;
-//        }
-      }
+//      } else {
+//        // 没阵亡则轮到敌人行动
+////        attackPlayer();
+////        printPlayerStatus();
+//        // 如果敌人将玩家打死，游戏结束
+////        if (isPlayerDead()) {
+////          println("你挂了！");
+////          break;
+////        }
+//      }
     }
   }
   /**
@@ -488,13 +520,13 @@ private void loadEnemypokemon(){
 //    println(message);
 //  }
   /**
-   * 打印敌人信息
-   */
-  private void printEnemy() {
-    String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
-            enemypokemon.name, enemypokemon.level, enemypokemon.name, enemypokemon.curHp,enemypokemon.maxHp, enemypokemon.minAtt, enemypokemon.maxAtt);
-    println(message);
-  }
+//   * 打印敌人信息
+//   */
+//  private void printEnemy() {
+//    String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
+//            enemypokemon.name, enemypokemon.level, enemypokemon.name, enemypokemon.curHp,enemypokemon.maxHp, enemypokemon.minAtt, enemypokemon.maxAtt);
+//    println(message);
+//  }
   /**
    * 打印玩家的宝可梦的状态：名字，当前血量
    */
@@ -505,10 +537,10 @@ private void loadEnemypokemon(){
   /**
    * 打印敌人状态：名字，当前血量
    */
-  private void printEnemyStatus() {
-    String message = String.format("%s当前血量%d/%d。", enemypokemon.name, enemypokemon.curHp, enemypokemon.maxHp);
-    println(message);
-  }
+//  private void printEnemyStatus() {
+//    String message = String.format("%s当前血量%d/%d。", enemypokemon.name, enemypokemon.curHp, enemypokemon.maxHp);
+//    println(message);
+//  }
 
   /**
    * 判断玩家的宝可梦是否已经死亡
@@ -521,7 +553,7 @@ private void loadEnemypokemon(){
    * 判断敌人是否已经死亡
    * @return 死亡返回true，未死亡返回false
    */
-  private boolean isEnemyDead() {
-    return enemypokemon.curHp <= 0;
-  }
+//  private boolean isEnemyDead() {
+//    return enemypokemon.curHp <= 0;
+//  }
 }

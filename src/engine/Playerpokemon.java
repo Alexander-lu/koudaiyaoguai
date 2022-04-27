@@ -1,8 +1,9 @@
 package engine;
 
-import static engine.RPG.randomGenerator;
+import acm.util.RandomGenerator;
 
-public class Playerpokemon extends pokemon {
+public class Playerpokemon extends Pokemon {
+    RandomGenerator randomGenerator = RandomGenerator.getInstance();
     public int xp;
 //    宝可梦的经验值
     public int hpPotions;
@@ -16,7 +17,7 @@ public class Playerpokemon extends pokemon {
      * @param enemy 被玩家杀死的敌人
      * @return      增长的经验值
      */
-    public int gainXp(pokemon enemy) {
+    public int gainXp(Pokemon enemy) {
         int baseXp = 20;
         int randomXp = randomGenerator.nextInt(0, 40);
         int gainedXp = enemy.level * (baseXp + randomXp);
@@ -49,6 +50,7 @@ public class Playerpokemon extends pokemon {
     /**
      * 对玩家的各种属性进行初始化
      */
+    @Override
     public void initialize() {
         int baseHp = 0;
         int baseAttack = 0;
@@ -69,10 +71,10 @@ public class Playerpokemon extends pokemon {
 //                baseAttack = 14;
 //                break;
 //        }
-        maxHp = randomGenerator.nextInt(1, 6) + baseHp;
-        curHp = maxHp;
-        maxAtt = randomGenerator.nextInt(1, 6) + baseAttack;
-        minAtt = maxAtt - 3;
+//        maxHp = randomGenerator.nextInt(1, 6) + baseHp;
+//        curHp = maxHp;
+//         = randomGenerator.nextInt(1, 6) + baseAttack;
+//        minAtt = maxAtt - 3;
 
 
     }
@@ -99,8 +101,8 @@ public class Playerpokemon extends pokemon {
 //
 //        }
         maxHp += randomGenerator.nextInt(0, hpMaxIncrease);
-        maxAtt += randomGenerator.nextInt(0, attackMaxIncrease);
-        minAtt = maxAtt - 3;
+//        maxAtt += randomGenerator.nextInt(0, attackMaxIncrease);
+//        minAtt = maxAtt - 3;
         curHp = maxHp;
 
     }
