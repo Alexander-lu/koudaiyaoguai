@@ -72,7 +72,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
           boShiTalking();
           yanJiuSuoCount++;
           while (ifStopThisWhile == 0){
-            println("你要？（输入小锯鳄，火球鼠和菊草叶来挑选你的精良伴侣）");
+            println("你要？（输入小锯鳄，火球鼠和菊草叶来挑选你的精灵伴侣）");
             print("> ");
             String d1 = readLine();
             switch (d1) {
@@ -119,28 +119,146 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
         }
 
         /** 如果玩家进入草丛，触发战斗 */
-        if (currPlace.getbianhao() == 15) {
-          int change = randomGenerator.nextInt(0,6);
+        if (currPlace.getbianhao() ==16 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
           switch (change){
             case 0 :
               Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
               battle(绿毛虫);
               break;
             case 1:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
               break;
             case 2:
               Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
               battle(波波);
               break;
-            case 3:
-             break;
-            case 4:
+            default:
+          }
+        }
+        if (currPlace.getbianhao() ==17 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
+              break;
+            case 1:
               Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
               battle(尾立);
               break;
-            case 5:
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
               break;
-            case 6:
+            default:
+          }
+        }
+        if (currPlace.getbianhao() ==19 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
+              break;
+            case 1:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
+              break;
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
+              break;
+            default:
+          }
+        }
+        if (currPlace.getbianhao() ==10 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
+              break;
+            case 1:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
+              break;
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
+              break;
+            default:
+          }
+        }
+        if (currPlace.getbianhao() ==14 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
+              break;
+            case 1:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
+              break;
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
+              break;
+            default:
+          }
+        }
+        if (currPlace.getbianhao() ==12 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
+              break;
+            case 1:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
+              break;
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
+              break;
+            default:
+          }
+        }
+        if (currPlace.getbianhao() == 23 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
+              break;
+            case 1:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
+              break;
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
+              break;
+            default:
+          }
+        }
+        if (currPlace.getbianhao() ==26 & yanJiuSuoCount != 1) {
+          int change = randomGenerator.nextInt(0,2);
+          switch (change){
+            case 0 :
+              Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,"技能",25,20,23);
+              battle(绿毛虫);
+              break;
+            case 1:
+              Pokemon 尾立 = new Pokemon("尾立",3,"技能",35,30,34);
+              battle(尾立);
+              break;
+            case 2:
+              Pokemon 波波 = new Pokemon("波波",3,"技能",30,25,30);
+              battle(波波);
               break;
             default:
           }
@@ -233,8 +351,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     pause(DELAY);
     println("");
     println("输入搜索获得修理好的电话");
-    pause(DELAY);
-    println("");
   }
   /**
    * 博士和我的第一次对话
@@ -306,7 +422,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       loadPlaces(scanner);
       loadRoutes(scanner);
       loadDaoju(scanner);
-      Pokemon.loadPokemon();
+//      Pokemon.loadPokemon();
     } catch (FileNotFoundException e) {
       println("游戏文件读取错误！");
       return false;
