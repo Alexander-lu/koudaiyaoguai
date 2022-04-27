@@ -13,7 +13,7 @@ public class Engine extends ConsoleProgram {
 //Font f = new Font("仿宋",Font.BOLD,20);
   public static final String GAME_FILE = "res/map-starting-area.txt";
   private static final int DELAY = 1600;
-  Enemypokemon enemypokemon = new Enemypokemon();
+//  Enemypokemon enemypokemon = new Enemypokemon();
   /** daoll保存地图中所有道具的数量 */
   int daoll = 0;
   /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
@@ -104,7 +104,7 @@ public class Engine extends ConsoleProgram {
         }
         /** 如果玩家进入草丛，触发战斗 */
         if (currPlace.getbianhao() > 4) {
-          enemypokemon.generateRandomEnemy();
+//          enemypokemon.generateRandomEnemy();
         }
         println();
         println(
@@ -255,7 +255,7 @@ public class Engine extends ConsoleProgram {
     places = new ArrayList<>();
     try {
       Scanner scanner = new Scanner(new File(GAME_FILE));
-      loadEnemypokemon();
+//      loadEnemypokemon();
       loadPlaces(scanner);
       loadRoutes(scanner);
       loadDaoju(scanner);
@@ -303,20 +303,20 @@ public class Engine extends ConsoleProgram {
   /**
    * 读取宝可梦的信息
    */
-private void loadEnemypokemon(){
-//  代号美后
-    Enemypokemon meiHou = new Enemypokemon();
-    meiHou.name="美后";
-    meiHou.level=3;
-//    代号菊草叶
-    Enemypokemon juYeChao = new Enemypokemon();
-    juYeChao.name="菊草叶";
-    juYeChao.level=5;
-//    代号阿童
-    Enemypokemon xiaoNiao = new Enemypokemon();
-    xiaoNiao.name="小鸟";
-    xiaoNiao.level = 3;
-}
+//private void loadEnemypokemon(){
+////  代号美后
+//    Enemypokemon meiHou = new Enemypokemon();
+//    meiHou.name="美后";
+//    meiHou.level=3;
+////    代号菊草叶
+//    Enemypokemon juYeChao = new Enemypokemon();
+//    juYeChao.name="菊草叶";
+//    juYeChao.level=5;
+////    代号阿童
+//    Enemypokemon xiaoNiao = new Enemypokemon();
+//    xiaoNiao.name="小鸟";
+//    xiaoNiao.level = 3;
+//}
   /**
    * 读取地点
    *
@@ -415,20 +415,20 @@ private void loadEnemypokemon(){
 //        printPlayerStatus();
         continue;
       } else if (userChoice.equals("逃跑")) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          println("逃跑成功！");
-          break;
-        } else {
-          println("逃跑失败！");
-        }
+//        boolean success = randomGenerator.nextBoolean();
+//        if (success) {
+//          println("逃跑成功！");
+//          break;
+//        } else {
+//          println("逃跑失败！");
+//        }
       } else if (userChoice.equals("攻击")) {
 //        attackEnemy();
 //        printEnemyStatus();
       }
-      if (isEnemyDead()) {
-        // 如果敌人阵亡，玩家经验值提升
-        println(String.format("你杀死了%s。\n", enemypokemon.name));
+//      if (isEnemyDead()) {
+//        // 如果敌人阵亡，玩家经验值提升
+//        println(String.format("你杀死了%s。\n", enemypokemon.name));
 //        println("你获得了" + player.gainXp(enemy) + "点经验值。");
 //        if(player.checkLevelUp()){
 //          println("你升级了！血量恢复满格！");
@@ -436,16 +436,16 @@ private void loadEnemypokemon(){
 //        println("你当前拥有" + playerpokemon.xp + "点经验值。");
 //        printPlayer();
         break;
-      } else {
-        // 没阵亡则轮到敌人行动
-//        attackPlayer();
-//        printPlayerStatus();
-        // 如果敌人将玩家打死，游戏结束
-//        if (isPlayerDead()) {
-//          println("你挂了！");
-//          break;
-//        }
-      }
+//      } else {
+//        // 没阵亡则轮到敌人行动
+////        attackPlayer();
+////        printPlayerStatus();
+//        // 如果敌人将玩家打死，游戏结束
+////        if (isPlayerDead()) {
+////          println("你挂了！");
+////          break;
+////        }
+//      }
     }
   }
   /**
@@ -485,13 +485,13 @@ private void loadEnemypokemon(){
 //    println(message);
 //  }
   /**
-   * 打印敌人信息
-   */
-  private void printEnemy() {
-    String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
-            enemypokemon.name, enemypokemon.level, enemypokemon.name, enemypokemon.curHp,enemypokemon.maxHp, enemypokemon.minAtt, enemypokemon.maxAtt);
-    println(message);
-  }
+//   * 打印敌人信息
+//   */
+//  private void printEnemy() {
+//    String message = String.format("『%s』是等级为%d的%s，当前有血量%d/%d，攻击力是%d-%d。",
+//            enemypokemon.name, enemypokemon.level, enemypokemon.name, enemypokemon.curHp,enemypokemon.maxHp, enemypokemon.minAtt, enemypokemon.maxAtt);
+//    println(message);
+//  }
   /**
    * 打印玩家的宝可梦的状态：名字，当前血量
    */
@@ -502,10 +502,10 @@ private void loadEnemypokemon(){
   /**
    * 打印敌人状态：名字，当前血量
    */
-  private void printEnemyStatus() {
-    String message = String.format("%s当前血量%d/%d。", enemypokemon.name, enemypokemon.curHp, enemypokemon.maxHp);
-    println(message);
-  }
+//  private void printEnemyStatus() {
+//    String message = String.format("%s当前血量%d/%d。", enemypokemon.name, enemypokemon.curHp, enemypokemon.maxHp);
+//    println(message);
+//  }
 
   /**
    * 判断玩家的宝可梦是否已经死亡
@@ -518,7 +518,7 @@ private void loadEnemypokemon(){
    * 判断敌人是否已经死亡
    * @return 死亡返回true，未死亡返回false
    */
-  private boolean isEnemyDead() {
-    return enemypokemon.curHp <= 0;
-  }
+//  private boolean isEnemyDead() {
+//    return enemypokemon.curHp <= 0;
+//  }
 }
