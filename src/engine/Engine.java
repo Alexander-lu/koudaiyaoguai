@@ -12,47 +12,44 @@ import java.util.Scanner;
 public class Engine extends ConsoleProgram implements Backgroundmusic2{
   RandomGenerator randomGenerator = RandomGenerator.getInstance();
   /** 定义窗口的宽度和高度 */
-  public static final int APPLICATION_WIDTH = 1200; //窗口宽度
-  public static final int APPLICATION_HEIGHT = 800;//窗口高度
-
+  public static final int APPLICATION_WIDTH = 1200;
+  public static final int APPLICATION_HEIGHT = 800;
+  /** 导入地图 */
   public static final String GAME_FILE = "res/map-startingareafinal.txt";
+  /** 设置帧率 */
   private static final int DELAY = 1600;
-//  Enemypokemon enemypokemon = new Enemypokemon();
   /** 判断是否有紫金石 */
   boolean ifZijinStone = false;
   /** daoll保存地图中所有道具的数量 */
   int daoll = 0;
   /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
   int yanJiuSuoCount = 1;
-  /** 统计玩家到初始选择小精灵 */
+  /** 统计玩家有没有选择初始小精灵 用于判断是否刷怪 */
   boolean ifStopThisWhile = true;
   boolean ifStopThisWhile1 = false;
   private Place currPlace;
-  // 当前所处的地点
   ArrayList<Place> places;
-  // 保存所有的地点
   ArrayList<String> daojus = new ArrayList<>();
-  // 保存所有的道具
   ArrayList<Pokemon> playerpokemon = new ArrayList<>();
-  // 保存所有捕获的宝可梦
   boolean gameEnded;
-  // 玩家是否退出游戏
   public String playername;
-  // 保存玩家的名字
   @Override
   public void run() {
-    getConsole().setBackground(Color.gray);//设定窗口背景色
-    getConsole().setForeground(Color.WHITE);//设定窗口字体颜色
+    /* 设定窗口背景色 */
+    getConsole().setBackground(Color.gray);
+    /* 设定窗口字体颜色 */
+    getConsole().setForeground(Color.WHITE);
+    /* 窗口大小不可更改 */
     this.setResizable(false);
-    // 窗口大小不可更改
-    Picture.gameStart(this);//调用角色图片
-    Play gamestart = new Play("res/mp3/gamestart.mp3");//创建Play 对象，引入开场音乐
+    /* 调用开场背景图片 */
+    Picture.gameStart(this);
+    /* 创建Play 对象，引入开场音乐 */
+    Play gamestart = new Play("res/mp3/gamestart.mp3");
     gamestart.start();//调用音乐播放方法
     if (loadGame()) {
       mainLoop();
     }
   }
-
   /** 主循环。只要玩家不选择退出，游戏就一直运行下去 */
   private void mainLoop() {
     gameEnded = false;
