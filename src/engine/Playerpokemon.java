@@ -1,8 +1,9 @@
 package engine;
 
-import static engine.RPG.randomGenerator;
+import acm.util.RandomGenerator;
 
 public class Playerpokemon extends Pokemon {
+    RandomGenerator randomGenerator = RandomGenerator.getInstance();
     public int xp;
 //    宝可梦的经验值
     public int hpPotions;

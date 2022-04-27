@@ -175,7 +175,6 @@ public class Engine extends ConsoleProgram {
     pause(DELAY);
     println("");
     println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
-    Picture.pokemonMouse02(this);
     pause(DELAY);
     println("");
     println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
@@ -288,20 +287,23 @@ public class Engine extends ConsoleProgram {
   /**
    * 读取宝可梦的信息
    */
-//private void loadEnemypokemon(){
-////  代号美后
-//    Enemypokemon meiHou = new Enemypokemon();
-//    meiHou.name="美后";
-//    meiHou.level=3;
-////    代号菊草叶
-//    Enemypokemon juYeChao = new Enemypokemon();
-//    juYeChao.name="菊草叶";
-//    juYeChao.level=5;
-////    代号阿童
-//    Enemypokemon xiaoNiao = new Enemypokemon();
-//    xiaoNiao.name="小鸟";
-//    xiaoNiao.level = 3;
-//}
+private void loadEnemypokemon(){
+//  代号美后
+    Pokemon 美后 = new Pokemon();
+    美后.name="美后";
+    美后.level=3;
+//    代号菊草叶
+  Pokemon 菊叶草 = new Pokemon();
+  菊叶草.name="菊草叶";
+  菊叶草.level=5;
+  菊叶草.maxHp=45;
+  菊叶草.maxAtt=49;
+  菊叶草.deFence=65;
+//    代号阿童
+  Pokemon xiaoNiao = new Pokemon();
+    xiaoNiao.name="小鸟";
+    xiaoNiao.level = 3;
+}
   /**
    * 读取地点
    *

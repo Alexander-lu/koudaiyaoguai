@@ -117,7 +117,7 @@ public class Picture {
         );
     }
 
-    public static void pokemonMouse02(ConsoleProgram program) {
+    public static void xiaolada(ConsoleProgram program) {
         program.println(
                 "                                                                                                      ▮▮▮▮        \n" +
                         "                                                                                                      ▮▮▮▮▮▮▮▮    \n" +

@@ -6,6 +6,7 @@ public class Pokemon {
     public int curHp;       // 玩家和敌人都有当前血量
     public int maxAtt;      // 玩家和敌人都有攻击力下限
     public int minAtt;      // 玩家和敌人都有攻击力上限
+    public int deFence;
 
 
     public Pokemon() {
