@@ -1009,5 +1009,15 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                 battle(尾立);
             }
         }
+            if (currPlace.getbianhao() == 15 & ifStopThisWhile1) {
+      Summoner addddd = new Summoner();
+      ArrayList<Pokemon> b = new ArrayList<>();
+      Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+      Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
+      Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+      b.add(尾立);
+      b.add(金);
+      b.add(绿毛虫);
+      addddd.npcBattle(playerpokemon,b,this,0);
     }
 }
