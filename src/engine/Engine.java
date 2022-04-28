@@ -120,6 +120,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
       /** 如果玩家进入草丛，触发战斗 */
       caoCongShuaGuai();
+      if(isPlayerPokemonAllDead()){
+        println("你的宝可梦已经全部死亡，游戏失败");
+        break;
+      }
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
       print("> ");
@@ -522,7 +526,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     // 回合制循环进行，直至某一方阵亡
     println(playerpokemon.get(key).toString());
     println(enemypokemon.toString());
-    while (isEnemyDead(enemypokemon)) {
+    while (true) {
       println();
       // 每一回合都首先从玩家开始行动
       String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
@@ -659,9 +663,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
             }
           }
         }
-
-        //        attackEnemy();
-//        printEnemyStatus();
         continue;
       } else if (userChoice.equals("背包")) {
 //        useHealthPotion();
@@ -680,6 +681,17 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
         } else {
           println("逃跑失败！");
         }
+      }
+      if (isEnemyDead(enemypokemon)){
+        break;
+      } else {
+//        attackplayer
+      }
+      if(isPlayerPokemonDead(playerpokemon.get(key))){
+        println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
+      }
+      if(isPlayerPokemonAllDead()){
+        break;
       }
     }
     }
@@ -757,10 +769,16 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     return pokemon.curHp>0;
   }
   /**
-   * 判断玩家宝可梦死亡后退出游戏的方法
+   * 判断玩家宝可梦是否全部死亡
    */
-  private boolean deadExit(Pokemon pokemon){
-    return pokemon.curHp>0;
+  private boolean isPlayerPokemonAllDead(){
+    return playerpokemon.isEmpty();
+  }
+  /**
+   * 玩家宝可梦全部死亡后退出游戏的方法
+   */
+  private void deadExit(){
+    gameEnded=true;
   }
   /**
    * 添加后门的方法
