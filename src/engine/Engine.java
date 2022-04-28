@@ -770,8 +770,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         }
 
         /**道馆正房*/
-        if (daoGuanCount == 3){
-            if (currPlace.getbianhao() == 51){
+        if (daoGuanCount == 3) {
+            if (currPlace.getbianhao() == 51) {
                 daoGuanZhengFang();
                 daoGuanCount++;
             }
@@ -846,14 +846,16 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("“OH~NO~！YOU真的厉害~OK~YOU可以从ME的身上过去。诶诶！别踩脸啊！”");
     }
 
-    /**第一次到达道馆内院*/
+    /**
+     * 第一次到达道馆内院
+     */
     private void daoGuanNeiYuan() {
         pause(DELAY);
         println("");
         println("“呼~~刚才的战斗还真是惊险，一个小弟还是有两下子的，不知道会不会遇到更大的阻力......啊！！！！！！”" + playername + "话还没说完，大地忽然颤动起来。");
         pause(DELAY);
         println("");
-        println(playername + "“这......这是怎么回事？”pokemon很惊慌。");
+        println("“" + playername + ",这......这是怎么回事？”pokemon很惊慌。");
         pause(DELAY);
         println("");
         println("“该不会是地震了吧。”" + playername + "扶稳pokemon道。");
@@ -887,7 +889,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("“竟然如此强劲......！比预想中的还要高呢......！......:~(”自然之灵虚弱倒在地上，还不明白自己为何竟羸弱至此，“原来......原来我一直是被利用了吗......可恶......你们......可以帮我报仇嘛。我的力量都被馆长吸收了，你们一定要小心。”");
     }
 
-    private void daoGuanZhengFang(){
+    private void daoGuanZhengFang() {
         pause(DELAY);
         println("");
         println("阿速：“我是飞行道馆的馆长阿速！”");
@@ -929,8 +931,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         }
     }
 
-    /**和enemyB战斗*/
-    private void battleEnemyB(){
+    /**
+     * 和enemyB战斗
+     */
+    private void battleEnemyB() {
         if (currPlace.getbianhao() == 48 & ifStopThisWhile1) {
             Summoner enemyB = new Summoner();
             ArrayList<Pokemon> B = new ArrayList<>();
@@ -946,8 +950,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         }
     }
 
-    /**和enemyC战斗*/
-    private void battleEnemyC(){
+    /**
+     * 和enemyC战斗
+     */
+    private void battleEnemyC() {
         if (currPlace.getbianhao() == 51 & ifStopThisWhile1) {
             Summoner enemyC = new Summoner();
             ArrayList<Pokemon> C = new ArrayList<>();
@@ -971,20 +977,28 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      * 有钥匙后山洞开门的方法
      */
 
-    private void shanDongJuQing(){
+    int shanDong30Count = 0;
+    int shanDong41Count = 0;
+
+    private void shanDongJuQing() {
         openShanDon();//进入山洞前的判断条件
 
         /**山洞30剧情*/
-        if (currPlace.getbianhao() == 30){
+        if (shanDong30Count == 0){
+        if (currPlace.getbianhao() == 30) {
             shanDong30();
-        }
+            shanDong30Count++;
+        }}
 
         /**山洞41剧情*/
-        if (currPlace.getbianhao() == 41){
-            shanDong41();
+        if (shanDong41Count == 0) {
+            if (currPlace.getbianhao() == 41) {
+                shanDong41();
+                shanDong41Count++;
+            }
         }
-
     }
+
     private void openShanDon() {
 
         if (yaoshi == 0) {
@@ -1004,35 +1018,37 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
 
             }
         } else if (yaoshi == 1) {
+            if (currPlace.getbianhao() == 29){
             println("使用钥匙进入了山洞");
             changeMusic("res/mp3/Pokemon-cave.mp3");
             currPlace = places.get(30);
             moveTo(currPlace);
+            }
         }
     }
 
-    private void shanDong30(){
+    private void shanDong30() {
         pause(DELAY);
         println("");
-        println("“好，我们终于进来了，快走吧。”pokemon说，“已经来到了山洞。“一定要把紫金石找到！”" + playername +"说。");
+        println("“好，我们终于进来了，快走吧。”pokemon说，“已经来到了山洞。“一定要把紫金石找到！”" + playername + "说。");
         pause(DELAY);
         println("");
         println("“紫金石？你们说的是紫金石吗？”突然，地面上有只大岩蛇钻了出来。“竟敢觊觎我们祖传的宝物，我要让你们尝尝苦头！”大岩蛇使出了岩石封杀。");
         pause(DELAY);
         println("");
-        println("“干嘛？紫金石是用来做研究的，对人和精灵都要做出贡献的，不是吗？”" + playername +"使出了泡沫光线，岩石封杀没打中。");
+        println("“干嘛？紫金石是用来做研究的，对人和精灵都要做出贡献的，不是吗？”" + playername + "使出了泡沫光线，岩石封杀没打中。");
         pause(DELAY);
         println("");
-        println("“哈哈哈哈，原来如此，这么看起来你们还是执迷不悟，我来做你们的对手！”大岩蛇使出了龙息打" + playername +"，" + playername +"麻痹了。");
+        println("“哈哈哈哈，原来如此，这么看起来你们还是执迷不悟，我来做你们的对手！”大岩蛇使出了龙息打" + playername + "，" + playername + "麻痹了。");
         pause(DELAY);
         println("");
-        println("“" + playername +"，你没事吧？”pokemon大声叫道。");
+        println("“" + playername + "，你没事吧？”pokemon大声叫道。");
         pause(DELAY);
         println("");
         println("“接下来就轮到你了！”大岩蛇又使出铁尾，想攻击pokemon。");
         pause(DELAY);
         println("");
-        println("“会让你得逞吗？”" + playername +"用尽浑身力气，使出了泡沫光线，大岩蛇被打中了。");
+        println("“会让你得逞吗？”" + playername + "用尽浑身力气，使出了泡沫光线，大岩蛇被打中了。");
         pause(DELAY);
         println("");
         println("“哈哈哈，没事没事，这么点小伤还算不了什么......你们等着，我还会回来的！”大岩蛇使出了龙息。");
@@ -1041,74 +1057,74 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("说完，大岩蛇就沿着墙边飞快地爬进了山洞深处，刹那间消失不见。");
     }
 
-        private void shanDong41(){
-            pause(DELAY);
-            println("");
-            println("“哈哈，没想到你们还真是契而不舍，竟然找到了我的老巢，既然如此......只有鱼死网破了！！”大岩蛇癫狂道。");
-            pause(DELAY);
-            println("");
-            println("“不会让你这么做的。" + playername +"，上了！”");
-            pause(DELAY);
-            println("");
-            println("“好！”" + playername +"和pokemon使出了电之潮旋，大岩蛇被打中了，疼得动不了。");
-            pause(DELAY);
-            println("");
-            println("“趁现在，接招吧，大岩蛇！”pokemon使出了铁尾。");
-            pause(DELAY);
-            println("");
-            println("“我才不吃这套呢！”大岩蛇使出了岩石封杀，pokemon被打中，速度下降了。");
-            pause(DELAY);
-            println("");
-            println("“该死。”pokemon又站了起来。");
-            pause(DELAY);
-            println("");
-            println("“没错，不过该死的那个是你！”大岩蛇使出了龙息。");
-            pause(DELAY);
-            println("");
-            println("“pokemon！！！！”这时，" + playername +"冲了过来，使出了潮水，龙息和潮水引起了一场爆炸。");
-            pause(DELAY);
-            println("");
-            println("“没用的，让你们尝尝这个绝招吧！”大岩蛇使出了岩石利刃，" + playername +"和pokemon都被打中了。");
-            pause(DELAY);
-            println("");
-            println("“我就说嘛，你们根本不是我的对手。”");
-            pause(DELAY);
-            println("");
-            println("“那我呢？”不知道什么时候，妈妈突然出现在大岩蛇身后，对大岩蛇“嘭！嘭！”就是两拳。");
-            pause(DELAY);
-            println("");
-            println("“哈......你......你趁我不备，背后偷袭，不讲武德！！”");
-            pause(DELAY);
-            println("");
-            println("“还没完！”说着，妈妈从身后拿出家里的菜刀、菜板、葱、姜、蒜、干辣椒、砂锅......似乎是准备现场制作一道蛇肉羹。");
-            pause(DELAY);
-            println("");
-            println("“你不要过来啊！！看我的，岩石利刃！！”");
-            pause(DELAY);
-            println("");
-            println("岩石利刃打中了" + playername +"，" + playername +"失去战斗能力了。");
-            pause(DELAY);
-            println("");
-            println("“你这混蛋，竟敢这样伤害" + playername +"！我不会放过你的！”妈妈抬手便要结果了大岩蛇。");
-            pause(DELAY);
-            println("");
-            println("就在此刻，一阵眩人眼目的紫光闪过，挡住了下落的刀锋，并将大岩蛇恢复了正常，又带着妈妈一起消失了......");
-            pause(DELAY);
-            println("");
-            println("片刻后，一阵铃声响起，拿起一看是妈妈打来的。");
-            pause(DELAY);
-            println("");
-            println("“喂，" + playername + "啊，我怎么突然之间到家了，刚才那个食材怎么也不见了。");
-            pause(DELAY);
-            println("");
-            println("原来，传说中的紫金石，不仅能保护这里的动物，还有传送的神奇能力......这块石头还有太多的秘密等待挖掘了......");
-            pause(DELAY);
-            println("");
-            println("”哦！对了妈妈，您是怎么知道我在哪里的呀？“");
-            pause(DELAY);
-            println("");
-            println("”这还不简单，你手机里的那些APP争先恐后地在报告你的位置呐“");
-        }
+    private void shanDong41() {
+        pause(DELAY);
+        println("");
+        println("“哈哈，没想到你们还真是契而不舍，竟然找到了我的老巢，既然如此......只有鱼死网破了！！”大岩蛇癫狂道。");
+        pause(DELAY);
+        println("");
+        println("“不会让你这么做的。”" + playername + "，“上了！”");
+        pause(DELAY);
+        println("");
+        println("“好！”" + playername + "和pokemon使出了电之潮旋，大岩蛇被打中了，疼得动不了。");
+        pause(DELAY);
+        println("");
+        println("“趁现在，接招吧，大岩蛇！”pokemon使出了铁尾。");
+        pause(DELAY);
+        println("");
+        println("“我才不吃这套呢！”大岩蛇使出了岩石封杀，pokemon被打中，速度下降了。");
+        pause(DELAY);
+        println("");
+        println("“该死。”pokemon又站了起来。");
+        pause(DELAY);
+        println("");
+        println("“没错，不过该死的那个是你！”大岩蛇使出了龙息。");
+        pause(DELAY);
+        println("");
+        println("“pokemon！！！！”这时，" + playername + "冲了过来，使出了潮水，龙息和潮水引起了一场爆炸。");
+        pause(DELAY);
+        println("");
+        println("“没用的，让你们尝尝这个绝招吧！”大岩蛇使出了岩石利刃，" + playername + "和pokemon都被打中了。");
+        pause(DELAY);
+        println("");
+        println("“我就说嘛，你们根本不是我的对手。”");
+        pause(DELAY);
+        println("");
+        println("“那我呢？”不知道什么时候，妈妈突然出现在大岩蛇身后，对大岩蛇“嘭！嘭！”就是两拳。");
+        pause(DELAY);
+        println("");
+        println("“哈......你......你趁我不备，背后偷袭，不讲武德！！”");
+        pause(DELAY);
+        println("");
+        println("“还没完！”说着，妈妈从身后拿出家里的菜刀、菜板、葱、姜、蒜、干辣椒、砂锅......似乎是准备现场制作一道蛇肉羹。");
+        pause(DELAY);
+        println("");
+        println("“你不要过来啊！！看我的，岩石利刃！！”");
+        pause(DELAY);
+        println("");
+        println("岩石利刃打中了" + playername + "，" + playername + "失去战斗能力了。");
+        pause(DELAY);
+        println("");
+        println("“你这混蛋，竟敢这样伤害" + playername + "！我不会放过你的！”妈妈抬手便要结果了大岩蛇。");
+        pause(DELAY);
+        println("");
+        println("就在此刻，一阵眩人眼目的紫光闪过，挡住了下落的刀锋，并将大岩蛇恢复了正常，又带着妈妈一起消失了......");
+        pause(DELAY);
+        println("");
+        println("片刻后，一阵铃声响起，拿起一看是妈妈打来的。");
+        pause(DELAY);
+        println("");
+        println("“喂，" + playername + "啊，我怎么突然之间到家了，刚才那个食材怎么也不见了。");
+        pause(DELAY);
+        println("");
+        println("原来，传说中的紫金石，不仅能保护这里的动物，还有传送的神奇能力......这块石头还有太多的秘密等待挖掘了......");
+        pause(DELAY);
+        println("");
+        println("”哦！对了妈妈，您是怎么知道我在哪里的呀？“");
+        pause(DELAY);
+        println("");
+        println("”这还不简单，你手机里的那些APP争先恐后地在报告你的位置呐“");
+    }
 
     /**
      * 获得精灵球的方法
@@ -1173,7 +1189,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波",3,30,25,30,0,0,"");
+                Pokemon 波波 = new Pokemon("波波", 3, 30, 25, 30, 0, 0, "");
                 Picture.波波(this);
                 battle(波波);
             }
@@ -1181,7 +1197,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (currPlace.getbianhao() == 10 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达",3,30,30,25,0,0,"");
+                Pokemon 小拉达 = new Pokemon("小拉达", 3, 30, 30, 25, 0, 0, "");
                 Picture.小拉达(this);
                 battle(小拉达);
             }
@@ -1189,7 +1205,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (currPlace.getbianhao() == 14 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠",4,40,25,35,0,0,"");
+                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 25, 35, 0, 0, "");
                 Picture.地鼠(this);
                 battle(地鼠);
             }
@@ -1197,7 +1213,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (currPlace.getbianhao() == 12 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 可达鸭 = new Pokemon("可达鸭",6,55,35,35,0,0,"");
+                Pokemon 可达鸭 = new Pokemon("可达鸭", 6, 55, 35, 35, 0, 0, "");
                 Picture.可达鸭(this);
                 battle(可达鸭);
             }
@@ -1213,7 +1229,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (currPlace.getbianhao() == 26 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠",4,40,25,35,0,0,"");
+                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 25, 35, 0, 0, "");
                 Picture.地鼠(this);
                 battle(地鼠);
             }
