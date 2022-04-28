@@ -101,6 +101,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuE);
                                 getJinLingQiu();
+                                Items.add(new Item("血瓶"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 println("你获得一个小锯鳄！");
@@ -126,6 +127,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Pokemon juCaoYewe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYewe);
                                 getJinLingQiu();
+                                Items.add(new Item("血瓶"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
@@ -144,6 +146,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Pokemon juCaoYe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYe);
                                 getJinLingQiu();
+                                Items.add(new Item("血瓶"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
@@ -753,7 +756,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             default:
                         }
                         selectePokemon2 = false;
-                    } else {
                     }
                 }
             }
