@@ -61,7 +61,7 @@ public class Picture {
         program.println(
                 "                                                                                                              **          \n" +
                         "                                                                                                             ********     \n" +
-                        "                                                                                                             **\\*/***    \n" +
+                        "                                                                                                             ***\\*/***    \n" +
                         "                                                                                                              **▮ ▮***    \n" +
                         "                                                                                                              ***^***     \n" +
                         "                                                                                                              | *** ||    \n" +
@@ -161,7 +161,7 @@ public class Picture {
     public static void 妈妈(ConsoleProgram program) {
         program.println(
                         "                                                                                                                    ▯▯▯▯▯  \n" +
-                        "                                                                                                                 ▯▯▯▯▯▯▯▯▯\n" +
+                        "                                                                                                                  ▯▯▯▯▯▯▯▯▯\n" +
                         "                                                                                                                    #▮ ▮#  \n" +
                         "                                                                                                                    ◢###◣  \n" +
                         "                                                                                                                     ###   "
