@@ -1,184 +1,211 @@
 package engine;
+
 import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
-import javax.imageio.ImageIO;
-import javax.swing.*;
+
+
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Engine extends ConsoleProgram implements Backgroundmusic2{
-  RandomGenerator randomGenerator = RandomGenerator.getInstance();
-  /** 定义窗口的宽度和高度 */
-  public static final int APPLICATION_WIDTH = 1200;
-  public static final int APPLICATION_HEIGHT = 800;
-  /** 导入地图 */
-  public static final String GAME_FILE = "res/map-startingareafinal.txt";
-  /** 设置帧率 */
-  private static final int DELAY = 1600;
-  /** currPlace表示玩家现在所处的位置 */
-  private Place currPlace;
-  ArrayList<Place> places;
-  ArrayList<String> daojus = new ArrayList<>();
-  ArrayList<Pokemon> playerpokemon = new ArrayList<>();
-  boolean gameEnded;
-  public String playername;
-  Item map = new Item();
+public class Engine extends ConsoleProgram implements Backgroundmusic2 {
+    RandomGenerator randomGenerator = RandomGenerator.getInstance();
+    /**
+     * 定义窗口的宽度和高度
+     */
+    public static final int APPLICATION_WIDTH = 1200;
+    public static final int APPLICATION_HEIGHT = 800;
+    /**
+     * 导入地图
+     */
+    public static final String GAME_FILE = "res/map-startingareafinal.txt";
+    /**
+     * 设置帧率
+     */
+    private static final int DELAY = 1600;
+    /**
+     * currPlace表示玩家现在所处的位置
+     */
+    private Place currPlace;
+    ArrayList<Place> places;
+    ArrayList<String> daojus = new ArrayList<>();
+    ArrayList<Pokemon> playerpokemon = new ArrayList<>();
+    boolean gameEnded;
+    public String playername;
+    Item map = new Item();
 
-  int yaoshi = 0;//打败道馆馆长获得钥匙，名字待修改
+    int yaoshi = 0;//打败道馆馆长获得钥匙，名字待修改
 
-  @Override
-  public void run() {
-    /* 设定窗口背景色 */
-    getConsole().setBackground(Color.gray);
-    /* 设定窗口字体颜色 */
-    getConsole().setForeground(Color.WHITE);
-    /* 窗口大小不可更改 */
-    this.setResizable(false);
-    /* 调用开场背景图片 */
-    Picture.gameStart(this);
-    /* 设置背景音乐，并且无限循环播放 */
-    gamestart = new Play("res/mp3/gamestart.mp3");
-    gamestart.start();//调用音乐播放方法
-    if (loadGame()) {
-      mainLoop();
-    }
-  }
-  /** 主循环。只要玩家不选择退出，游戏就一直运行下去 */
-  private void mainLoop() {
-    gameEnded = false;
-
-    opentalking();
-    /** 切换歌曲 */
-    changeMusic("res/mp3/Pokemon-fight.mp3");
-    while (!gameEnded) {
-      /** 如果玩家第二次到研究所,触发和博士的对话 */
-      if (yanJiuSuoCount == 2) {
-        if (currPlace.getbianhao() == 1) {
-          if (ifZijinStone) {
-            boShiFinalTalking();
-            yanJiuSuoCount++;
-          }
+    @Override
+    public void run() {
+        /* 设定窗口背景色 */
+        getConsole().setBackground(Color.gray);
+        /* 设定窗口字体颜色 */
+        getConsole().setForeground(Color.WHITE);
+        /* 窗口大小不可更改 */
+        this.setResizable(false);
+        /* 调用开场背景图片 */
+        Picture.gameStart(this);
+        /* 设置背景音乐，并且无限循环播放 */
+        gamestart = new Play("res/mp3/gamestart.mp3");
+        gamestart.start();//调用音乐播放方法
+        if (loadGame()) {
+            mainLoop();
         }
-      }
-      openShanDon();//进入山洞前的判断条件
-      /** 如果玩家第一次到研究所,触发和博士的对话 */
-      if (yanJiuSuoCount == 1) {
-        if (currPlace.getbianhao() == 1) {
-          boShiTalking();
-          yanJiuSuoCount++;
-          while (ifStopThisWhile) {
-            println("你要？（输入小锯鳄，火球鼠和菊草叶来挑选你的精灵伴侣）");
-            print("> ");
-            String d1 = readLine();
-            switch (d1) {
-              case "小锯鳄":
-                Picture.小锯鳄(this);
-                println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
-                pause(DELAY);
-                println("输入小锯鳄Yes 来获得小锯鳄");
-                println("");
-                break;
-              case "小锯鳄Yes":
-                Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 40, 40, 20, 20, 0, "抓 水枪 咬碎 蛮力");
-                playerpokemon.add(xiaoJuE);
-                ifStopThisWhile = false;
-                ifStopThisWhile1 = true;
-                break;
-              case "火球鼠":
-                Picture.火球鼠(this);
-                println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
-                pause(DELAY);
-                println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
-                pause(DELAY);
-                println("输入火球鼠Yes 来获得火球鼠");
-                println("");
-                break;
-              case "火球鼠Yes":
-                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 40, 40, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
-                playerpokemon.add(huoQiuShu);
-                ifStopThisWhile = false;
-                ifStopThisWhile1 = true;
-                break;
-              case "菊草叶":
-                Picture.菊草叶(this);
-                println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
-                pause(DELAY);
-                println("输入菊草叶Yes 来获得菊草叶");
-                println("");
-                break;
-              case "菊草叶Yes":
-                Pokemon juCaoYe = new Pokemon("菊草叶", 1, 40, 40, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
-                playerpokemon.add(juCaoYe);
-                ifStopThisWhile = false;
-                ifStopThisWhile1 = true;
-                break;
-              default:
-                println("你输入的命令有误，请重新输入");
+    }
+
+    /**
+     * 主循环。只要玩家不选择退出，游戏就一直运行下去
+     */
+    private void mainLoop() {
+        gameEnded = false;
+
+        opentalking();
+        /** 切换歌曲 */
+        changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
+        while (!gameEnded) {
+            /** 如果玩家第二次到研究所,触发和博士的对话 */
+            if (yanJiuSuoCount == 2) {
+                if (currPlace.getbianhao() == 1) {
+                    if (ifZijinStone) {
+                        boShiFinalTalking();
+                        yanJiuSuoCount++;
+                    }
+                }
             }
-          }
+            openShanDon();//进入山洞前的判断条件
+            /** 如果玩家第一次到研究所,触发和博士的对话 */
+            if (yanJiuSuoCount == 1) {
+                if (currPlace.getbianhao() == 1) {
+                    boShiTalking();
+                    yanJiuSuoCount++;
+                    while (ifStopThisWhile) {
+                        println("你要？（输入小锯鳄，火球鼠和菊草叶来挑选你的精灵伴侣）");
+                        print("> ");
+                        String d1 = readLine();
+                        switch (d1) {
+                            case "小锯鳄":
+                                Picture.小锯鳄(this);
+                                println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
+                                pause(DELAY);
+                                println("输入小锯鳄Yes 来获得小锯鳄");
+                                println("");
+                                break;
+                            case "小锯鳄Yes":
+                                changeMusic("res/mp3/Pokemon-receiveItems.mp3");
+                                println("你获得了小锯鳄！");
+                                pause(DELAY*2);
+                                changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
+
+                                Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 40, 40, 20, 20, 0, "抓 水枪 咬碎 蛮力");
+                                playerpokemon.add(xiaoJuE);
+                                ifStopThisWhile = false;
+                                ifStopThisWhile1 = true;
+                                break;
+                            case "火球鼠":
+                                Picture.火球鼠(this);
+                                println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
+                                pause(DELAY);
+                                println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
+                                pause(DELAY);
+                                println("输入火球鼠Yes 来获得火球鼠");
+                                println("");
+                                break;
+                            case "火球鼠Yes":
+                                changeMusic("res/mp3/Pokemon-receiveItems.mp3");
+                                println("你获得了火球鼠！");
+                                pause(DELAY*2);
+                                changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
+                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 40, 40, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
+                                playerpokemon.add(huoQiuShu);
+                                ifStopThisWhile = false;
+                                ifStopThisWhile1 = true;
+                                break;
+                            case "菊草叶":
+                                Picture.菊草叶(this);
+                                println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
+                                pause(DELAY);
+                                println("输入菊草叶Yes 来获得菊草叶");
+                                println("");
+                                break;
+                            case "菊草叶Yes":
+                                changeMusic("res/mp3/Pokemon-receiveItems.mp3");
+                                println("你获得了菊草叶！");
+                                pause(DELAY*2);
+                                changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
+                                Pokemon juCaoYe = new Pokemon("菊草叶", 1, 40, 40, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
+                                playerpokemon.add(juCaoYe);
+                                ifStopThisWhile = false;
+                                ifStopThisWhile1 = true;
+                                break;
+                            default:
+                                println("你输入的命令有误，请重新输入");
+                        }
+                    }
+                }
+            }
+
+            /** 如果玩家进入草丛，触发战斗 */
+            caoCongShuaGuai();
+            if (isPlayerPokemonAllDead()) {
+                println("你的宝可梦已经全部死亡，游戏失败");
+                break;
+            }
+            println();
+            println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
+            print("> ");
+
+            String direction = readLine();
+            switch (direction) {
+                case "东":
+                    if (currPlace.getEast() != null) {
+                        moveTo(currPlace.getEast());
+                    } else {
+                        println("那边好像无路可走了……");
+                    }
+                    break;
+                case "南":
+                    if (currPlace.getSouth() != null) {
+                        moveTo(currPlace.getSouth());
+                    } else {
+                        println("那边好像无路可走了……");
+                    }
+                    break;
+                case "西":
+                    if (currPlace.getWest() != null) {
+                        moveTo(currPlace.getWest());
+                    } else {
+                        println("那边好像无路可走了……");
+                    }
+                    break;
+                case "北":
+                    if (currPlace.getNorth() != null) {
+                        moveTo(currPlace.getNorth());
+                    } else {
+                        println("那边好像无路可走了……");
+                    }
+                    break;
+                case "搜索":
+                    sousuo(currPlace);
+                    break;
+                case "道具":
+                    chakan(currPlace);
+                    break;
+                case "宝可梦":
+                    checkYourPokemon();
+                    break;
+                case "打开地图":
+                    map.openMap(currPlace);
+                    break;
+                case "退出":
+                    gameEnded = true;
+                    println("欢迎再来！");
+                    break;
+                default:
+                    println("你输入的命令有误，请重新输入");
+            }
         }
-      }
-      /** 如果玩家进入草丛，触发战斗 */
-      caoCongShuaGuai();
-      if(isPlayerPokemonAllDead()){
-        println("你的宝可梦已经全部死亡，游戏失败");
-        break;
-      }
-      println();
-      println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
-      print("> ");
-      String direction = readLine();
-      switch (direction) {
-        case "东":
-          if (currPlace.getEast() != null) {
-            moveTo(currPlace.getEast());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "南":
-          if (currPlace.getSouth() != null) {
-            moveTo(currPlace.getSouth());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "西":
-          if (currPlace.getWest() != null) {
-            moveTo(currPlace.getWest());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "北":
-          if (currPlace.getNorth() != null) {
-            moveTo(currPlace.getNorth());
-          } else {
-            println("那边好像无路可走了……");
-          }
-          break;
-        case "搜索":
-          sousuo(currPlace);
-          break;
-        case "道具":
-          chakan(currPlace);
-          break;
-        case "宝可梦":
-          checkYourPokemon();
-          break;
-        case "打开地图":
-          map.openMap(currPlace);
-          break;
-        case "退出":
-          gameEnded = true;
-          println("欢迎再来！");
-          break;
-        default:
-          println("你输入的命令有误，请重新输入");
-      }
-    }
     }
 
     /**
@@ -199,8 +226,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
      * 开场白&妈妈和我的对话
      */
     private void opentalking() {
+        pause(DELAY*35);
         pause(DELAY);
-        pause(DELAY);
+        changeMusic("res/mp3/Pokemon-chatWithDoctor.mp3");
         pause(DELAY);
         println("欢迎你来到精灵世界！");
         pause(DELAY);
@@ -242,6 +270,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
      */
     private void boShiTalking() {
         Picture.博士(this);
+        changeMusic("res/mp3/Pokemon-chatWithDoctor.mp3");
         println("喂！" + playername + "来啦。今天找你，是要你帮忙！");
         pause(DELAY);
         println("");
@@ -264,6 +293,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
      */
     private void boShiFinalTalking() {
         Picture.博士(this);
+        changeMusic("res/mp3/Pokemon-chatWithDoctor.mp3");
         println(playername + "你拿到紫金石了吗？");
         pause(DELAY);
         println("");
@@ -310,400 +340,421 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
             loadRoutes(scanner);
             loadDaoju(scanner);
 //      Pokemon.loadPokemon();
-    } catch (FileNotFoundException e) {
-      println("游戏文件读取错误！");
-      return false;
-    }
-    return true;
-  }
-  /**
-   * 读取道路
-   *
-   * @param scanner 用来读取输入的scanner对象
-   */
-  private void loadRoutes(Scanner scanner) {
-    // 读取地点
-    int nPlaces = scanner.nextInt(); // 道路的数量
-
-    String a = scanner.next();
-    // 读取所有地点
-    for (int i = 0; i < nPlaces; i++) {
-      int d = scanner.nextInt();
-      String g = scanner.next();
-      int f = scanner.nextInt();
-      if (g.equals("西")) {
-        places.get(d).setWest(places.get(f));
-        places.get(f).setEast(places.get(d));
-      }
-      if (g.equals("东")) {
-        places.get(d).setEast(places.get(f));
-        places.get(f).setWest(places.get(d));
-      }
-      if (g.equals("南")) {
-        places.get(d).setSouth(places.get(f));
-        places.get(f).setNorth(places.get(d));
-      }
-      if (g.equals("北")) {
-        places.get(d).setNorth(places.get(f));
-        places.get(f).setSouth(places.get(d));
-      }
-    }
-    // 设置初始地点，也就是读进来的第一个地点
-  }
-  /**
-   * 读取地点
-   *
-   * @param scanner 用来读取输入的scanner对象
-   */
-  private void loadPlaces(Scanner scanner) {
-    // 读取地点
-    int nPlaces = scanner.nextInt(); // 地点的数量
-    daoll = nPlaces;
-    String a = scanner.nextLine();
-
-    // 读取所有地点
-    for (int i = 0; i < nPlaces; i++) {
-      int bianhao = scanner.nextInt();
-      String placeName = scanner.next(); // 地点的名称
-      String message = scanner.next();
-      Place place = new Place(placeName, message, bianhao); // 从Place类别中创建一个实例，并
-      places.add(place); // 将这个地点保存进places中
-    }
-
-    // 设置初始地点，也就是读进来的第一个地点
-    currPlace = places.get(0);
-  }
-  /** daoll保存地图中所有道具的数量 */
-  int daoll = 0;
-  /**
-   * 读取道具
-   *
-   * @param scanner 用来读取输入的scanner对象
-   */
-  private void loadDaoju(Scanner scanner) {
-    // 读取道具
-    int nPlaces = scanner.nextInt(); // 道具的数量
-    String a = scanner.next();
-    // 读取所有地点
-    for (int i = 0; i < nPlaces; i++) {
-      int d = scanner.nextInt();
-      String g = scanner.next();
-      for (int k = 0; k < daoll; k++) {
-        if (places.get(k).getbianhao() == d) {
-          places.get(k).setbaowu(g);
+        } catch (FileNotFoundException e) {
+            println("游戏文件读取错误！");
+            return false;
         }
-      }
+        return true;
     }
-    // 设置初始地点，也就是读进来的第一个地点
 
-  }
-  /**
-   * 搜索当前地点
-   */
-  private void sousuo(Place place) {
-    if (place.getbaowu() != null) {
-      println("DEBUG2 - 你找到了一个" + place.getbaowu() + "！");
-      daojus.add(place.getbaowu());
-      this.currPlace.setbaowu(null);
-    } else {
-      println("DEBUG2 - 你什么没找到。");
-    }
-  }
-  /**
-   * 查看你的物品箱有哪些物品
-   */
-  private void chakan(Place place) {
-    if (daojus.isEmpty()) {
-      println("你的道具箱内空无一物。");
-    } else {
-      println("你现在共有" + daojus.size() + "个道具，依次是：");
-      for (int k = 0; k < daojus.size(); k++) {
-        int l = k + 1;
-        println(l + "." + daojus.get(k));
-      }
-    }
-  }
-  /** 判断是否有紫金石 */
-  boolean ifZijinStone = false;
-  /**
-   * 查看你的物品里有没有紫金石
-   */
-  private void checkZiJinStone() {
-    for (int k = 0; k < daojus.size(); k++) {
-        int l = k + 1;
-        if (daojus.get(k).equals("紫金石")){
-          ifZijinStone = true;
-        }
-      }
-    }
-  /**
-   * 查看你的宝可梦数量
-   */
-  private void checkYourPokemon() {
-    if (playerpokemon.isEmpty()) {
-      println("你没有宝可梦。");
-    } else {
-      println("你现在共有" + playerpokemon.size() + "只宝可梦，依次是：");
-      for (int k = 0; k < playerpokemon.size(); k++) {
-        int l = k + 1;
-        println(l + "." + playerpokemon.get(k).getName()+" 等级："+playerpokemon.get(k).getLevel());
-      }
-    }
-  }
-  /**
-   * 玩家和敌人对战
-   */
-  private void battle(Pokemon enemypokemon) {
-    int key = -1;
-    checkYourPokemon();
-    boolean selectePokemon = true; //设定循坏条件判断是否成功选取出战精灵
-  while (selectePokemon){
-    println("输入名字来选择出战的宝可梦");
-    print("> ");
-    String pickYourPokemon = readLine();
-    for (int i = 0; i <playerpokemon.size() ; i++) {
-      if(pickYourPokemon.equals(playerpokemon.get(i).name)){
-        key = i;
-        selectePokemon = false;
-      }else {
-        println("你输入的命令有误，请重新输入");
-      }
-    }}
+    /**
+     * 读取道路
+     *
+     * @param scanner 用来读取输入的scanner对象
+     */
+    private void loadRoutes(Scanner scanner) {
+        // 读取地点
+        int nPlaces = scanner.nextInt(); // 道路的数量
 
-    println(playerpokemon.get(key).toString());
-    println(enemypokemon.toString());
-    while (true) {
-      println();
-      // 每一回合都首先从玩家开始行动
-      String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
-      if (userChoice.equals("战斗")) {
-        if (playerpokemon.get(key).name.equals("小锯鳄")) {
-          boolean ifStopThis = true;
-          while (ifStopThis) {
-            println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
-            println("（输入技能名称来使用技能");
-            print("> ");
-            String skillname1 = readLine();
-            switch (skillname1) {
-              case "抓":
-                Skill.抓(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "水枪":
-                Skill.水枪(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "咬碎":
-                Skill.咬碎(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "蛮力":
-                Skill.蛮力(enemypokemon, playerpokemon.get(key));
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              default:
-                println("你输入的命令有误，请重新输入");
+        String a = scanner.next();
+        // 读取所有地点
+        for (int i = 0; i < nPlaces; i++) {
+            int d = scanner.nextInt();
+            String g = scanner.next();
+            int f = scanner.nextInt();
+            if (g.equals("西")) {
+                places.get(d).setWest(places.get(f));
+                places.get(f).setEast(places.get(d));
             }
-          }
-        }
-        if (playerpokemon.get(key).name.equals("火球鼠")) {
-          boolean ifStopThis = true;
-          while (ifStopThis) {
-            println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
-            println("（输入技能名称来使用技能");
-            print("> ");
-            String skillname1 = readLine();
-            switch (skillname1) {
-              case "喷火":
-                Skill.喷火(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "瞪眼":
-                Skill.瞪眼(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "舍身冲撞":
-                Skill.舍身冲撞(enemypokemon,playerpokemon.get(key));
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "变圆":
-                Skill.变圆(playerpokemon.get(key));
-                println(playerpokemon.get(key).toString());
-                ifStopThis = false;
-                break;
-              default:
-                println("你输入的命令有误，请重新输入");
+            if (g.equals("东")) {
+                places.get(d).setEast(places.get(f));
+                places.get(f).setWest(places.get(d));
             }
-          }
-        }
-        if (playerpokemon.get(key).name.equals("菊草叶")) {
-          boolean ifStopThis = true;
-          while (ifStopThis) {
-            println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
-            println("（输入技能名称来使用技能");
-            print("> ");
-            String skillname1 = readLine();
-            switch (skillname1) {
-              case "撞击":
-                Skill.撞击(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "叫声":
-                Skill.叫声(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "飞叶快刀":
-                Skill.飞叶快刀(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "光合作用":
-                Skill.光合作用(playerpokemon.get(key));
-                println(playerpokemon.get(key).toString());
-                ifStopThis = false;
-                break;
-              default:
-                println("你输入的命令有误，请重新输入");
+            if (g.equals("南")) {
+                places.get(d).setSouth(places.get(f));
+                places.get(f).setNorth(places.get(d));
             }
-          }
-        }
-        if (playerpokemon.get(key).name.equals("可达鸭")) {
-          boolean ifStopThis = true;
-          while (ifStopThis) {
-            println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
-            println("（输入技能名称来使用技能");
-            print("> ");
-            String skillname1 = readLine();
-            switch (skillname1) {
-              case "乱抓 ":
-                Skill.乱抓 (enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "瞬间失忆":
-                Skill.瞬间失忆(playerpokemon.get(key));
-                println(playerpokemon.get(key).toString());
-                ifStopThis = false;
-                break;
-              case "摇尾巴":
-                Skill.摇尾巴(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              case "水泡":
-                Skill.水泡(enemypokemon);
-                println(enemypokemon.toString());
-                ifStopThis = false;
-                break;
-              default:
-                println("你输入的命令有误，请重新输入");
+            if (g.equals("北")) {
+                places.get(d).setNorth(places.get(f));
+                places.get(f).setSouth(places.get(d));
             }
-          }
         }
-        continue;
-      } else if (userChoice.equals("背包")) {
-//        useHealthPotion();
-//        printPlayerStatus();
-        continue;
-      } else if (userChoice.equals("精灵")) {
-        checkYourPokemon();
-//        useHealthPotion();
-//        printPlayerStatus();
-        continue;
-      }else if (userChoice.equals("逃跑")) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          println("逃跑成功！");
-          break;
+        // 设置初始地点，也就是读进来的第一个地点
+    }
+
+    /**
+     * 读取地点
+     *
+     * @param scanner 用来读取输入的scanner对象
+     */
+    private void loadPlaces(Scanner scanner) {
+        // 读取地点
+        int nPlaces = scanner.nextInt(); // 地点的数量
+        daoll = nPlaces;
+        String a = scanner.nextLine();
+
+        // 读取所有地点
+        for (int i = 0; i < nPlaces; i++) {
+            int bianhao = scanner.nextInt();
+            String placeName = scanner.next(); // 地点的名称
+            String message = scanner.next();
+            Place place = new Place(placeName, message, bianhao); // 从Place类别中创建一个实例，并
+            places.add(place); // 将这个地点保存进places中
+        }
+
+        // 设置初始地点，也就是读进来的第一个地点
+        currPlace = places.get(0);
+    }
+
+    /**
+     * daoll保存地图中所有道具的数量
+     */
+    int daoll = 0;
+
+    /**
+     * 读取道具
+     *
+     * @param scanner 用来读取输入的scanner对象
+     */
+    private void loadDaoju(Scanner scanner) {
+        // 读取道具
+        int nPlaces = scanner.nextInt(); // 道具的数量
+        String a = scanner.next();
+        // 读取所有地点
+        for (int i = 0; i < nPlaces; i++) {
+            int d = scanner.nextInt();
+            String g = scanner.next();
+            for (int k = 0; k < daoll; k++) {
+                if (places.get(k).getbianhao() == d) {
+                    places.get(k).setbaowu(g);
+                }
+            }
+        }
+        // 设置初始地点，也就是读进来的第一个地点
+
+    }
+
+    /**
+     * 搜索当前地点
+     */
+    private void sousuo(Place place) {
+        if (place.getbaowu() != null) {
+            changeMusic("res/mp3/Pokemon-receiveItems.mp3");
+            println("DEBUG2 - 你找到了一个" + place.getbaowu() + "！");
+            pause(DELAY*2);
+            changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
+            daojus.add(place.getbaowu());
+            this.currPlace.setbaowu(null);
         } else {
-          println("逃跑失败！");
+            println("DEBUG2 - 你什么没找到。");
         }
-      }
-      if (isEnemyDead(enemypokemon)){
-        break;
-      } else {
+    }
+
+    /**
+     * 查看你的物品箱有哪些物品
+     */
+    private void chakan(Place place) {
+        if (daojus.isEmpty()) {
+            println("你的道具箱内空无一物。");
+        } else {
+            println("你现在共有" + daojus.size() + "个道具，依次是：");
+            for (int k = 0; k < daojus.size(); k++) {
+                int l = k + 1;
+                println(l + "." + daojus.get(k));
+            }
+        }
+    }
+
+    /**
+     * 判断是否有紫金石
+     */
+    boolean ifZijinStone = false;
+
+    /**
+     * 查看你的物品里有没有紫金石
+     */
+    private void checkZiJinStone() {
+        for (int k = 0; k < daojus.size(); k++) {
+            int l = k + 1;
+            if (daojus.get(k).equals("紫金石")) {
+                ifZijinStone = true;
+            }
+        }
+    }
+
+    /**
+     * 查看你的宝可梦数量
+     */
+    private void checkYourPokemon() {
+        if (playerpokemon.isEmpty()) {
+            println("你没有宝可梦。");
+        } else {
+            println("你现在共有" + playerpokemon.size() + "只宝可梦，依次是：");
+            for (int k = 0; k < playerpokemon.size(); k++) {
+                int l = k + 1;
+                println(l + "." + playerpokemon.get(k).getName() + " 等级：" + playerpokemon.get(k).getLevel());
+            }
+        }
+    }
+
+    /**
+     * 玩家和敌人对战
+     */
+    private void battle(Pokemon enemypokemon) {
+        int key = -1;
+        checkYourPokemon();
+        boolean selectePokemon = true; //设定循坏条件判断是否成功选取出战精灵
+        while (selectePokemon) {
+            println("输入名字来选择出战的宝可梦");
+            print("> ");
+            String pickYourPokemon = readLine();
+            for (int i = 0; i < playerpokemon.size(); i++) {
+                if (pickYourPokemon.equals(playerpokemon.get(i).name)) {
+                    key = i;
+                    selectePokemon = false;
+                } else {
+                    println("你输入的命令有误，请重新输入");
+                }
+            }
+        }
+
+        println(playerpokemon.get(key).toString());
+        println(enemypokemon.toString());
+        while (true) {
+            println();
+            // 每一回合都首先从玩家开始行动
+            String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
+            if (userChoice.equals("战斗")) {
+                if (playerpokemon.get(key).name.equals("小锯鳄")) {
+                    boolean ifStopThis = true;
+                    while (ifStopThis) {
+                        println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
+                        println("（输入技能名称来使用技能");
+                        print("> ");
+                        String skillname1 = readLine();
+                        switch (skillname1) {
+                            case "抓":
+                                Skill.抓(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "水枪":
+                                Skill.水枪(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "咬碎":
+                                Skill.咬碎(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "蛮力":
+                                Skill.蛮力(enemypokemon, playerpokemon.get(key));
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            default:
+                                println("你输入的命令有误，请重新输入");
+                        }
+                    }
+                }
+                if (playerpokemon.get(key).name.equals("火球鼠")) {
+                    boolean ifStopThis = true;
+                    while (ifStopThis) {
+                        println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
+                        println("（输入技能名称来使用技能");
+                        print("> ");
+                        String skillname1 = readLine();
+                        switch (skillname1) {
+                            case "喷火":
+                                Skill.喷火(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "瞪眼":
+                                Skill.瞪眼(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "舍身冲撞":
+                                Skill.舍身冲撞(enemypokemon, playerpokemon.get(key));
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "变圆":
+                                Skill.变圆(playerpokemon.get(key));
+                                println(playerpokemon.get(key).toString());
+                                ifStopThis = false;
+                                break;
+                            default:
+                                println("你输入的命令有误，请重新输入");
+                        }
+                    }
+                }
+                if (playerpokemon.get(key).name.equals("菊草叶")) {
+                    boolean ifStopThis = true;
+                    while (ifStopThis) {
+                        println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
+                        println("（输入技能名称来使用技能");
+                        print("> ");
+                        String skillname1 = readLine();
+                        switch (skillname1) {
+                            case "撞击":
+                                Skill.撞击(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "叫声":
+                                Skill.叫声(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "飞叶快刀":
+                                Skill.飞叶快刀(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "光合作用":
+                                Skill.光合作用(playerpokemon.get(key));
+                                println(playerpokemon.get(key).toString());
+                                ifStopThis = false;
+                                break;
+                            default:
+                                println("你输入的命令有误，请重新输入");
+                        }
+                    }
+                }
+                if (playerpokemon.get(key).name.equals("可达鸭")) {
+                    boolean ifStopThis = true;
+                    while (ifStopThis) {
+                        println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
+                        println("（输入技能名称来使用技能");
+                        print("> ");
+                        String skillname1 = readLine();
+                        switch (skillname1) {
+                            case "乱抓 ":
+                                Skill.乱抓(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "瞬间失忆":
+                                Skill.瞬间失忆(playerpokemon.get(key));
+                                println(playerpokemon.get(key).toString());
+                                ifStopThis = false;
+                                break;
+                            case "摇尾巴":
+                                Skill.摇尾巴(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            case "水泡":
+                                Skill.水泡(enemypokemon);
+                                println(enemypokemon.toString());
+                                ifStopThis = false;
+                                break;
+                            default:
+                                println("你输入的命令有误，请重新输入");
+                        }
+                    }
+                }
+                continue;
+            } else if (userChoice.equals("背包")) {
+//        useHealthPotion();
+//        printPlayerStatus();
+                continue;
+            } else if (userChoice.equals("精灵")) {
+                checkYourPokemon();
+//        useHealthPotion();
+//        printPlayerStatus();
+                continue;
+            } else if (userChoice.equals("逃跑")) {
+                boolean success = randomGenerator.nextBoolean();
+                if (success) {
+                    println("逃跑成功！");
+                    break;
+                } else {
+                    println("逃跑失败！");
+                }
+            }
+            if (isEnemyDead(enemypokemon)) {
+                break;
+            } else {
 //        attackplayer
-      }
-      if(isPlayerPokemonDead(playerpokemon.get(key))){
-        println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
-      }
-      if(isPlayerPokemonAllDead()){
-        break;
-      }
-    }
-    }
-  /**
-   * 判断敌人宝可梦是否死亡
-   */
-  protected boolean isEnemyDead(Pokemon pokemon){
-    return pokemon.curHp>0;
-  }
-  /**
-   * 提示用户做选择，如果用户的选择无效，就让用户重新输入
-   *
-   * @param prompt  提示语
-   * @param choices 允许的几种选择
-   * @return 玩家最终的选择
-   */
-  public String choose(String prompt, String... choices) {
-    // 将选择用逗号连起来
-    String concatenatedChoices = String.join(", ", choices);
-    // 最终的提示语
-    String actualPrompt = String.format("%s (%s): ", prompt, concatenatedChoices);
-    // 如果玩家的输入无效，就提示玩家重新输入
-    while (true) {
-      print(actualPrompt);
-      String userChoice = readLine();
-      // 逐个对比，看是否相等
-      for (String choice : choices) {
-        if (userChoice.equals(choice)) {
-          return choice;
+            }
+            if (isPlayerPokemonDead(playerpokemon.get(key))) {
+                println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
+            }
+            if (isPlayerPokemonAllDead()) {
+                break;
+            }
         }
-      }
-      println("您的选择无效，请重新输入。");
     }
-  }
-  /**
-   * 捕捉宝可梦
-   */
-  private void catchPokemon(Pokemon enemypokemon) {
-    if(playerpokemon.size() < 6 ){
-   playerpokemon.add(enemypokemon); //玩家宝可梦集合里增加宝可梦
-    println("你抓住了 " + enemypokemon + "!  "+  enemypokemon +"的信息是：" + enemypokemon.toString());
-  }else {
-      println("你无法捕捉更多的宝可梦！");
+
+    /**
+     * 判断敌人宝可梦是否死亡
+     */
+    protected boolean isEnemyDead(Pokemon pokemon) {
+        return pokemon.curHp > 0;
     }
-  }
 
-  /**
-   * 道馆的剧情
-   */
-  private void daoGuan() {
-    println("阿速：我是飞行道馆的馆长阿速！");
-    println("阿速：世界上的飞行类宝可梦一旦遭遇电击就很容易受伤。");
-    println("阿速：受伤的宝可梦没法继续飞行了...");
-    println("阿速：我把受伤的宝可梦都放在山洞里，保护的很好。");
-    println("阿速：有我在，谁也别想进入山洞。");
+    /**
+     * 提示用户做选择，如果用户的选择无效，就让用户重新输入
+     *
+     * @param prompt  提示语
+     * @param choices 允许的几种选择
+     * @return 玩家最终的选择
+     */
+    public String choose(String prompt, String... choices) {
+        // 将选择用逗号连起来
+        String concatenatedChoices = String.join(", ", choices);
+        // 最终的提示语
+        String actualPrompt = String.format("%s (%s): ", prompt, concatenatedChoices);
+        // 如果玩家的输入无效，就提示玩家重新输入
+        while (true) {
+            print(actualPrompt);
+            String userChoice = readLine();
+            // 逐个对比，看是否相等
+            for (String choice : choices) {
+                if (userChoice.equals(choice)) {
+                    return choice;
+                }
+            }
+            println("您的选择无效，请重新输入。");
+        }
+    }
+
+    /**
+     * 捕捉宝可梦
+     */
+    private void catchPokemon(Pokemon enemypokemon) {
+        if (playerpokemon.size() < 6) {
+            playerpokemon.add(enemypokemon); //玩家宝可梦集合里增加宝可梦
+            println("你抓住了 " + enemypokemon + "!  " + enemypokemon + "的信息是：" + enemypokemon.toString());
+        } else {
+            println("你无法捕捉更多的宝可梦！");
+        }
+    }
+
+    /**
+     * 道馆的剧情
+     */
+    private void daoGuan() {
+        println("阿速：我是飞行道馆的馆长阿速！");
+        println("阿速：世界上的飞行类宝可梦一旦遭遇电击就很容易受伤。");
+        println("阿速：受伤的宝可梦没法继续飞行了...");
+        println("阿速：我把受伤的宝可梦都放在山洞里，保护的很好。");
+        println("阿速：有我在，谁也别想进入山洞。");
 
 
-  }
+    }
 
-  /**
-   * 山洞的剧情
-   */
-  /**
-   * 有钥匙后山洞开门的方法
-   */
-  private void openShanDon() {
+    /**
+     * 山洞的剧情
+     */
+    /**
+     * 有钥匙后山洞开门的方法
+     */
+    private void openShanDon() {
 
         if (yaoshi == 0) {
             if (currPlace.getbianhao() == 28) {//需要插入音乐
@@ -715,7 +766,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 println("旁边的大爷：...");
                 println("旁边的大爷：这座山被飞行道馆的馆长霸占了，进入山洞需要钥匙。你身上有钥匙吗？");
                 println("旁边的大爷：没有的话，去打败飞行道馆馆长把！");
-            } else if (currPlace.getbianhao() ==  29) {
+            } else if (currPlace.getbianhao() == 29) {
                 println("没有钥匙！，无法进入山洞");
                 currPlace = places.get(28);
                 moveTo(currPlace);
@@ -723,6 +774,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
             }
         } else if (yaoshi == 1) {
             println("使用钥匙进入了山洞");
+            changeMusic("res/mp3/Pokemon-cave.mp3");
             currPlace = places.get(30);
             moveTo(currPlace);
         }
@@ -748,7 +800,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
      * 判断玩家宝可梦是否全部死亡
      */
     private boolean isPlayerPokemonAllDead() {
-        return playerpokemon.isEmpty()&&yanJiuSuoCount != 1;
+        return playerpokemon.isEmpty() && yanJiuSuoCount != 1;
     }
 
     /**
