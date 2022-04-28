@@ -156,7 +156,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                 break;
             }
             println();
-            println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
+            println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"打开地图\"使用地图）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
             print("> ");
 
             String direction = readLine();
