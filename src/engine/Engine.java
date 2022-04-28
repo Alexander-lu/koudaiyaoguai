@@ -25,6 +25,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   boolean gameEnded;
   public String playername;
 
+  int yaoshi = 0;//打败道馆馆长获得钥匙，名字待修改
+
   @Override
   public void run() {
     /* 设定窗口背景色 */
@@ -483,46 +485,57 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   private void battle(Pokemon enemypokemon) {
     int key = -1;
     checkYourPokemon();
-    println("输入数字来选择出战的宝可梦");
+    boolean selectePokemon = true; //设定循坏条件判断是否成功选取出战精灵
+  while (selectePokemon){
+    println("输入名字来选择出战的宝可梦");
     print("> ");
     String pickYourPokemon = readLine();
-    switch (pickYourPokemon) {
-      case "1":
-         key=0;
-        break;
-      case "2":
-        key=1;
-        break;
-      case "3":
-        key=2;
-        break;
-      case "4":
-        key=3;
-        break;
-      case "5":
-        key=4;
-        break;
-      case "6":
-        key=5;
-        break;
-      case "7":
-        key=6;
-        break;
-      case "8":
-        key=7;
-        break;
-      case "9":
-        key=8;
-        break;
-      case "10":
-        key=9;
-        break;
-      case "11":
-        key=10;
-        break;
-      default:
+    for (int i = 0; i <playerpokemon.size() ; i++) {
+      if(pickYourPokemon.equals(playerpokemon.get(i).name)){
+        key = i;
+        selectePokemon = false;
+      }else {
         println("你输入的命令有误，请重新输入");
-    }
+      }
+    }}
+
+//    switch (pickYourPokemon) {
+//      case "1":
+//         key=0;
+//        break;
+//      case "2":
+//        key=1;
+//        break;
+//      case "3":
+//        key=2;
+//        break;
+//      case "4":
+//        key=3;
+//        break;
+//      case "5":
+//        key=4;
+//        break;
+//      case "6":
+//        key=5;
+//        break;
+//      case "7":
+//        key=6;
+//        break;
+//      case "8":
+//        key=7;
+//        break;
+//      case "9":
+//        key=8;
+//        break;
+//      case "10":
+//        key=9;
+//        break;
+//      case "11":
+//        key=10;
+//        break;
+//      default:
+//        println("你输入的命令有误，请重新输入");
+//    }
     // 回合制循环进行，直至某一方阵亡
     println(playerpokemon.get(key).toString());
     println(enemypokemon.toString());
@@ -730,32 +743,60 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    * 捕捉宝可梦
    */
   private void catchPokemon(Pokemon enemypokemon) {
-
+    if(playerpokemon.size() < 6 ){
+   playerpokemon.add(enemypokemon); //玩家宝可梦集合里增加宝可梦
+    println("你抓住了 " + enemypokemon + "!  "+  enemypokemon +"的信息是：" + enemypokemon.toString());
+  }else {
+      println("你无法捕捉更多的宝可梦！");
+    }
   }
+
   /**
    * 道馆的剧情
    */
-  private void daoGuan(Pokemon enemypokemon) {
+  private void daoGuan() {
+    println("阿速：我是飞行道馆的馆长阿速！");
+    println("阿速：世界上的飞行类宝可梦一旦遭遇电击就很容易受伤。");
+    println("阿速：受伤的宝可梦没法继续飞行了...");
+    println("阿速：我把受伤的宝可梦都放在山洞里，保护的很好。");
+    println("阿速：有我在，谁也别想进入山洞。");
+
 
   }
+
   /**
    * 山洞的剧情
    */
-  private void shanDong(Pokemon enemypokemon) {
-
-  }
   /**
    * 有钥匙后山洞开门的方法
    */
   private void openShanDon(Pokemon enemypokemon) {
 
-  }
-  /**
-   * 没钥匙到达山洞门口会被遣返回上一个地点的方法
-   */
-  private void rejiectShanDon() {
+    if (yaoshi ==0){
+      if (currPlace==places.get(28)){//需要插入音乐
+        println("旁边的大爷：...");
+        pause(DELAY);
+        println("旁边的大爷：前面是山洞，里面生活着许多奇特的宝可梦。");
+        pause(DELAY);
+        println("旁边的大爷：穿越山洞，就可以通往下一个城市了。");
+        println("旁边的大爷：...");
+        println("旁边的大爷：这座山被飞行道馆的馆长霸占了，进入山洞需要钥匙。你身上有钥匙吗？");
+        println("旁边的大爷：没有的话，去打败飞行道馆馆长把！");
+      }else if (currPlace == places.get(29)){
+        println("没有钥匙！，无法进入山洞");
+        currPlace = places.get(28);
+        moveTo(currPlace);
+
+      }
+    } else if (yaoshi == 1) {
+      println("使用钥匙进入了山洞");
+      currPlace = places.get(30);
+      moveTo(currPlace);
+    }
+
 
   }
+
   /**
    * 获得精灵球的方法
    */
