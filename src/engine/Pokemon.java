@@ -71,7 +71,12 @@ public class Pokemon {
      * 读取宝可梦的信息
      */
 
+    /**
+     * 宝可梦升级的方法
+     */
+    public void levelup(int hp) {
 
+    }
     public static void loadPokemon(){
         //  代号小锯鳄
         Pokemon 小锯鳄 = new Pokemon("小锯鳄",5,43,46,55,20,0,"技能");

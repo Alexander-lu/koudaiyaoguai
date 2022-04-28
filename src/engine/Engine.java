@@ -1,7 +1,6 @@
 package engine;
 import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -275,7 +274,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       gamestart.start();
     }
   /**
-   * 开场白
+   * 开场白&妈妈和我的对话
    */
   private void opentalking() {
     pause(DELAY);
@@ -466,7 +465,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
 
   }
   /**
-   * 搜索
+   * 搜索当前地点
    */
   private void sousuo(Place place) {
     if (place.getbaowu() != null) {
@@ -477,7 +476,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       println("DEBUG2 - 你什么没找到。");
     }
   }
-
+  /**
+   * 查看你的物品箱有哪些物品
+   */
   private void chakan(Place place) {
     if (daojus.isEmpty()) {
       println("你的道具箱内空无一物。");
@@ -724,7 +725,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
     }
     }
-
+  /**
+   * 判断敌人宝可梦是否死亡
+   */
   private boolean isEnemyDead(Pokemon pokemon){
     return pokemon.curHp>0;
   }
@@ -752,5 +755,53 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
       println("您的选择无效，请重新输入。");
     }
+  }
+  /**
+   * 捕捉宝可梦
+   */
+  private void catchPokemon(Pokemon enemypokemon) {
+
+  }
+  /**
+   * 道馆的剧情
+   */
+  private void daoGuan(Pokemon enemypokemon) {
+
+  }
+  /**
+   * 山洞的剧情
+   */
+  private void shanDong(Pokemon enemypokemon) {
+
+  }
+  /**
+   * 有钥匙后山洞开门的方法
+   */
+  private void openShanDon(Pokemon enemypokemon) {
+
+  }
+  /**
+   * 没钥匙到达山洞门口会被遣返回上一个地点的方法
+   */
+  private void rejiectShanDon() {
+
+  }
+  /**
+   * 获得精灵球的方法
+   */
+  private void getJinLingQiu() {
+
+  }
+  /**
+   * 判断玩家宝可梦是否死亡
+   */
+  private boolean isPlayerPokemonDead(Pokemon pokemon){
+    return pokemon.curHp>0;
+  }
+  /**
+   * 判断玩家宝可梦死亡后退出游戏的方法
+   */
+  private boolean deadExit(Pokemon pokemon){
+    return pokemon.curHp>0;
   }
 }
