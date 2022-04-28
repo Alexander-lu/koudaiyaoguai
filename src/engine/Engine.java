@@ -17,15 +17,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   public static final String GAME_FILE = "res/map-startingareafinal.txt";
   /** 设置帧率 */
   private static final int DELAY = 1600;
-  /** 判断是否有紫金石 */
-  boolean ifZijinStone = false;
-  /** daoll保存地图中所有道具的数量 */
-  int daoll = 0;
-  /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
-  int yanJiuSuoCount = 1;
-  /** 统计玩家有没有选择初始小精灵 用于判断是否刷怪 */
-  boolean ifStopThisWhile = true;
-  boolean ifStopThisWhile1 = false;
   /** currPlace表示玩家现在所处的位置 */
   private Place currPlace;
   ArrayList<Place> places;
@@ -33,12 +24,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   ArrayList<Pokemon> playerpokemon = new ArrayList<>();
   boolean gameEnded;
   public String playername;
-  /** 用于循环播放歌曲和切换歌曲 */
-  public Play gamestart;
-  /** 用Swing写一个打开地图的方法 */
-  JFrame frame;
-  JLabel label;
-  Image image = null;
 
   @Override
   public void run() {
@@ -134,62 +119,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
         }
       }
       /** 如果玩家进入草丛，触发战斗 */
-      if (currPlace.getbianhao() == 16 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
-          battle(绿毛虫);
-        }
-      }
-      if (currPlace.getbianhao() == 17 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-          battle(尾立);
-        }
-        }
-      if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-          battle(尾立);
-        }
-      }
-      if (currPlace.getbianhao() == 10 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-          battle(尾立);
-        }
-      }
-      if (currPlace.getbianhao() == 14 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-          battle(尾立);
-        }
-      }
-      if (currPlace.getbianhao() == 12 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-          battle(尾立);
-        }
-      }
-      if (currPlace.getbianhao() == 23 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-          battle(尾立);
-        }
-      }
-      if (currPlace.getbianhao() == 26 & ifStopThisWhile1) {
-        boolean success = randomGenerator.nextBoolean();
-        if (success) {
-          Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-          battle(尾立);
-        }
-      }
+      caoCongShuaGuai();
       println();
       println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
       print("> ");
@@ -241,6 +171,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
     }
     }
+  /** 用Swing写一个打开地图的方法 */
+  JFrame frame;
+  JLabel label;
+  Image image = null;
   /** 打开地图1 */
     private void openMap1(){
       try {
@@ -283,6 +217,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
   }
+  /** 用于循环播放歌曲和切换歌曲 */
+  public Play gamestart;
   /** 切换歌曲的方法 */
     private void changeMusic(String file){
       gamestart.stop();
@@ -325,6 +261,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     println("");
     println("输入搜索获得修理好的电话");
   }
+  /** 统计玩家到达研究所的次数,以此触发博士和我的对话 */
+  int yanJiuSuoCount = 1;
   /**
    * 博士和我的第一次对话
    */
@@ -458,6 +396,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
     // 设置初始地点，也就是读进来的第一个地点
     currPlace = places.get(0);
   }
+  /** daoll保存地图中所有道具的数量 */
+  int daoll = 0;
   /**
    * 读取道具
    *
@@ -506,6 +446,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
     }
   }
+  /** 判断是否有紫金石 */
+  boolean ifZijinStone = false;
   /**
    * 查看你的物品里有没有紫金石
    */
@@ -825,5 +767,69 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    */
   private void houMen() {
 
+  }
+  /** 统计玩家有没有选择初始小精灵 用于判断是否刷怪 */
+  boolean ifStopThisWhile = true;
+  boolean ifStopThisWhile1 = false;
+  /**
+   * 添加草丛刷怪的方法
+   */
+  private void caoCongShuaGuai(){
+    if (currPlace.getbianhao() == 16 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+        battle(绿毛虫);
+      }
+    }
+    if (currPlace.getbianhao() == 17 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+        battle(尾立);
+      }
+    }
+    if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+        battle(尾立);
+      }
+    }
+    if (currPlace.getbianhao() == 10 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+        battle(尾立);
+      }
+    }
+    if (currPlace.getbianhao() == 14 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+        battle(尾立);
+      }
+    }
+    if (currPlace.getbianhao() == 12 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+        battle(尾立);
+      }
+    }
+    if (currPlace.getbianhao() == 23 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+        battle(尾立);
+      }
+    }
+    if (currPlace.getbianhao() == 26 & ifStopThisWhile1) {
+      boolean success = randomGenerator.nextBoolean();
+      if (success) {
+        Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+        battle(尾立);
+      }
+    }
   }
 }
