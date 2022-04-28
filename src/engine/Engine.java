@@ -745,10 +745,16 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             daoGuanRuKou();
         }
 
-        if (daoGuanQianYuanCount == 1) {
+        if (daoGuanCount == 1) {
             if (currPlace.getbianhao() == 44) {
                 daoGuanQianYuan();
-                daoGuanQianYuanCount++;
+                daoGuanCount++;
+            }
+        }
+
+        if (daoGuanCount == 2){
+            if (currPlace.getbianhao() == 48){
+                daoGuanNeiYuan();
             }
         }
     }
@@ -760,7 +766,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("");
     }
 
-    int daoGuanQianYuanCount = 1;
+    int daoGuanCount = 1;
 
     /**
      * 第一次到达道馆前院触发
@@ -811,6 +817,52 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("");
         println("你来到了前院西面的晾晒小院，进入战斗");
         moveTo(currPlace.getWest());
+    }
+
+    private void daoGuanNeiYuan(){
+        println("“呼~~刚才的战斗还真是惊险，一个小弟还是有两下子的，不知道会不会遇到更大的阻力......啊！！！！！！”小智话还没说完，大地忽然颤动起来。");
+        pause(DELAY);
+        println("");
+        println(playername + "“这......这是怎么回事？”pokemon很惊慌。");
+        pause(DELAY);
+        println("");
+        println("“该不会是地震了吧。”小智扶稳pokemon道。");
+        pause(DELAY);
+        println("");
+        println("“不！这不是地震！而是其它的......”");
+        pause(DELAY);
+        println("");
+        println("“的确如此，这只不过是我走路引发的而已。”一只体型巨大的自然精灵出现了。");
+        pause(DELAY);
+        println("");
+        println("“你好。”pokemon上前搭话到，“请你帮我们把钥匙拿到好吗？”");
+        pause(DELAY);
+        println("");
+        println("在这时，道馆的西方突然出现了一道黄色的光，" + playername + "来不及多想，急忙俯身，避开了衣架的袭击。");
+        pause(DELAY);
+        println("");
+        println("一个人影闪身到他们面前，警惕的说道。");
+        pause(DELAY);
+        println("");
+        println("“HEY！YOU！WHO ARE YOU！我在这里晾内裤竟然发现你们擅闯道馆？？！！”陌生男子惊道。");
+        pause(DELAY);
+        println("");
+        println("“这个啊，我们要穿越东边的山洞，但是山洞入口被阿速馆长控制了。”");
+        pause(DELAY);
+        println("");
+        println("“我们是来打败馆长，拿取钥匙的。”" + playername + "解释道。");
+        pause(DELAY);
+        println("");
+        println("“WHAT？？！！用别人的东西，还要把人家打一顿。到底YOU是反派还是ME是反派......就没有想过问馆长打个借条......”");
+        pause(DELAY);
+        println("");
+        println("“诶？对啊！那这样......我们设计的战斗系统不就白费了......别废话，就先拿你练手。”");
+        pause(DELAY);
+        println("");
+        println("“挑战ME的YOU实在是不知死活！ME的精灵是NO.1！在战场上是不败的~！YOU也会和以前那些不知死活的敌人一样，麻痹着败北吧！”");
+        pause(DELAY);
+        println("");
+        println("你来到了前院西面的晾晒小院，进入战斗");
     }
     private void daoGuan() {
         println("阿速：我是飞行道馆的馆长阿速！");
