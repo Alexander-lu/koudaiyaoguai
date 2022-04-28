@@ -74,7 +74,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                     }
                 }
             }
-            openShanDon();//进入山洞前的判断条件
+            shanDongJuQing();//进入山洞前的判断条件
             /** 如果玩家第一次到研究所,触发和博士的对话 */
             if (yanJiuSuoCount == 1) {
                 if (currPlace.getbianhao() == 1) {
@@ -149,6 +149,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
 
             /**道馆剧情*/
             daoGuanJuQing();
+
+            /**山洞剧情*/
+            shanDongJuQing();
 
             /** 如果玩家进入草丛，触发战斗 */
             caoCongShuaGuai();
@@ -904,6 +907,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         pause(DELAY);
         println("");
         println("“纵使你打败了我......我也不会告诉你钥匙就在旁边的耳房里......噗（吐血状）..........”阿速败北。");
+        yaoshi++;
     }
 
     /**
@@ -966,6 +970,21 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     /**
      * 有钥匙后山洞开门的方法
      */
+
+    private void shanDongJuQing(){
+        openShanDon();//进入山洞前的判断条件
+
+        /**山洞30剧情*/
+        if (currPlace.getbianhao() == 30){
+            shanDong30();
+        }
+
+        /**山洞41剧情*/
+        if (currPlace.getbianhao() == 41){
+            shanDong41();
+        }
+
+    }
     private void openShanDon() {
 
         if (yaoshi == 0) {
@@ -990,9 +1009,106 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             currPlace = places.get(30);
             moveTo(currPlace);
         }
-
-
     }
+
+    private void shanDong30(){
+        pause(DELAY);
+        println("");
+        println("“好，我们终于进来了，快走吧。”pokemon说，“已经来到了山洞。“一定要把紫金石找到！”" + playername +"说。");
+        pause(DELAY);
+        println("");
+        println("“紫金石？你们说的是紫金石吗？”突然，地面上有只大岩蛇钻了出来。“竟敢觊觎我们祖传的宝物，我要让你们尝尝苦头！”大岩蛇使出了岩石封杀。");
+        pause(DELAY);
+        println("");
+        println("“干嘛？紫金石是用来做研究的，对人和精灵都要做出贡献的，不是吗？”" + playername +"使出了泡沫光线，岩石封杀没打中。");
+        pause(DELAY);
+        println("");
+        println("“哈哈哈哈，原来如此，这么看起来你们还是执迷不悟，我来做你们的对手！”大岩蛇使出了龙息打" + playername +"，" + playername +"麻痹了。");
+        pause(DELAY);
+        println("");
+        println("“" + playername +"，你没事吧？”pokemon大声叫道。");
+        pause(DELAY);
+        println("");
+        println("“接下来就轮到你了！”大岩蛇又使出铁尾，想攻击pokemon。");
+        pause(DELAY);
+        println("");
+        println("“会让你得逞吗？”" + playername +"用尽浑身力气，使出了泡沫光线，大岩蛇被打中了。");
+        pause(DELAY);
+        println("");
+        println("“哈哈哈，没事没事，这么点小伤还算不了什么......你们等着，我还会回来的！”大岩蛇使出了龙息。");
+        pause(DELAY);
+        println("");
+        println("说完，大岩蛇就沿着墙边飞快地爬进了山洞深处，刹那间消失不见。");
+    }
+
+        private void shanDong41(){
+            pause(DELAY);
+            println("");
+            println("“哈哈，没想到你们还真是契而不舍，竟然找到了我的老巢，既然如此......只有鱼死网破了！！”大岩蛇癫狂道。");
+            pause(DELAY);
+            println("");
+            println("“不会让你这么做的。" + playername +"，上了！”");
+            pause(DELAY);
+            println("");
+            println("“好！”" + playername +"和pokemon使出了电之潮旋，大岩蛇被打中了，疼得动不了。");
+            pause(DELAY);
+            println("");
+            println("“趁现在，接招吧，大岩蛇！”pokemon使出了铁尾。");
+            pause(DELAY);
+            println("");
+            println("“我才不吃这套呢！”大岩蛇使出了岩石封杀，pokemon被打中，速度下降了。");
+            pause(DELAY);
+            println("");
+            println("“该死。”pokemon又站了起来。");
+            pause(DELAY);
+            println("");
+            println("“没错，不过该死的那个是你！”大岩蛇使出了龙息。");
+            pause(DELAY);
+            println("");
+            println("“pokemon！！！！”这时，" + playername +"冲了过来，使出了潮水，龙息和潮水引起了一场爆炸。");
+            pause(DELAY);
+            println("");
+            println("“没用的，让你们尝尝这个绝招吧！”大岩蛇使出了岩石利刃，" + playername +"和pokemon都被打中了。");
+            pause(DELAY);
+            println("");
+            println("“我就说嘛，你们根本不是我的对手。”");
+            pause(DELAY);
+            println("");
+            println("“那我呢？”不知道什么时候，妈妈突然出现在大岩蛇身后，对大岩蛇“嘭！嘭！”就是两拳。");
+            pause(DELAY);
+            println("");
+            println("“哈......你......你趁我不备，背后偷袭，不讲武德！！”");
+            pause(DELAY);
+            println("");
+            println("“还没完！”说着，妈妈从身后拿出家里的菜刀、菜板、葱、姜、蒜、干辣椒、砂锅......似乎是准备现场制作一道蛇肉羹。");
+            pause(DELAY);
+            println("");
+            println("“你不要过来啊！！看我的，岩石利刃！！”");
+            pause(DELAY);
+            println("");
+            println("岩石利刃打中了" + playername +"，" + playername +"失去战斗能力了。");
+            pause(DELAY);
+            println("");
+            println("“你这混蛋，竟敢这样伤害" + playername +"！我不会放过你的！”妈妈抬手便要结果了大岩蛇。");
+            pause(DELAY);
+            println("");
+            println("就在此刻，一阵眩人眼目的紫光闪过，挡住了下落的刀锋，并将大岩蛇恢复了正常，又带着妈妈一起消失了......");
+            pause(DELAY);
+            println("");
+            println("片刻后，一阵铃声响起，拿起一看是妈妈打来的。");
+            pause(DELAY);
+            println("");
+            println("“喂，" + playername + "啊，我怎么突然之间到家了，刚才那个食材怎么也不见了。");
+            pause(DELAY);
+            println("");
+            println("原来，传说中的紫金石，不仅能保护这里的动物，还有传送的神奇能力......这块石头还有太多的秘密等待挖掘了......");
+            pause(DELAY);
+            println("");
+            println("”哦！对了妈妈，您是怎么知道我在哪里的呀？“");
+            pause(DELAY);
+            println("");
+            println("”这还不简单，你手机里的那些APP争先恐后地在报告你的位置呐“");
+        }
 
     /**
      * 获得精灵球的方法
