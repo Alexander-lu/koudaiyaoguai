@@ -770,6 +770,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (daoGuanCount == 3){
             if (currPlace.getbianhao() == 51){
                 daoGuanZhengFang();
+                daoGuanCount++;
             }
         }
     }
@@ -818,10 +819,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("一个人影闪身到他们面前，警惕的说道。");
         pause(DELAY);
         println("");
-        println("“HEY！YOU！WHO ARE YOU！我在这里晾内裤竟然发现你们擅闯道馆？？！！”陌生男子惊道。");
+        println("“HEY！YOU！WHO ARE YOU！ME在这里晾内裤竟然发现YOU擅闯道馆？？！！”陌生男子惊道。");
         pause(DELAY);
         println("");
-        println("“这个啊，我们要穿越东边的山洞，但是山洞入口被阿速馆长控制了。”"+ playername + "解释道，“我们是来打败馆长，拿取钥匙的。”");
+        println("“这个啊，我们要穿越东边的山洞，但是山洞入口被阿速馆长控制了。”" + playername + "解释道，“我们是来打败馆长，拿取钥匙的。”");
+        pause(DELAY);
         pause(DELAY);
         println("");
         println("“WHAT？？！！用别人的东西，还要把人家打一顿。到底YOU是反派还是ME是反派......就没有想过问馆长打个借条......”");
@@ -845,13 +847,13 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     private void daoGuanNeiYuan() {
         pause(DELAY);
         println("");
-        println("“呼~~刚才的战斗还真是惊险，一个小弟还是有两下子的，不知道会不会遇到更大的阻力......啊！！！！！！”小智话还没说完，大地忽然颤动起来。");
+        println("“呼~~刚才的战斗还真是惊险，一个小弟还是有两下子的，不知道会不会遇到更大的阻力......啊！！！！！！”" + playername + "话还没说完，大地忽然颤动起来。");
         pause(DELAY);
         println("");
         println(playername + "“这......这是怎么回事？”pokemon很惊慌。");
         pause(DELAY);
         println("");
-        println("“该不会是地震了吧。”小智扶稳pokemon道。");
+        println("“该不会是地震了吧。”" + playername + "扶稳pokemon道。");
         pause(DELAY);
         println("");
         println("“不！这不是地震！而是其它的......”");
@@ -866,16 +868,16 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("“不可以！”精灵回答的很干脆，“数百年前我便身负使命要保护这里的一切，不论是一花一草，还是一砖一瓦，都不可被侵犯。”");
         pause(DELAY);
         println("");
-        println("“你在说什么啊？”小智上前说道，“馆长现在一人将硕大的山洞据为己有，私自占有公共资源，难道你都不管吗？你还是自然精灵吗？”");
+        println("“你在说什么啊？”" + playername + "上前说道，“馆长现在一人将硕大的山洞据为己有，私自占有公共资源，难道你都不管吗？你还是自然精灵吗？”");
         pause(DELAY);
         println("");
-        println("“我只是尽我的责任去守护者他而已。”自然之灵平静地说，并没有因为小智的语气而生气。");
+        println("“我只是尽我的责任去守护者他而已。”自然之灵平静地说，并没有因为" + playername + "的语气而生气。");
         pause(DELAY);
         println("");
-        println("“可是......”小智刚想说什么，就吃惊的发现：“它变色了，它被精灵病毒控制了！！！！！！它现在应该是被馆长PUA了！！！！！！”");
+        println("“可是......”" + playername + "刚想说什么，就吃惊的发现：“它变色了，它被精灵病毒控制了！！！！！！它现在应该是被馆长PUA了！！！！！！”");
         pause(DELAY);
         println("");
-        println("“哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦！我要杀了你们”自然之灵突然暴走，不顾一切地向小智他们扑来......");
+        println("“哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦！我要杀了你们”自然之灵突然暴走，不顾一切地向" + playername + "他们扑来......");
         //battleEnemyB();
         pause(DELAY);
         println("");
@@ -885,23 +887,23 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     private void daoGuanZhengFang(){
         pause(DELAY);
         println("");
-        println("阿速：我是飞行道馆的馆长阿速！");
+        println("阿速：“我是飞行道馆的馆长阿速！”");
         pause(DELAY);
         println("");
-        println("阿速：世界上的飞行类宝可梦一旦遭遇电击就很容易受伤。");
+        println("阿速：“世界上的飞行类宝可梦一旦遭遇电击就很容易受伤。”");
         pause(DELAY);
         println("");
-        println("阿速：受伤的宝可梦没法继续飞行了...");
+        println("阿速：“受伤的宝可梦没法继续飞行了...”");
         pause(DELAY);
         println("");
-        println("阿速：我把受伤的宝可梦都放在山洞里，保护的很好。");
+        println("阿速：“我把受伤的宝可梦都放在山洞里，保护的很好。”");
         pause(DELAY);
         println("");
-        println("阿速：有我在，谁也别想进入山洞。");
+        println("阿速：“有我在，谁也别想进入山洞。”");
         //battleEnemyC();
         pause(DELAY);
         println("");
-        println("纵使你打败了我......我也不会告诉你钥匙就在旁边的耳房里......噗（吐血状）..........");
+        println("“纵使你打败了我......我也不会告诉你钥匙就在旁边的耳房里......噗（吐血状）..........”阿速败北。");
     }
 
     /**
