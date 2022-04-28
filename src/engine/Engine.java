@@ -88,7 +88,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "小锯鳄":
                                 Picture.小锯鳄(this);
                                 println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
-                                pause(DELAY);
+//                                pause(DELAY);
                                 println("输入小锯鳄Yes 来获得小锯鳄");
                                 println("");
                                 break;
@@ -106,9 +106,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "火球鼠":
                                 Picture.火球鼠(this);
                                 println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
-                                pause(DELAY);
+//                                pause(DELAY);
                                 println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
-                                pause(DELAY);
+//                                pause(DELAY);
                                 println("输入火球鼠Yes 来获得火球鼠");
                                 println("");
                                 break;
@@ -125,7 +125,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "菊草叶":
                                 Picture.菊草叶(this);
                                 println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
-                                pause(DELAY);
+//                                pause(DELAY);
                                 println("输入菊草叶Yes 来获得菊草叶");
                                 println("");
                                 break;
@@ -145,8 +145,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                     }
                 }
             }
-
-            daoGuanJuQing();
 
             /** 如果玩家进入草丛，触发战斗 */
             caoCongShuaGuai();
@@ -230,36 +228,36 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      * 开场白&妈妈和我的对话
      */
     private void opentalking() {
-        pause(DELAY * 35);
-        pause(DELAY);
+//        pause(DELAY*35);
+//        pause(DELAY);
         changeMusic("res/mp3/Pokemon-chatWithDoctor.mp3");
-        pause(DELAY);
+//        pause(DELAY);
         println("欢迎你来到精灵世界！");
-        pause(DELAY);
+//        pause(DELAY);
         Picture.博士(this);
         println("我叫空木，作为精灵博士受到尊敬");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("在精灵的世界里，被称为精灵的生物，无所不在。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("人和精灵友好的玩耍，一起战斗，互相帮助，共同生活。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("但我们并不了解精灵！在它们身上还有许多秘密!为了解开迷，我天天都在研究。");
-        pause(DELAY);
+//        pause(DELAY);
         Picture.玩家(this);
         println("对了，快告诉我你叫什么名字？");
-        pause(DELAY);
+//        pause(DELAY);
         print("请输入你的名字：");
-        pause(DELAY);
+//        pause(DELAY);
         playername = readLine();
         println(playername + "祝你好运，希望你能抓住全部的精灵！");
-        pause(DELAY);
+//        pause(DELAY);
         moveTo(currPlace);
         Picture.妈妈(this);
         println("妈妈：喂 " + playername + " 空木博士在找你。可能是要你帮忙。忘了！给，带上你的地图");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("输入搜索获得修理好的地图");
     }
@@ -276,19 +274,19 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         Picture.博士(this);
         changeMusic("res/mp3/Pokemon-chatWithDoctor.mp3");
         println("喂！" + playername + "来啦。今天找你，是要你帮忙！");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("我最近的研究需要用到一个东西，叫做紫金石。只有小镇东边的山洞里有");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("我想要你我带点紫金石回来给我");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("现在我的研究工作很忙，没法抽出身来。当然我会给你配一个精灵搭档。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("最近找到的珍贵的精灵，你选一个吧，有小锯鳄，火球鼠和菊草叶");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
     }
 
@@ -299,19 +297,19 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         Picture.博士(this);
         changeMusic("res/mp3/Pokemon-chatWithDoctor.mp3");
         println(playername + "你拿到紫金石了吗？");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("哦，太感谢了。你帮了我一个大忙");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("有了紫金石，我的研究很快就能有结果了");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("你已经有这么多精灵搭档了啊，想要更多吗？");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("去京都吧，京都汇集了很多世界一流的精灵大师，去找他们切磋吧。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
     }
 
@@ -445,7 +443,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (place.getbaowu() != null) {
             changeMusic("res/mp3/Pokemon-receiveItems.mp3");
             println("DEBUG2 - 你找到了一个" + place.getbaowu() + "！");
-            pause(DELAY * 2);
+//            pause(DELAY*2);
             changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
             daojus.add(place.getbaowu());
             this.currPlace.setbaowu(null);
@@ -889,9 +887,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (yaoshi == 0) {
             if (currPlace.getbianhao() == 28) {//需要插入音乐
                 println("旁边的大爷：...");
-                pause(DELAY);
+//                pause(DELAY);
                 println("旁边的大爷：前面是山洞，里面生活着许多奇特的宝可梦。");
-                pause(DELAY);
+//                pause(DELAY);
                 println("旁边的大爷：穿越山洞，就可以通往下一个城市了。");
                 println("旁边的大爷：...");
                 println("旁边的大爷：这座山被飞行道馆的馆长霸占了，进入山洞需要钥匙。你身上有钥匙吗？");
@@ -974,29 +972,29 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-                battle(尾立);
+                Pokemon 波波 = new Pokemon("波波",3,30,25,30,0,0,"");
+                battle(波波);
             }
         }
         if (currPlace.getbianhao() == 10 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-                battle(尾立);
+                Pokemon 小拉达 = new Pokemon("小拉达",3,30,30,25,0,0,"");
+                battle(小拉达);
             }
         }
         if (currPlace.getbianhao() == 14 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-                battle(尾立);
+                Pokemon 地鼠 = new Pokemon("地鼠",4,40,25,35,0,0,"");
+                battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 12 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-                battle(尾立);
+                Pokemon 可达鸭 = new Pokemon("可达鸭",6,55,35,35,0,0,"");
+                battle(可达鸭);
             }
         }
         if (currPlace.getbianhao() == 23 & ifStopThisWhile1) {
@@ -1009,8 +1007,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (currPlace.getbianhao() == 26 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-                battle(尾立);
+                Pokemon 地鼠 = new Pokemon("地鼠",4,40,25,35,0,0,"");
+                battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 15 & ifStopThisWhile1) {
