@@ -1254,25 +1254,26 @@ Items.add(new Item("精灵球"));
      * 添加草丛刷怪的方法
      */
     private void caoCongShuaGuai() {
-        if (currPlace.getbianhao() == 16 & ifStopThisWhile1) {
+        if (currPlace.getbianhao() == 22 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
-                battle(绿毛虫);
+                Pokemon 地鼠 = new Pokemon("地鼠", 4, 400, 400, 20, 20, 0, "");
+                Picture.地鼠(this);
+                battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 17 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+                Pokemon 尾立 = new Pokemon("尾立", 2, 200, 200, 20, 20, 0, "");
                 Picture.尾立(this);
                 battle(尾立);
             }
         }
-        if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
+        if (currPlace.getbianhao() == 8 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 30, 25, 30, 0, 0, "");
+                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
                 Picture.波波(this);
                 battle(波波);
             }
@@ -1280,7 +1281,39 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 10 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 3, 30, 30, 25, 0, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
+                Picture.小拉达(this);
+                battle(小拉达);
+            }
+        }
+        if (currPlace.getbianhao() == 20 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 地鼠 = new Pokemon("地鼠", 4, 400, 400, 20, 20, 0, "");
+                Picture.地鼠(this);
+                battle(地鼠);
+            }
+        }
+        if (currPlace.getbianhao() == 11 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 尾立 = new Pokemon("尾立", 2, 200, 200, 20, 20, 0, "");
+                Picture.尾立(this);
+                battle(尾立);
+            }
+        }
+        if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
+                Picture.波波(this);
+                battle(波波);
+            }
+        }
+        if (currPlace.getbianhao() == 5 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
                 Picture.小拉达(this);
                 battle(小拉达);
             }
@@ -1288,33 +1321,57 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 14 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 25, 35, 0, 0, "");
-                Picture.地鼠(this);
-                battle(地鼠);
+                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
+                Picture.波波(this);
+                battle(波波);
             }
         }
         if (currPlace.getbianhao() == 12 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 可达鸭 = new Pokemon("可达鸭", 6, 55, 35, 35, 0, 0, "");
-                Picture.可达鸭(this);
-                battle(可达鸭);
+                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
+                Picture.波波(this);
+                battle(波波);
             }
         }
-        if (currPlace.getbianhao() == 23 & ifStopThisWhile1) {
+        if (currPlace.getbianhao() == 21 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-                Picture.尾立(this);
-                battle(尾立);
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
+                Picture.小拉达(this);
+                battle(小拉达);
             }
         }
-        if (currPlace.getbianhao() == 26 & ifStopThisWhile1) {
+        if (currPlace.getbianhao() == 18 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 25, 35, 0, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
+                Picture.小拉达(this);
+                battle(小拉达);
+            }
+        }
+        if (currPlace.getbianhao() == 4 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 地鼠 = new Pokemon("地鼠", 10, 1000, 1000, 20, 20, 0, "");
                 Picture.地鼠(this);
                 battle(地鼠);
+            }
+        }
+        if (currPlace.getbianhao() == 3 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 小拉达 = new Pokemon("小拉达", 10, 1000, 1000, 20, 20, 0, "");
+                Picture.小拉达(this);
+                battle(小拉达);
+            }
+        }
+        if (currPlace.getbianhao() == 2 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 可达鸭 = new Pokemon("可达鸭", 20, 2000, 2000, 20, 20, 0, "");
+                Picture.可达鸭(this);
+                battle(可达鸭);
             }
         }
     }
@@ -1326,44 +1383,81 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 29 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 5, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.地鼠(this);
+                battle(地鼠);
+            }
+        }
+        if (currPlace.getbianhao() == 30 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.地鼠(this);
+                battle(地鼠);
+            }
+        }
+        if (currPlace.getbianhao() == 31 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.地鼠(this);
+                battle(地鼠);
+            }
+        }
+        if (currPlace.getbianhao() == 32 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.地鼠(this);
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 33 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 金 = new Pokemon("金", 5, 40, 40, 20, 20, 0, "");
-                battle(金);
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.地鼠(this);
+                battle(地鼠);
+            }
+        }
+        if (currPlace.getbianhao() == 36 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.地鼠(this);
+                battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 37 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 5, 40, 40, 20, 20, 0, "");
+                Pokemon 金 = new Pokemon("尾立", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.尾立(this);
+                battle(金);
+            }
+        }
+        if (currPlace.getbianhao() == 38 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 波波 = new Pokemon("波波", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.波波(this);
                 battle(波波);
             }
         }
         if (currPlace.getbianhao() == 39 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 6, 40, 40, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 15, 1500, 1500, 20, 20, 0, "");
+                Picture.小拉达(this);
                 battle(小拉达);
-            }
-        }
-        if (currPlace.getbianhao() == 41 & ifStopThisWhile1) {
-            boolean success = randomGenerator.nextBoolean();
-            if (success) {
-                Pokemon 可达鸭 = new Pokemon("可达鸭", 8, 40, 40, 20, 20, 0, "");
-                battle(可达鸭);
             }
         }
         if (currPlace.getbianhao() == 34 & ifStopThisWhile1) {
             Summoner addddd = new Summoner();
             ArrayList<Pokemon> b = new ArrayList<>();
-            Pokemon 可达鸭 = new Pokemon("可达鸭", 9, 40, 40, 20, 20, 0, "");
-            Pokemon 小拉达 = new Pokemon("小拉达", 9, 40, 40, 20, 20, 0, "");
-            Pokemon 波波 = new Pokemon("波波", 9, 40, 40, 20, 20, 0, "");
+            Pokemon 可达鸭 = new Pokemon("可达鸭", 15, 1500, 1500, 20, 20, 0, "");
+            Pokemon 小拉达 = new Pokemon("小拉达", 17, 1700, 1700, 20, 20, 0, "");
+            Pokemon 波波 = new Pokemon("波波", 18, 1800, 1800, 20, 20, 0, "");
             b.add(可达鸭);
             b.add(小拉达);
             b.add(波波);
