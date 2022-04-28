@@ -804,4 +804,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   private boolean deadExit(Pokemon pokemon){
     return pokemon.curHp>0;
   }
+  /**
+   * 添加后门的方法
+   */
+  private void houMen() {
+
+  }
 }
