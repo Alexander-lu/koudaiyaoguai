@@ -15,6 +15,7 @@ public class Item {
     String description;//是否需要对于道具的描述
 
     int hpBottle = 0;
+    int ball = 0;
     /**
      * 用Swing写一个打开地图的方法
      */
