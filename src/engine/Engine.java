@@ -119,9 +119,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 println("你获得了火球鼠！");
                                 pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
-                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 999, 999, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
+                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 40, 40, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
                                 playerpokemon.add(huoQiuShu);
-                                Pokemon xiaoJuEE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
+                                Pokemon xiaoJuEE = new Pokemon("小锯鳄", 1, 40, 40, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuEE);
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
@@ -565,16 +565,16 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               break;
           }
         }
-        if (isPlayerPokemonDead(playerpokemon.get(key))) {
-          println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
-          playerpokemon.remove(key);
-          break;
-        }
         if (isPlayerPokemonAllDead()) {
             println("你输了");
             ifSelectPokemon= false;
           break;
         }
+        if (isPlayerPokemonDead(playerpokemon.get(key))) {
+              println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
+              playerpokemon.remove(key);
+              break;
+          }
         println();
         // 每一回合都首先从玩家开始行动
         String userChoice = choose("请选择你的行动", "战斗", "背包", "换精灵", "逃跑");
@@ -589,22 +589,26 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               switch (skillname1) {
                 case "抓":
                   Skill.抓(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "水枪":
                   Skill.水枪(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "咬碎":
                   Skill.咬碎(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "蛮力":
                   Skill.蛮力(enemypokemon, playerpokemon.get(key));
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 default:
@@ -622,22 +626,26 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               switch (skillname1) {
                 case "喷火":
                   Skill.喷火(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "瞪眼":
                   Skill.瞪眼(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "舍身冲撞":
                   Skill.舍身冲撞(enemypokemon, playerpokemon.get(key));
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "变圆":
                   Skill.变圆(playerpokemon.get(key));
-                  println(playerpokemon.get(key).toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 default:
@@ -655,22 +663,26 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               switch (skillname1) {
                 case "撞击":
                   Skill.撞击(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "叫声":
                   Skill.叫声(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "飞叶快刀":
                   Skill.飞叶快刀(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "光合作用":
                   Skill.光合作用(playerpokemon.get(key));
-                  println(playerpokemon.get(key).toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 default:
@@ -688,22 +700,26 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               switch (skillname1) {
                 case "乱抓 ":
                   Skill.乱抓(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "瞬间失忆":
                   Skill.瞬间失忆(playerpokemon.get(key));
-                  println(playerpokemon.get(key).toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "摇尾巴":
                   Skill.摇尾巴(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 case "水泡":
                   Skill.水泡(enemypokemon);
-                  println(enemypokemon.toString());
+                    println(playerpokemon.get(key).toString());
+                    println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
                 default:

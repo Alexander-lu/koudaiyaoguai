@@ -57,16 +57,17 @@ public class Summoner {
                     default:break;
                 }
             }
-            if (isaDead(a, key)) {
-                program.println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
-                a.remove(key);
-                break;
-            }
             if (isaAllDead(a)) {
                 program.println("你输了");
                 ifSelectPokemon= false;
                 break;
             }
+            if (isaDead(a, key)) {
+                program.println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
+                a.remove(key);
+                break;
+            }
+
             program.println();
             // 每一回合都首先从玩家开始行动
             String userChoice = choose("请选择你的行动", program, "战斗", "背包", "换精灵", "逃跑");
@@ -82,20 +83,28 @@ public class Summoner {
                             case "抓":
                                 Skill.抓(b.get(bkey));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "水枪":
                                 Skill.水枪(b.get(bkey));
+                                program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "咬碎":
                                 Skill.咬碎(b.get(bkey));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "蛮力":
                                 Skill.蛮力(b.get(bkey), a.get(key));
+                                program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
@@ -115,21 +124,29 @@ public class Summoner {
                             case "喷火":
                                 Skill.喷火(b.get(bkey));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "瞪眼":
                                 Skill.瞪眼(b.get(bkey));
+                                program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "舍身冲撞":
                                 Skill.舍身冲撞(b.get(bkey), a.get(key));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "变圆":
                                 Skill.变圆(a.get(key));
                                 program.println(a.get(key).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             default:
@@ -148,21 +165,29 @@ public class Summoner {
                             case "撞击":
                                 Skill.撞击(b.get(bkey));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "叫声":
                                 Skill.叫声(b.get(bkey));
+                                program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "飞叶快刀":
                                 Skill.飞叶快刀(b.get(bkey));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "光合作用":
                                 Skill.光合作用(a.get(key));
                                 program.println(a.get(key).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             default:
@@ -181,20 +206,28 @@ public class Summoner {
                             case "乱抓 ":
                                 Skill.乱抓(b.get(bkey));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "瞬间失忆":
                                 Skill.瞬间失忆(a.get(key));
                                 program.println(a.get(key).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "摇尾巴":
                                 Skill.摇尾巴(b.get(bkey));
                                 program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
+                                program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
                             case "水泡":
                                 Skill.水泡(b.get(bkey));
+                                program.println(b.get(bkey).toString());
+                                program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
