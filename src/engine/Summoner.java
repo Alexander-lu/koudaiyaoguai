@@ -4,6 +4,7 @@ import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Summoner {
     RandomGenerator randomGenerator = RandomGenerator.getInstance();
@@ -12,9 +13,11 @@ public class Summoner {
     ArrayList<Item> backpack;//道具背包
 
     public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey) {
+        boolean ifSelectPokemon= true;
+        while (ifSelectPokemon) {
         int key = -1;
         checkYourPokemon(a, program);
-        boolean selectePokemon = true; //设定循坏条件判断是否成功选取出战精灵
+        boolean selectePokemon = true;
         while (selectePokemon) {
             program.println("输入名字来选择出战的宝可梦");
             program.print("> ");
@@ -30,24 +33,43 @@ public class Summoner {
         }
         program.println(a.get(key).toString());
         program.println(b.get(bkey).toString());
-        boolean aa = true;
-        while (aa) {
+        while (true) {
             if (isbDead(b, bkey)) {
-                npcBattle(a, b, program, bkey + 1);
-                npcBattle(a, b, program, bkey + 2);
-                aa = false;
+                ifSelectPokemon= false;
+                break;
+            }
+            if (isbAlive(b, bkey)) {
+                Random random = new Random();
+                int type = random.nextInt(7);
+                switch (type){
+                    case 1:Skill.撞击(a.get(key));
+                        break;
+                    case 2:Skill.叫声(a.get(key));
+                        break;
+                    case 3:Skill.飞叶快刀(a.get(key));
+                        break;
+                    case 4:Skill.抓(a.get(key));
+                        break;
+                    case 5:Skill.龙卷风(a.get(key));
+                        break;
+                    case 6:Skill.起风(a.get(key));
+                        break;
+                    default:break;
+                }
             }
             if (isaDead(a, key)) {
                 program.println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
                 a.remove(key);
+                break;
             }
             if (isaAllDead(a)) {
                 program.println("你输了");
+                ifSelectPokemon= false;
                 break;
             }
             program.println();
             // 每一回合都首先从玩家开始行动
-            String userChoice = choose("请选择你的行动", program, "战斗", "背包", "精灵", "逃跑");
+            String userChoice = choose("请选择你的行动", program, "战斗", "背包", "换精灵", "逃跑");
             if (userChoice.equals("战斗")) {
                 if (a.get(key).name.equals("小锯鳄")) {
                     boolean ifStopThis = true;
@@ -182,26 +204,25 @@ public class Summoner {
                     }
                 }
                 continue;
-            } else if (userChoice.equals("背包")) {
-//        useHealthPotion();
-//        printPlayerStatus();
+            }
+            else if (userChoice.equals("背包")) {
                 continue;
-            } else if (userChoice.equals("精灵")) {
-                checkYourPokemon(a, program);
-//        useHealthPotion();
-//        printPlayerStatus();
-                continue;
-            } else if (userChoice.equals("逃跑")) {
+            }
+            else if (userChoice.equals("换精灵")) {
+                break;
+            }
+            else if (userChoice.equals("逃跑")) {
                 boolean success = randomGenerator.nextBoolean();
                 if (success) {
                     program.println("逃跑成功！");
+                    ifSelectPokemon= false;
                     break;
                 } else {
                     program.println("逃跑失败！");
                 }
             }
 
-
+        }
         }
     }
 
@@ -267,6 +288,12 @@ public class Summoner {
      */
     protected boolean isbDead(ArrayList<Pokemon> b, int bkey) {
         return b.get(bkey).curHp <= 0;
+    }
+    /**
+     * 判断敌人宝可梦是否死亡
+     */
+    protected boolean isbAlive(ArrayList<Pokemon> b, int bkey) {
+        return b.get(bkey).curHp > 0;
     }
 
     /**

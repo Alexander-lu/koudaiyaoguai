@@ -7,6 +7,7 @@ import acm.util.RandomGenerator;
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Engine extends ConsoleProgram implements Backgroundmusic2 {
@@ -98,7 +99,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
 
-                                Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 40, 40, 20, 20, 0, "抓 水枪 咬碎 蛮力");
+                                Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuE);
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
@@ -118,8 +119,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 println("你获得了火球鼠！");
                                 pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
-                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 40, 40, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
+                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 999, 999, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
                                 playerpokemon.add(huoQiuShu);
+                                Pokemon xiaoJuEE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
+                                playerpokemon.add(xiaoJuEE);
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
@@ -135,7 +138,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 println("你获得了菊草叶！");
                                 pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
-                                Pokemon juCaoYe = new Pokemon("菊草叶", 1, 40, 40, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
+                                Pokemon juCaoYe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYe);
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
@@ -507,6 +510,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      * 玩家和敌人对战
      */
     private void battle(Pokemon enemypokemon) {
+        boolean ifSelectPokemon= true;
+        while (ifSelectPokemon) {
         int key = -1;
         checkYourPokemon();
         boolean selectePokemon = true; //设定循坏条件判断是否成功选取出战精灵
@@ -526,173 +531,200 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
 
         println(playerpokemon.get(key).toString());
         println(enemypokemon.toString());
-        while (true) {
-            println();
-            // 每一回合都首先从玩家开始行动
-            String userChoice = choose("请选择你的行动", "战斗", "背包", "精灵", "逃跑");
-            if (userChoice.equals("战斗")) {
-                if (playerpokemon.get(key).name.equals("小锯鳄")) {
-                    boolean ifStopThis = true;
-                    while (ifStopThis) {
-                        println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
-                        println("（输入技能名称来使用技能");
-                        print("> ");
-                        String skillname1 = readLine();
-                        switch (skillname1) {
-                            case "抓":
-                                Skill.抓(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "水枪":
-                                Skill.水枪(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "咬碎":
-                                Skill.咬碎(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "蛮力":
-                                Skill.蛮力(enemypokemon, playerpokemon.get(key));
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            default:
-                                println("你输入的命令有误，请重新输入");
-                        }
-                    }
-                }
-                if (playerpokemon.get(key).name.equals("火球鼠")) {
-                    boolean ifStopThis = true;
-                    while (ifStopThis) {
-                        println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
-                        println("（输入技能名称来使用技能");
-                        print("> ");
-                        String skillname1 = readLine();
-                        switch (skillname1) {
-                            case "喷火":
-                                Skill.喷火(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "瞪眼":
-                                Skill.瞪眼(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "舍身冲撞":
-                                Skill.舍身冲撞(enemypokemon, playerpokemon.get(key));
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "变圆":
-                                Skill.变圆(playerpokemon.get(key));
-                                println(playerpokemon.get(key).toString());
-                                ifStopThis = false;
-                                break;
-                            default:
-                                println("你输入的命令有误，请重新输入");
-                        }
-                    }
-                }
-                if (playerpokemon.get(key).name.equals("菊草叶")) {
-                    boolean ifStopThis = true;
-                    while (ifStopThis) {
-                        println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
-                        println("（输入技能名称来使用技能");
-                        print("> ");
-                        String skillname1 = readLine();
-                        switch (skillname1) {
-                            case "撞击":
-                                Skill.撞击(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "叫声":
-                                Skill.叫声(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "飞叶快刀":
-                                Skill.飞叶快刀(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "光合作用":
-                                Skill.光合作用(playerpokemon.get(key));
-                                println(playerpokemon.get(key).toString());
-                                ifStopThis = false;
-                                break;
-                            default:
-                                println("你输入的命令有误，请重新输入");
-                        }
-                    }
-                }
-                if (playerpokemon.get(key).name.equals("可达鸭")) {
-                    boolean ifStopThis = true;
-                    while (ifStopThis) {
-                        println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
-                        println("（输入技能名称来使用技能");
-                        print("> ");
-                        String skillname1 = readLine();
-                        switch (skillname1) {
-                            case "乱抓 ":
-                                Skill.乱抓(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "瞬间失忆":
-                                Skill.瞬间失忆(playerpokemon.get(key));
-                                println(playerpokemon.get(key).toString());
-                                ifStopThis = false;
-                                break;
-                            case "摇尾巴":
-                                Skill.摇尾巴(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            case "水泡":
-                                Skill.水泡(enemypokemon);
-                                println(enemypokemon.toString());
-                                ifStopThis = false;
-                                break;
-                            default:
-                                println("你输入的命令有误，请重新输入");
-                        }
-                    }
-                }
-                continue;
-            } else if (userChoice.equals("背包")) {
-//        useHealthPotion();
-//        printPlayerStatus();
-                continue;
-            } else if (userChoice.equals("精灵")) {
-                checkYourPokemon();
-//        useHealthPotion();
-//        printPlayerStatus();
-                continue;
-            } else if (userChoice.equals("逃跑")) {
-                boolean success = randomGenerator.nextBoolean();
-                if (success) {
-                    println("逃跑成功！");
-                    break;
-                } else {
-                    println("逃跑失败！");
-                }
+      while (true) {
+        if (isEnemyDead(enemypokemon)) {
+            ifSelectPokemon= false;
+          break;
+        }
+        if (isEnemyAlive(enemypokemon)) {
+          Random random = new Random();
+          int type = random.nextInt(7);
+          switch (type) {
+            case 1:
+              Skill.撞击(playerpokemon.get(key));
+              break;
+            case 2:
+              Skill.叫声(playerpokemon.get(key));
+              break;
+            case 3:
+              Skill.飞叶快刀(playerpokemon.get(key));
+              break;
+            case 4:
+              Skill.抓(playerpokemon.get(key));
+              break;
+            case 5:
+              Skill.龙卷风(playerpokemon.get(key));
+              break;
+            case 6:
+              Skill.起风(playerpokemon.get(key));
+              break;
+            default:
+              break;
+          }
+        }
+        if (isPlayerPokemonDead(playerpokemon.get(key))) {
+          println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
+          playerpokemon.remove(key);
+          break;
+        }
+        if (isPlayerPokemonAllDead()) {
+            println("你输了");
+            ifSelectPokemon= false;
+          break;
+        }
+        println();
+        // 每一回合都首先从玩家开始行动
+        String userChoice = choose("请选择你的行动", "战斗", "背包", "换精灵", "逃跑");
+        if (userChoice.equals("战斗")) {
+          if (playerpokemon.get(key).name.equals("小锯鳄")) {
+            boolean ifStopThis = true;
+            while (ifStopThis) {
+              println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
+              println("（输入技能名称来使用技能");
+              print("> ");
+              String skillname1 = readLine();
+              switch (skillname1) {
+                case "抓":
+                  Skill.抓(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "水枪":
+                  Skill.水枪(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "咬碎":
+                  Skill.咬碎(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "蛮力":
+                  Skill.蛮力(enemypokemon, playerpokemon.get(key));
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                default:
+                  println("你输入的命令有误，请重新输入");
+              }
             }
-            if (isEnemyDead(enemypokemon)) {
-                break;
-            } else {
-//        attackplayer
+          }
+          if (playerpokemon.get(key).name.equals("火球鼠")) {
+            boolean ifStopThis = true;
+            while (ifStopThis) {
+              println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
+              println("（输入技能名称来使用技能");
+              print("> ");
+              String skillname1 = readLine();
+              switch (skillname1) {
+                case "喷火":
+                  Skill.喷火(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "瞪眼":
+                  Skill.瞪眼(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "舍身冲撞":
+                  Skill.舍身冲撞(enemypokemon, playerpokemon.get(key));
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "变圆":
+                  Skill.变圆(playerpokemon.get(key));
+                  println(playerpokemon.get(key).toString());
+                  ifStopThis = false;
+                  break;
+                default:
+                  println("你输入的命令有误，请重新输入");
+              }
             }
-            if (isPlayerPokemonDead(playerpokemon.get(key))) {
-                println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
+          }
+          if (playerpokemon.get(key).name.equals("菊草叶")) {
+            boolean ifStopThis = true;
+            while (ifStopThis) {
+              println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
+              println("（输入技能名称来使用技能");
+              print("> ");
+              String skillname1 = readLine();
+              switch (skillname1) {
+                case "撞击":
+                  Skill.撞击(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "叫声":
+                  Skill.叫声(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "飞叶快刀":
+                  Skill.飞叶快刀(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "光合作用":
+                  Skill.光合作用(playerpokemon.get(key));
+                  println(playerpokemon.get(key).toString());
+                  ifStopThis = false;
+                  break;
+                default:
+                  println("你输入的命令有误，请重新输入");
+              }
             }
-            if (isPlayerPokemonAllDead()) {
-                break;
+          }
+          if (playerpokemon.get(key).name.equals("可达鸭")) {
+            boolean ifStopThis = true;
+            while (ifStopThis) {
+              println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
+              println("（输入技能名称来使用技能");
+              print("> ");
+              String skillname1 = readLine();
+              switch (skillname1) {
+                case "乱抓 ":
+                  Skill.乱抓(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "瞬间失忆":
+                  Skill.瞬间失忆(playerpokemon.get(key));
+                  println(playerpokemon.get(key).toString());
+                  ifStopThis = false;
+                  break;
+                case "摇尾巴":
+                  Skill.摇尾巴(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                case "水泡":
+                  Skill.水泡(enemypokemon);
+                  println(enemypokemon.toString());
+                  ifStopThis = false;
+                  break;
+                default:
+                  println("你输入的命令有误，请重新输入");
+              }
             }
+          }
+          continue;
+        } else if (userChoice.equals("背包")) {
+
+          continue;
+        } else if (userChoice.equals("换精灵")) {
+break;
+        } else if (userChoice.equals("逃跑")) {
+          boolean success = randomGenerator.nextBoolean();
+          if (success) {
+            println("逃跑成功！");
+              ifSelectPokemon= false;
+            break;
+          } else {
+            println("逃跑失败！");
+          }
+        }
+}
         }
     }
 
@@ -700,6 +732,12 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      * 判断敌人宝可梦是否死亡
      */
     protected boolean isEnemyDead(Pokemon pokemon) {
+        return pokemon.curHp <= 0;
+    }
+    /**
+     * 判断敌人宝可梦是否活着
+     */
+    protected boolean isEnemyAlive(Pokemon pokemon) {
         return pokemon.curHp > 0;
     }
 
@@ -1005,7 +1043,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      * 判断玩家宝可梦是否死亡
      */
     private boolean isPlayerPokemonDead(Pokemon pokemon) {
-        return pokemon.curHp > 0;
+        return pokemon.curHp <= 0;
     }
 
     /**
@@ -1112,6 +1150,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             b.add(金);
             b.add(绿毛虫);
             addddd.npcBattle(playerpokemon, b, this, 0);
+            addddd.npcBattle(playerpokemon, b, this, 1);
+            addddd.npcBattle(playerpokemon, b, this, 2);
         }
     }
 
@@ -1164,6 +1204,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             b.add(小拉达);
             b.add(波波);
             addddd.npcBattle(playerpokemon, b, this, 0);
+            addddd.npcBattle(playerpokemon, b, this, 1);
+            addddd.npcBattle(playerpokemon, b, this, 2);
         }
     }
 }
