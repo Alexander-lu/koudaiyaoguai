@@ -95,7 +95,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "小锯鳄Yes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了小锯鳄！");
-                                pause(DELAY*2);
+                                pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
 
                                 Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 40, 40, 20, 20, 0, "抓 水枪 咬碎 蛮力");
@@ -115,7 +115,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "火球鼠Yes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了火球鼠！");
-                                pause(DELAY*2);
+                                pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
                                 Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 40, 40, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
                                 playerpokemon.add(huoQiuShu);
@@ -132,7 +132,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "菊草叶Yes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了菊草叶！");
-                                pause(DELAY*2);
+                                pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
                                 Pokemon juCaoYe = new Pokemon("菊草叶", 1, 40, 40, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYe);
@@ -150,6 +150,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
 
             /** 如果玩家进入草丛，触发战斗 */
             caoCongShuaGuai();
+            /** 如果玩家进入山洞，触发战斗 */
+            shanDongShuaGuai();
             if (isPlayerPokemonAllDead()) {
                 println("你的宝可梦已经全部死亡，游戏失败");
                 break;
@@ -228,7 +230,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      * 开场白&妈妈和我的对话
      */
     private void opentalking() {
-        pause(DELAY*35);
+        pause(DELAY * 35);
         pause(DELAY);
         changeMusic("res/mp3/Pokemon-chatWithDoctor.mp3");
         pause(DELAY);
@@ -443,7 +445,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (place.getbaowu() != null) {
             changeMusic("res/mp3/Pokemon-receiveItems.mp3");
             println("DEBUG2 - 你找到了一个" + place.getbaowu() + "！");
-            pause(DELAY*2);
+            pause(DELAY * 2);
             changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
             daojus.add(place.getbaowu());
             this.currPlace.setbaowu(null);
@@ -740,8 +742,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     /**
      * 道馆的剧情
      */
-    private void daoGuanJuQing(){
-        if (currPlace.getbianhao() == 43){
+    private void daoGuanJuQing() {
+        if (currPlace.getbianhao() == 43) {
             daoGuanRuKou();
         }
 
@@ -752,12 +754,13 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             }
         }
 
-        if (daoGuanCount == 2){
-            if (currPlace.getbianhao() == 48){
+        if (daoGuanCount == 2) {
+            if (currPlace.getbianhao() == 48) {
                 daoGuanNeiYuan();
             }
         }
     }
+
     private void daoGuanRuKou() {
         println(playername + "来到飞行道馆，开始挑战。");
         pause(DELAY);
@@ -819,7 +822,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         moveTo(currPlace.getWest());
     }
 
-    private void daoGuanNeiYuan(){
+    private void daoGuanNeiYuan() {
         println("“呼~~刚才的战斗还真是惊险，一个小弟还是有两下子的，不知道会不会遇到更大的阻力......啊！！！！！！”小智话还没说完，大地忽然颤动起来。");
         pause(DELAY);
         println("");
@@ -864,6 +867,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("");
         println("你来到了前院西面的晾晒小院，进入战斗");
     }
+
     private void daoGuan() {
         println("阿速：我是飞行道馆的馆长阿速！");
         println("阿速：世界上的飞行类宝可梦一旦遭遇电击就很容易受伤。");
@@ -1009,15 +1013,68 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                 battle(尾立);
             }
         }
-            if (currPlace.getbianhao() == 15 & ifStopThisWhile1) {
-      Summoner addddd = new Summoner();
-      ArrayList<Pokemon> b = new ArrayList<>();
-      Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-      Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
-      Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
-      b.add(尾立);
-      b.add(金);
-      b.add(绿毛虫);
-      addddd.npcBattle(playerpokemon,b,this,0);
+        if (currPlace.getbianhao() == 15 & ifStopThisWhile1) {
+            Summoner addddd = new Summoner();
+            ArrayList<Pokemon> b = new ArrayList<>();
+            Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+            Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
+            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+            b.add(尾立);
+            b.add(金);
+            b.add(绿毛虫);
+            addddd.npcBattle(playerpokemon, b, this, 0);
+        }
+    }
+
+    /**
+     * 添加山洞刷怪的方法
+     */
+    private void shanDongShuaGuai() {
+        if (currPlace.getbianhao() == 29 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 地鼠 = new Pokemon("地鼠", 5, 40, 40, 20, 20, 0, "");
+                battle(地鼠);
+            }
+        }
+        if (currPlace.getbianhao() == 33 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 金 = new Pokemon("金", 5, 40, 40, 20, 20, 0, "");
+                battle(金);
+            }
+        }
+        if (currPlace.getbianhao() == 37 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 波波 = new Pokemon("波波", 5, 40, 40, 20, 20, 0, "");
+                battle(波波);
+            }
+        }
+        if (currPlace.getbianhao() == 39 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 小拉达 = new Pokemon("小拉达", 6, 40, 40, 20, 20, 0, "");
+                battle(小拉达);
+            }
+        }
+        if (currPlace.getbianhao() == 41 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 可达鸭 = new Pokemon("可达鸭", 8, 40, 40, 20, 20, 0, "");
+                battle(可达鸭);
+            }
+        }
+        if (currPlace.getbianhao() == 34 & ifStopThisWhile1) {
+            Summoner addddd = new Summoner();
+            ArrayList<Pokemon> b = new ArrayList<>();
+            Pokemon 可达鸭 = new Pokemon("可达鸭", 9, 40, 40, 20, 20, 0, "");
+            Pokemon 小拉达 = new Pokemon("小拉达", 9, 40, 40, 20, 20, 0, "");
+            Pokemon 波波 = new Pokemon("波波", 9, 40, 40, 20, 20, 0, "");
+            b.add(可达鸭);
+            b.add(小拉达);
+            b.add(波波);
+            addddd.npcBattle(playerpokemon, b, this, 0);
+        }
     }
 }
