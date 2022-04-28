@@ -8,7 +8,7 @@ public class Place {
     private Place south;    // 南边的地点
     private Place east;     // 东边的地点
     private Place west;     // 西边的地点
-    private int bianhao;
+    public int bianhao;
 
     public Place(String name,String message,int bianhao) {
         this.name = name;
