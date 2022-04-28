@@ -87,6 +87,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
             String d1 = readLine();
             switch (d1) {
               case "小锯鳄":
+                Picture.小锯鳄(this);
                 println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
                 pause(DELAY);
                 println("输入小锯鳄Yes 来获得小锯鳄");
@@ -99,8 +100,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 ifStopThisWhile1 = true;
                 break;
               case "火球鼠":
-                println(
-                    "火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
+                Picture.火球鼠(this);
+                println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
                 pause(DELAY);
                 println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
                 pause(DELAY);
@@ -114,8 +115,8 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
                 ifStopThisWhile1 = true;
                 break;
               case "菊草叶":
-                println(
-                    "菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
+                Picture.菊草叶(this);
+                println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
                 pause(DELAY);
                 println("输入菊草叶Yes 来获得菊草叶");
                 println("");
