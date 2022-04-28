@@ -30,11 +30,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      */
     private Place currPlace;
     ArrayList<Place> places;
-    ArrayList<String> daojus = new ArrayList<>();
+    ArrayList<Item> Items = new ArrayList<>();
     ArrayList<Pokemon> playerpokemon = new ArrayList<>();
     boolean gameEnded;
     public String playername;
-    Item map = new Item();
+    Item map = new Item("地图");
 
     int yaoshi = 0;//打败道馆馆长获得钥匙，名字待修改
 
@@ -89,18 +89,18 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "小锯鳄":
                                 Picture.小锯鳄(this);
                                 println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
-//                                pause(DELAY);
+////                                pause(DELAY);
                                 println("输入小锯鳄Yes 来获得小锯鳄");
                                 println("");
                                 break;
                             case "小锯鳄Yes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了小锯鳄！");
-                                pause(DELAY * 2);
+//                                pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
-
                                 Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuE);
+                                getJinLingQiu();
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 println("你获得一个小锯鳄！");
@@ -108,38 +108,42 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                             case "火球鼠":
                                 Picture.火球鼠(this);
                                 println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
-//                                pause(DELAY);
+////                                pause(DELAY);
                                 println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
-//                                pause(DELAY);
+////                                pause(DELAY);
                                 println("输入火球鼠Yes 来获得火球鼠");
                                 println("");
                                 break;
                             case "火球鼠Yes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了火球鼠！");
-                                pause(DELAY * 2);
+//                                pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
-                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 40, 40, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
+                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 999, 999, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
                                 playerpokemon.add(huoQiuShu);
-                                Pokemon xiaoJuEE = new Pokemon("小锯鳄", 1, 40, 40, 20, 20, 0, "抓 水枪 咬碎 蛮力");
+                                Pokemon xiaoJuEE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuEE);
+                                Pokemon juCaoYewe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
+                                playerpokemon.add(juCaoYewe);
+                                getJinLingQiu();
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
                             case "菊草叶":
                                 Picture.菊草叶(this);
                                 println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
-//                                pause(DELAY);
+////                                pause(DELAY);
                                 println("输入菊草叶Yes 来获得菊草叶");
                                 println("");
                                 break;
                             case "菊草叶Yes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了菊草叶！");
-                                pause(DELAY * 2);
+//                                pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
                                 Pokemon juCaoYe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYe);
+                                getJinLingQiu();
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
@@ -160,14 +164,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             caoCongShuaGuai();
             /** 如果玩家进入山洞，触发战斗 */
             shanDongShuaGuai();
-            if (isPlayerPokemonAllDead()) {
-                println("你的宝可梦已经全部死亡，游戏失败");
-                break;
-            }
+
             println();
             println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"打开地图\"使用地图）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
             print("> ");
-
             String direction = readLine();
             switch (direction) {
                 case "东":
@@ -202,7 +202,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                     sousuo(currPlace);
                     break;
                 case "道具":
-                    chakan(currPlace);
+                    chakan();
                     break;
                 case "宝可梦":
                     checkYourPokemon();
@@ -455,7 +455,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             println("DEBUG2 - 你找到了一个" + place.getbaowu() + "！");
 //            pause(DELAY*2);
             changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
-            daojus.add(place.getbaowu());
+            Items.add(new Item (place.getbaowu()));
             this.currPlace.setbaowu(null);
         } else {
             println("DEBUG2 - 你什么没找到。");
@@ -465,14 +465,14 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     /**
      * 查看你的物品箱有哪些物品
      */
-    private void chakan(Place place) {
-        if (daojus.isEmpty()) {
+    private void chakan() {
+        if (Items.isEmpty()) {
             println("你的道具箱内空无一物。");
         } else {
-            println("你现在共有" + daojus.size() + "个道具，依次是：");
-            for (int k = 0; k < daojus.size(); k++) {
+            println("你现在共有" + Items.size() + "个道具，依次是：");
+            for (int k = 0; k < Items.size(); k++) {
                 int l = k + 1;
-                println(l + "." + daojus.get(k));
+                println(l + "." + Items.get(k).name);
             }
         }
     }
@@ -486,9 +486,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      * 查看你的物品里有没有紫金石
      */
     private void checkZiJinStone() {
-        for (int k = 0; k < daojus.size(); k++) {
+        for (int k = 0; k < Items.size(); k++) {
             int l = k + 1;
-            if (daojus.get(k).equals("紫金石")) {
+            if (Items.get(k).equals("紫金石")) {
                 ifZijinStone = true;
             }
         }
@@ -516,6 +516,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         boolean ifSelectPokemon= true;
         while (ifSelectPokemon) {
         int key = -1;
+            if (isPlayerPokemonAllDead()) {
+                println("你的宝可梦已经全部死亡，游戏失败");
+                deadExit();
+                break;
+            }
         checkYourPokemon();
         boolean selectePokemon = true; //设定循坏条件判断是否成功选取出战精灵
         while (selectePokemon) {
@@ -527,7 +532,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                     key = i;
                     selectePokemon = false;
                 } else {
-                    println("你输入的命令有误，请重新输入");
                 }
             }
         }
@@ -567,6 +571,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         }
         if (isPlayerPokemonAllDead()) {
             println("你输了");
+            deadExit();
             ifSelectPokemon= false;
           break;
         }
@@ -729,7 +734,29 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
           }
           continue;
         } else if (userChoice.equals("背包")) {
-
+            chakan();
+            boolean selectePokemon2 = true; //设定循坏条件判断是否成功选取出战精灵
+            while (selectePokemon2) {
+                println("输入名字来选择使用的道具");
+                print("> ");
+                String pickYourItem = readLine();
+                for (int i = 0; i < Items.size(); i++) {
+                    if (pickYourItem.equals(Items.get(i).name)) {
+                        switch (pickYourItem){
+                            case "精灵球":Item a = new Item();
+                            a.catchPokemon(playerpokemon,enemypokemon,this);
+                                Skill.抓精灵(enemypokemon);
+                            break;
+                            case "血瓶":Item bb = new Item();
+                                bb.useHpBottle(playerpokemon.get(key),this);
+                                break;
+                            default:
+                        }
+                        selectePokemon2 = false;
+                    } else {
+                    }
+                }
+            }
           continue;
         } else if (userChoice.equals("换精灵")) {
 break;
@@ -803,10 +830,9 @@ break;
      */
     private void daoGuanJuQing() {
         /**道馆入口*/
-        if (currPlace.getbianhao() == 43) {
+        if (currPlace.getbianhao() == 43 && daoGuanCount == 1) {
             daoGuanRuKou();
         }
-
         /**道馆前院*/
         if (daoGuanCount == 1) {
             if (currPlace.getbianhao() == 44) {
@@ -830,16 +856,17 @@ break;
                 daoGuanCount++;
             }
         }
+
     }
 
     /**
      * 道馆入口提示
      */
     private void daoGuanRuKou() {
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println(playername + "来到飞行道馆，开始挑战。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
     }
 
@@ -850,52 +877,52 @@ break;
      * 剧情文案结束后自动前进到晾晒小院进行战斗
      */
     private void daoGuanQianYuan() {
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("此时，" + playername + "他们已经到达了道馆的门口。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println(playername + "说：“好，我们已经到了，昂首挺胸进去吧！” 他说完就向入口走去。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“等一下，" + playername + "！”pokemon叫住" + playername + "，“我总觉得这个入口有点不大对劲！”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“什么啊？你别吓我啦！”" + playername + "不以为然，继续走进去。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("说时迟，那时快，一个晾衣架飞向" + playername + "，" + playername + "被突如其来的一幕惊呆了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“" + playername + "，快躲开啊！”pokemon他们心都急得快跳出嗓子眼了，却丝毫帮不上忙。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("在这时，道馆的西方突然出现了一道闪光，" + playername + "来不及多想，急忙俯身，避开了衣架的袭击。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("一个人影闪身到他们面前，警惕的说道。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“HEY！YOU！WHO ARE YOU！ME在这里晾内裤竟然发现YOU擅闯道馆？？！！”陌生男子惊道。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“这个啊，我们要穿越东边的山洞，但是山洞入口被阿速馆长控制了。”" + playername + "解释道，“我们是来打败馆长，拿取钥匙的。”");
-        pause(DELAY);
-        pause(DELAY);
+//        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“WHAT？？！！用别人的东西，还要把人家打一顿。到底YOU是反派还是ME是反派......就没有想过问馆长打个借条......”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“诶？对啊！那这样......我们设计的战斗系统不就白费了......别废话，就先拿你练手。”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“挑战ME的YOU实在是不知死活！ME的精灵是NO.1！在战场上是不败的~！YOU也会和以前那些不知死活的敌人一样，麻痹着败北吧！”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("你来到了前院西面的晾晒小院，进入战斗。");
         moveTo(currPlace.getWest());
-        //battleEnemyA();
-        pause(DELAY);
+        battleEnemyA();
+//        pause(DELAY);
         println("");
         println("“OH~NO~！YOU真的厉害~OK~YOU可以从ME的身上过去。诶诶！别踩脸啊！”");
     }
@@ -904,63 +931,66 @@ break;
      * 第一次到达道馆内院
      */
     private void daoGuanNeiYuan() {
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“呼~~刚才的战斗还真是惊险，一个小弟还是有两下子的，不知道会不会遇到更大的阻力......啊！！！！！！”" + playername + "话还没说完，大地忽然颤动起来。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“" + playername + ",这......这是怎么回事？”pokemon很惊慌。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“该不会是地震了吧。”" + playername + "扶稳pokemon道。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“不！这不是地震！而是其它的......”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“的确如此，这只不过是我走路引发的而已。”一只体型巨大的自然精灵出现了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“你好。”pokemon上前搭话到，“请你帮我们把钥匙拿到好吗？”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“不可以！”精灵回答的很干脆，“数百年前我便身负使命要保护这里的一切，不论是一花一草，还是一砖一瓦，都不可被侵犯。”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“你在说什么啊？”" + playername + "上前说道，“馆长现在一人将硕大的山洞据为己有，私自占有公共资源，难道你都不管吗？你还是自然精灵吗？”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“我只是尽我的责任去守护者他而已。”自然之灵平静地说，并没有因为" + playername + "的语气而生气。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“可是......”" + playername + "刚想说什么，就吃惊的发现：“它变色了，它被精灵病毒控制了！！！！！！它现在应该是被馆长PUA了！！！！！！”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦！我要杀了你们”自然之灵突然暴走，不顾一切地向" + playername + "他们扑来......");
-        //battleEnemyB();
-        pause(DELAY);
+        battleEnemyB();
+//        pause(DELAY);
         println("");
         println("“竟然如此强劲......！比预想中的还要高呢......！......:~(”自然之灵虚弱倒在地上，还不明白自己为何竟羸弱至此，“原来......原来我一直是被利用了吗......可恶......你们......可以帮我报仇嘛。我的力量都被馆长吸收了，你们一定要小心。”");
     }
 
+    /**
+     * 第一次到达道馆正房
+     */
     private void daoGuanZhengFang() {
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("阿速：“我是飞行道馆的馆长阿速！”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("阿速：“世界上的飞行类宝可梦一旦遭遇电击就很容易受伤。”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("阿速：“受伤的宝可梦没法继续飞行了...”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("阿速：“我把受伤的宝可梦都放在山洞里，保护的很好。”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("阿速：“有我在，谁也别想进入山洞。”");
-        //battleEnemyC();
-        pause(DELAY);
+        battleEnemyC();
+//        pause(DELAY);
         println("");
         println("“纵使你打败了我......我也不会告诉你钥匙就在旁边的耳房里......噗（吐血状）..........”阿速败北。");
         yaoshi++;
@@ -979,9 +1009,9 @@ break;
             A.add(尾立);
             A.add(金);
             A.add(绿毛虫);
-            enemyA.npcBattle(playerpokemon, A, this, 0);
-            enemyA.npcBattle(playerpokemon, A, this, 1);
-            enemyA.npcBattle(playerpokemon, A, this, 2);
+            enemyA.npcBattle(playerpokemon, A, this, 0,gameEnded);
+            enemyA.npcBattle(playerpokemon, A, this, 1,gameEnded);
+            enemyA.npcBattle(playerpokemon, A, this, 2,gameEnded);
         }
     }
 
@@ -998,9 +1028,9 @@ break;
             B.add(尾立);
             B.add(金);
             B.add(绿毛虫);
-            enemyB.npcBattle(playerpokemon, B, this, 0);
-            enemyB.npcBattle(playerpokemon, B, this, 1);
-            enemyB.npcBattle(playerpokemon, B, this, 2);
+            enemyB.npcBattle(playerpokemon, B, this, 0,gameEnded);
+            enemyB.npcBattle(playerpokemon, B, this, 1,gameEnded);
+            enemyB.npcBattle(playerpokemon, B, this, 2,gameEnded);
         }
     }
 
@@ -1017,23 +1047,22 @@ break;
             C.add(尾立);
             C.add(金);
             C.add(绿毛虫);
-            enemyC.npcBattle(playerpokemon, C, this, 0);
-            enemyC.npcBattle(playerpokemon, C, this, 1);
-            enemyC.npcBattle(playerpokemon, C, this, 2);
+            enemyC.npcBattle(playerpokemon, C, this, 0,gameEnded);
+            enemyC.npcBattle(playerpokemon, C, this, 1,gameEnded);
+            enemyC.npcBattle(playerpokemon, C, this, 2,gameEnded);
         }
     }
 
 
+
+    /**
+     * 判断山洞的变量
+     */
+    int shanDong30Count = 0;
+    int shanDong41Count = 0;
     /**
      * 山洞的剧情
      */
-    /**
-     * 有钥匙后山洞开门的方法
-     */
-
-    int shanDong30Count = 0;
-    int shanDong41Count = 0;
-
     private void shanDongJuQing() {
         openShanDon();//进入山洞前的判断条件
 
@@ -1058,9 +1087,9 @@ break;
         if (yaoshi == 0) {
             if (currPlace.getbianhao() == 28) {//需要插入音乐
                 println("旁边的大爷：...");
-//                pause(DELAY);
+////                pause(DELAY);
                 println("旁边的大爷：前面是山洞，里面生活着许多奇特的宝可梦。");
-//                pause(DELAY);
+////                pause(DELAY);
                 println("旁边的大爷：穿越山洞，就可以通往下一个城市了。");
                 println("旁边的大爷：...");
                 println("旁边的大爷：这座山被飞行道馆的馆长霸占了，进入山洞需要钥匙。你身上有钥匙吗？");
@@ -1082,100 +1111,100 @@ break;
     }
 
     private void shanDong30() {
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“好，我们终于进来了，快走吧。”pokemon说，“已经来到了山洞。“一定要把紫金石找到！”" + playername + "说。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“紫金石？你们说的是紫金石吗？”突然，地面上有只大岩蛇钻了出来。“竟敢觊觎我们祖传的宝物，我要让你们尝尝苦头！”大岩蛇使出了岩石封杀。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“干嘛？紫金石是用来做研究的，对人和精灵都要做出贡献的，不是吗？”" + playername + "使出了泡沫光线，岩石封杀没打中。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“哈哈哈哈，原来如此，这么看起来你们还是执迷不悟，我来做你们的对手！”大岩蛇使出了龙息打" + playername + "，" + playername + "麻痹了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“" + playername + "，你没事吧？”pokemon大声叫道。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“接下来就轮到你了！”大岩蛇又使出铁尾，想攻击pokemon。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“会让你得逞吗？”" + playername + "用尽浑身力气，使出了泡沫光线，大岩蛇被打中了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“哈哈哈，没事没事，这么点小伤还算不了什么......你们等着，我还会回来的！”大岩蛇使出了龙息。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("说完，大岩蛇就沿着墙边飞快地爬进了山洞深处，刹那间消失不见。");
     }
 
     private void shanDong41() {
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“哈哈，没想到你们还真是契而不舍，竟然找到了我的老巢，既然如此......只有鱼死网破了！！”大岩蛇癫狂道。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“不会让你这么做的。”" + playername + "，“上了！”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“好！”" + playername + "和pokemon使出了电之潮旋，大岩蛇被打中了，疼得动不了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“趁现在，接招吧，大岩蛇！”pokemon使出了铁尾。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“我才不吃这套呢！”大岩蛇使出了岩石封杀，pokemon被打中，速度下降了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“该死。”pokemon又站了起来。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“没错，不过该死的那个是你！”大岩蛇使出了龙息。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“pokemon！！！！”这时，" + playername + "冲了过来，使出了潮水，龙息和潮水引起了一场爆炸。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“没用的，让你们尝尝这个绝招吧！”大岩蛇使出了岩石利刃，" + playername + "和pokemon都被打中了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“我就说嘛，你们根本不是我的对手。”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“那我呢？”不知道什么时候，妈妈突然出现在大岩蛇身后，对大岩蛇“嘭！嘭！”就是两拳。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“哈......你......你趁我不备，背后偷袭，不讲武德！！”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“还没完！”说着，妈妈从身后拿出家里的菜刀、菜板、葱、姜、蒜、干辣椒、砂锅......似乎是准备现场制作一道蛇肉羹。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“你不要过来啊！！看我的，岩石利刃！！”");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("岩石利刃打中了" + playername + "，" + playername + "失去战斗能力了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“你这混蛋，竟敢这样伤害" + playername + "！我不会放过你的！”妈妈抬手便要结果了大岩蛇。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("就在此刻，一阵眩人眼目的紫光闪过，挡住了下落的刀锋，并将大岩蛇恢复了正常，又带着妈妈一起消失了......");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("片刻后，一阵铃声响起，拿起一看是妈妈打来的。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("“喂，" + playername + "啊，我怎么突然之间到家了，刚才那个食材怎么也不见了。");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("原来，传说中的紫金石，不仅能保护这里的动物，还有传送的神奇能力......这块石头还有太多的秘密等待挖掘了......");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("”哦！对了妈妈，您是怎么知道我在哪里的呀？“");
-        pause(DELAY);
+//        pause(DELAY);
         println("");
         println("”这还不简单，你手机里的那些APP争先恐后地在报告你的位置呐“");
     }
@@ -1184,7 +1213,7 @@ break;
      * 获得精灵球的方法
      */
     private void getJinLingQiu() {
-
+Items.add(new Item("精灵球"));
     }
 
     /**
@@ -1288,19 +1317,6 @@ break;
                 battle(地鼠);
             }
         }
-        if (currPlace.getbianhao() == 15 & ifStopThisWhile1) {
-            Summoner addddd = new Summoner();
-            ArrayList<Pokemon> b = new ArrayList<>();
-            Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-            Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
-            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
-            b.add(尾立);
-            b.add(金);
-            b.add(绿毛虫);
-            addddd.npcBattle(playerpokemon, b, this, 0);
-            addddd.npcBattle(playerpokemon, b, this, 1);
-            addddd.npcBattle(playerpokemon, b, this, 2);
-        }
     }
 
     /**
@@ -1351,9 +1367,9 @@ break;
             b.add(可达鸭);
             b.add(小拉达);
             b.add(波波);
-            addddd.npcBattle(playerpokemon, b, this, 0);
-            addddd.npcBattle(playerpokemon, b, this, 1);
-            addddd.npcBattle(playerpokemon, b, this, 2);
+            addddd.npcBattle(playerpokemon, b, this, 0,gameEnded);
+            addddd.npcBattle(playerpokemon, b, this, 1,gameEnded);
+            addddd.npcBattle(playerpokemon, b, this, 2,gameEnded);
         }
     }
 }

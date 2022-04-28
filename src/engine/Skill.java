@@ -3,6 +3,9 @@ package engine;
 public final class Skill {
     public String skillName;
     public String skillIntroduction;
+    public static void  抓精灵(Pokemon pokemon){
+        pokemon.curHp = 0;
+    }
     /**
      * 菊草叶的技能
      */

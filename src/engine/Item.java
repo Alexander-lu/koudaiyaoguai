@@ -14,6 +14,13 @@ public class Item {
     int number;
     String description;//是否需要对于道具的描述
 
+    public Item() {
+    }
+
+    public Item(String name) {
+        this.name = name;
+    }
+
     int hpBottle = 0;
     int ball = 0;
     /**
@@ -27,7 +34,7 @@ public class Item {
      * 打开地图1
      */
     public void openMap(Place currPlace) {
-        if (currPlace.getbianhao() >= 1 && currPlace.getbianhao() <= 27) {
+        if (currPlace.getbianhao() >= 0 && currPlace.getbianhao() <= 27) {
             openMap1();
 
         } else if (currPlace.getbianhao() >= 28 && currPlace.getbianhao() <= 42) {
@@ -40,24 +47,7 @@ public class Item {
 
     public void openMap1() {
         try {
-            image = ImageIO.read(new File("res/gamemap1.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        frame = new JFrame();
-        label = new JLabel(new ImageIcon(image));
-        frame.getContentPane().add(label, BorderLayout.CENTER);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }
-
-    /**
-     * 打开地图2
-     */
-    public void openMap2() {
-        try {
-            image = ImageIO.read(new File("res/gamemap2.png"));
+            image = ImageIO.read(new File("res/mapstart.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,7 +64,24 @@ public class Item {
      */
     public void openMap3() {
         try {
-            image = ImageIO.read(new File("res/gamemap3.png"));
+            image = ImageIO.read(new File("res/mapdaoguan.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        frame = new JFrame();
+        label = new JLabel(new ImageIcon(image));
+        frame.getContentPane().add(label, BorderLayout.CENTER);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+    /**
+     * 打开地图2
+     */
+    public void openMap2() {
+        try {
+            image = ImageIO.read(new File("res/mapshandong.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

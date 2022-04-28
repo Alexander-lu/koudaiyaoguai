@@ -12,10 +12,15 @@ public class Summoner {
     public int age;//年龄
     ArrayList<Item> backpack;//道具背包
 
-    public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey) {
+    public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey,boolean end) {
         boolean ifSelectPokemon= true;
         while (ifSelectPokemon) {
         int key = -1;
+        if (isaAllDead(a)) {
+                program.println("你输了");
+                deadExit(end);
+                break;
+        }
         checkYourPokemon(a, program);
         boolean selectePokemon = true;
         while (selectePokemon) {
@@ -27,7 +32,6 @@ public class Summoner {
                     key = i;
                     selectePokemon = false;
                 } else {
-                    program.println("你输入的命令有误，请重新输入");
                 }
             }
         }
@@ -57,11 +61,7 @@ public class Summoner {
                     default:break;
                 }
             }
-            if (isaAllDead(a)) {
-                program.println("你输了");
-                ifSelectPokemon= false;
-                break;
-            }
+
             if (isaDead(a, key)) {
                 program.println("你的宝可梦死了，你需要选择一只新的宝可梦加入战斗");
                 a.remove(key);
@@ -334,6 +334,12 @@ public class Summoner {
      */
     protected boolean isbAllDead(ArrayList<Pokemon> b) {
         return b.isEmpty();
+    }
+    /**
+     * 玩家宝可梦全部死亡后退出游戏的方法
+     */
+    private void deadExit(boolean gameEnded) {
+        gameEnded = true;
     }
 }
 
