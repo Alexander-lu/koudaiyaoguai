@@ -499,44 +499,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
     }}
 
-//    switch (pickYourPokemon) {
-//      case "1":
-//         key=0;
-//        break;
-//      case "2":
-//        key=1;
-//        break;
-//      case "3":
-//        key=2;
-//        break;
-//      case "4":
-//        key=3;
-//        break;
-//      case "5":
-//        key=4;
-//        break;
-//      case "6":
-//        key=5;
-//        break;
-//      case "7":
-//        key=6;
-//        break;
-//      case "8":
-//        key=7;
-//        break;
-//      case "9":
-//        key=8;
-//        break;
-//      case "10":
-//        key=9;
-//        break;
-//      case "11":
-//        key=10;
-//        break;
-//      default:
-//        println("你输入的命令有误，请重新输入");
-//    }
-    // 回合制循环进行，直至某一方阵亡
     println(playerpokemon.get(key).toString());
     println(enemypokemon.toString());
     while (true) {
@@ -711,7 +673,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /**
    * 判断敌人宝可梦是否死亡
    */
-  private boolean isEnemyDead(Pokemon pokemon){
+  protected boolean isEnemyDead(Pokemon pokemon){
     return pokemon.curHp>0;
   }
   /**
@@ -721,7 +683,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
    * @param choices 允许的几种选择
    * @return 玩家最终的选择
    */
-  public final String choose(String prompt, String... choices) {
+  public String choose(String prompt, String... choices) {
     // 将选择用逗号连起来
     String concatenatedChoices = String.join(", ", choices);
     // 最终的提示语
@@ -806,7 +768,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /**
    * 判断玩家宝可梦是否死亡
    */
-  private boolean isPlayerPokemonDead(Pokemon pokemon){
+  protected boolean isPlayerPokemonDead(Pokemon pokemon){
     return pokemon.curHp>0;
   }
   /**
