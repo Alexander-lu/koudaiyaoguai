@@ -60,8 +60,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
   /** 主循环。只要玩家不选择退出，游戏就一直运行下去 */
   private void mainLoop() {
     gameEnded = false;
-    openMap();
+    openMap2();
     openMap1();
+    openMap3();
     opentalking();
     /** 切换歌曲 */
     changeMusic("res/mp3/Pokemon-fight.mp3");
@@ -239,10 +240,10 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       }
     }
     }
-  /** 打开地图 */
-    private void openMap(){
+  /** 打开地图1 */
+    private void openMap1(){
       try {
-        image= ImageIO.read(new File("res/w.jpeg"));
+        image= ImageIO.read(new File("res/gamemap1.png"));
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -253,10 +254,24 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2{
       frame.setVisible(true);
       frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-  /** 打开地图 */
-  private void openMap1(){
+  /** 打开地图2 */
+  private void openMap2(){
     try {
-      image= ImageIO.read(new File("res/w.jpg"));
+      image= ImageIO.read(new File("res/gamemap2.png"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    frame=new JFrame();
+    label=new JLabel(new ImageIcon(image));
+    frame.getContentPane().add(label,BorderLayout.CENTER);
+    frame.pack();
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  }
+  /** 打开地图3 */
+  private void openMap3(){
+    try {
+      image= ImageIO.read(new File("res/gamemap3.png"));
     } catch (IOException e) {
       e.printStackTrace();
     }
