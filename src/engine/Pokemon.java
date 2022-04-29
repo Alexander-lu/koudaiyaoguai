@@ -1,4 +1,9 @@
 package engine;
+
+import acm.program.ConsoleProgram;
+
+import java.util.ArrayList;
+
 public class Pokemon {
     public String name;     // 精灵名字
     public int level;       // 精灵等级
@@ -74,12 +79,14 @@ public class Pokemon {
     /**
      * 宝可梦升级的方法
      */
-    public void levelup() {
+    public void levelup(ConsoleProgram program) {
         if (this.xp>=50) {
             this.xp= 0;
             this.level++;
             this.maxHp+=20;
             this.curHp=this.maxHp;
+            program.println(this.name+"升级了现在的血量是"+this.maxHp);
+
         }
 
     }

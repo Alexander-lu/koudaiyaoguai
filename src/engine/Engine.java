@@ -545,7 +545,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             ifSelectPokemon= false;
             println("恭喜你赢得了战斗");
             playerpokemon.get(key).xp+=25;
-            playerpokemon.get(key).levelup();
+            playerpokemon.get(key).levelup(this);
             changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
           break;
         }

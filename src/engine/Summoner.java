@@ -44,7 +44,7 @@ public class Summoner  {
                 ifSelectPokemon= false;
                 program.println("恭喜你赢得了战斗");
                 a.get(key).xp+=25;
-                a.get(key).levelup();
+                a.get(key).levelup(program);
                bgc.changeMusic("res/mp3/Pokemon-gymFightSuccess03.mp3");
                 bgc.pause(1600*3);
                 bgc.changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
