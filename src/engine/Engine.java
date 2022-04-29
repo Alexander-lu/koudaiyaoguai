@@ -24,7 +24,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     /**
      * 设置帧率
      */
-    private static final int DELAY = 1600;
+    public static final int DELAY = 1600;
     /**
      * currPlace表示玩家现在所处的位置
      */
@@ -231,7 +231,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     /**
      * 切换歌曲的方法
      */
-    private void changeMusic(String file) {
+    public void changeMusic(String file) {
         gamestart.stop();
         gamestart = new Play(file);
         gamestart.start();
@@ -544,6 +544,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
       while (true) {
         if (isEnemyDead(enemypokemon)) {
             ifSelectPokemon= false;
+            changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
           break;
         }
         if (isEnemyAlive(enemypokemon)) {
@@ -766,6 +767,7 @@ break;
           boolean success = randomGenerator.nextBoolean();
           if (success) {
             println("逃跑成功！");
+              changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
               ifSelectPokemon= false;
             break;
           } else {
@@ -815,17 +817,7 @@ break;
         }
     }
 
-    /**
-     * 捕捉宝可梦
-     */
-    private void catchPokemon(Pokemon enemypokemon) {
-        if (playerpokemon.size() < 6) {
-            playerpokemon.add(enemypokemon); //玩家宝可梦集合里增加宝可梦
-            println("你抓住了 " + enemypokemon + "!  " + enemypokemon + "的信息是：" + enemypokemon.toString());
-        } else {
-            println("你无法捕捉更多的宝可梦！");
-        }
-    }
+
 
     /**
      * 道馆的剧情
@@ -1259,23 +1251,27 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 22 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 4, 400, 400, 20, 20, 0, "");
+
+                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 17 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 200, 200, 20, 20, 0, "");
+                Pokemon 尾立 = new Pokemon("尾立", 2, 30, 30, 20, 20, 0, "");
                 Picture.尾立(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(尾立);
             }
         }
         if (currPlace.getbianhao() == 8 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("波波", 3, 30, 30, 20, 20, 0, "");
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 Picture.波波(this);
                 battle(波波);
             }
@@ -1283,97 +1279,117 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 10 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
+                changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(小拉达);
             }
         }
         if (currPlace.getbianhao() == 20 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 4, 400, 400, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 11 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 200, 200, 20, 20, 0, "");
+                Pokemon 尾立 = new Pokemon("尾立", 2, 35, 35, 20, 20, 0, "");
                 Picture.尾立(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(尾立);
             }
         }
         if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("波波", 3, 40, 40, 20, 20, 0, "");
                 Picture.波波(this);
+                changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(波波);
             }
         }
         if (currPlace.getbianhao() == 5 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
             }
         }
         if (currPlace.getbianhao() == 14 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("波波", 3, 40, 40, 20, 20, 0, "");
                 Picture.波波(this);
+                changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(波波);
             }
         }
         if (currPlace.getbianhao() == 12 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 300, 300, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("波波", 3, 40, 40, 20, 20, 0, "");
                 Picture.波波(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(波波);
             }
         }
         if (currPlace.getbianhao() == 21 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
             }
         }
         if (currPlace.getbianhao() == 18 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 500, 500, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
+                changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(小拉达);
             }
         }
         if (currPlace.getbianhao() == 4 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 10, 1000, 1000, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 10, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 3 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 10, 1000, 1000, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 10, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
             }
         }
         if (currPlace.getbianhao() == 2 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 可达鸭 = new Pokemon("可达鸭", 20, 2000, 2000, 20, 20, 0, "");
+                Pokemon 可达鸭 = new Pokemon("可达鸭", 20, 200, 200, 20, 20, 0, "");
                 Picture.可达鸭(this);
+                changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(可达鸭);
+            }
+        }if (currPlace.getbianhao() == 7 & ifStopThisWhile1) {
+            boolean success = randomGenerator.nextBoolean();
+            if (success) {
+                Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,25,20,23,0,0,"技能");
+                Picture.绿毛虫(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
+                battle(绿毛虫);
             }
         }
     }
@@ -1385,32 +1401,36 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 29 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 30 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 31 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 32 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(地鼠);
             }
         }
@@ -1419,47 +1439,52 @@ Items.add(new Item("精灵球"));
             if (success) {
                 Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 36 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(地鼠);
             }
         }
         if (currPlace.getbianhao() == 37 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 金 = new Pokemon("尾立", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 金 = new Pokemon("尾立", 15, 35, 35, 20, 20, 0, "");
                 Picture.尾立(this);
+                changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(金);
             }
         }
         if (currPlace.getbianhao() == 38 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("波波", 15, 30, 30, 20, 20, 0, "");
                 Picture.波波(this);
+                changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(波波);
             }
         }
         if (currPlace.getbianhao() == 39 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("小拉达", 15, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
+                changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
             }
         }
         if (currPlace.getbianhao() == 34 & ifStopThisWhile1) {
             Summoner addddd = new Summoner();
             ArrayList<Pokemon> b = new ArrayList<>();
-            Pokemon 可达鸭 = new Pokemon("可达鸭", 15, 1500, 1500, 20, 20, 0, "");
-            Pokemon 小拉达 = new Pokemon("小拉达", 17, 1700, 1700, 20, 20, 0, "");
-            Pokemon 波波 = new Pokemon("波波", 18, 1800, 1800, 20, 20, 0, "");
+            Pokemon 可达鸭 = new Pokemon("可达鸭", 15, 55, 55, 20, 20, 0, "");
+            Pokemon 小拉达 = new Pokemon("小拉达", 17, 30, 30, 20, 20, 0, "");
+            Pokemon 波波 = new Pokemon("波波", 18, 30, 30, 20, 20, 0, "");
             b.add(可达鸭);
             b.add(小拉达);
             b.add(波波);

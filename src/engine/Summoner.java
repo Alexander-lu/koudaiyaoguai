@@ -6,11 +6,12 @@ import acm.util.RandomGenerator;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Summoner {
+public class Summoner extends Engine {
     RandomGenerator randomGenerator = RandomGenerator.getInstance();
     public String SummonerName;//名字
     public int age;//年龄
     ArrayList<Item> backpack;//道具背包
+    Engine bgc = new Engine();
 
     public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey,boolean end) {
         boolean ifSelectPokemon= true;
@@ -24,6 +25,7 @@ public class Summoner {
         checkYourPokemon(a, program);
         boolean selectePokemon = true;
         while (selectePokemon) {
+           bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
             program.println("输入名字来选择出战的宝可梦");
             program.print("> ");
             String pickYourPokemon = program.readLine();
@@ -40,6 +42,10 @@ public class Summoner {
         while (true) {
             if (isbDead(b, bkey)) {
                 ifSelectPokemon= false;
+                program.println("战斗胜利！");
+                bgc.changeMusic("res/mp3/Pokemon-gymFightSuccess03.mp3");
+                pause(DELAY*4);
+                bgc.changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
                 break;
             }
             if (isbAlive(b, bkey)) {
@@ -75,6 +81,7 @@ public class Summoner {
                 if (a.get(key).name.equals("小锯鳄")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
+                        Picture.小锯鳄战斗(program);
                         program.println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
@@ -116,6 +123,7 @@ public class Summoner {
                 if (a.get(key).name.equals("火球鼠")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
+                        Picture.火球鼠战斗(program);
                         program.println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
@@ -157,6 +165,7 @@ public class Summoner {
                 if (a.get(key).name.equals("菊草叶")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
+                        Picture.菊草叶战斗(program);
                         program.println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
