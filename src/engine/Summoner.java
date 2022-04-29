@@ -90,7 +90,7 @@ public class Summoner  {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         Picture.小锯鳄战斗(program);
-                        program.println("抓(z) 水枪(s) 咬碎(x) 蛮力(m)");
+                        program.println("小锯鳄鱼有技能：抓(z) 水枪(s) 咬碎(x) 蛮力(m)");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
                         String skillname1 = program.readLine();
