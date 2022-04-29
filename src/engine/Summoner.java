@@ -95,28 +95,28 @@ public class Summoner  {
                         program.print("> ");
                         String skillname1 = program.readLine();
                         switch (skillname1) {
-                            case "抓":
+                            case "z":
                                 Skill.抓(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "水枪":
+                            case "s":
                                 Skill.水枪(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "咬碎":
+                            case "x":
                                 Skill.咬碎(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "蛮力":
+                            case "m":
                                 Skill.蛮力(b.get(bkey), a.get(key));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
@@ -137,28 +137,28 @@ public class Summoner  {
                         program.print("> ");
                         String skillname1 = program.readLine();
                         switch (skillname1) {
-                            case "喷火":
+                            case "p":
                                 Skill.喷火(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "瞪眼":
+                            case "d":
                                 Skill.瞪眼(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "舍身冲撞":
+                            case "s":
                                 Skill.舍身冲撞(b.get(bkey), a.get(key));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "变圆":
+                            case "b":
                                 Skill.变圆(a.get(key));
                                 program.println(a.get(key).toString());
                                 program.println(a.get(key).toString());
@@ -179,28 +179,28 @@ public class Summoner  {
                         program.print("> ");
                         String skillname1 = program.readLine();
                         switch (skillname1) {
-                            case "撞击":
+                            case "z":
                                 Skill.撞击(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "叫声":
+                            case "j":
                                 Skill.叫声(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "飞叶快刀":
+                            case "f":
                                 Skill.飞叶快刀(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "光合作用":
+                            case "g":
                                 Skill.光合作用(a.get(key));
                                 program.println(a.get(key).toString());
                                 program.println(a.get(key).toString());
@@ -220,28 +220,28 @@ public class Summoner  {
                         program.print("> ");
                         String skillname1 = program.readLine();
                         switch (skillname1) {
-                            case "乱抓 ":
+                            case "l":
                                 Skill.乱抓(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "瞬间失忆":
+                            case "s":
                                 Skill.瞬间失忆(a.get(key));
                                 program.println(a.get(key).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "摇尾巴":
+                            case "y":
                                 Skill.摇尾巴(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
                                 program.println(b.get(bkey).toString());
                                 ifStopThis = false;
                                 break;
-                            case "水泡":
+                            case "p":
                                 Skill.水泡(b.get(bkey));
                                 program.println(b.get(bkey).toString());
                                 program.println(a.get(key).toString());
