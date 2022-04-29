@@ -87,7 +87,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                     boShiTalking();
                     yanJiuSuoCount++;
                     while (ifStopThisWhile) {
-                        println("你要？（输入xiaojue，huoqiushu和jucaoye来挑选你的精灵伴侣）");
+                        println("你要？（输入xiaojue(小锯鳄)，huoqiushu(火球鼠)和jucaoye(菊草叶)来挑选你的精灵伴侣）");
                         print("> ");
                         String d1 = readLine();
                         switch (d1) {
@@ -549,7 +549,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (isEnemyDead(enemypokemon)) {
             ifSelectPokemon= false;
             changeMusic("res/mp3/Pokemon-wildPokemonFightSuccess02.mp3");
-            pause(DELAY);
+            pause(DELAY*3);
             println("恭喜你赢得了战斗");
             playerpokemon.get(key).xp+=25;
             playerpokemon.get(key).levelup(this);
@@ -891,6 +891,7 @@ break;
      * 剧情文案结束后自动前进到晾晒小院进行战斗
      */
     private void daoGuanQianYuan() {
+        changeMusic("res/mp3/Pokemon-qianyuan.mp3");
         pause(DELAY);
         println("");
         println("此时，" + playername + "他们已经到达了道馆的门口。");
@@ -952,6 +953,7 @@ break;
      * 第一次到达道馆内院
      */
     private void daoGuanNeiYuan() {
+        changeMusic("res/mp3/Pokemon-neiyuan.mp3");
         pause(DELAY);
         println("");
         println("“呼~~刚才的战斗还真是惊险，一个小弟还是有两下子的，不知道会不会遇到更大的阻力......啊！！！！！！”" + playername + "话还没说完，大地忽然颤动起来。");

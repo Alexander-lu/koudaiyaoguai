@@ -186,7 +186,7 @@ public class Picture {
 
     public static void 地鼠(ConsoleProgram program) {
         program.println(
-                "                                                                                     ▮▮▮▮▮▮▮          \n" +
+                "                                                                              ▮▮▮▮▮▮▮          \n" +
                         "                                                                          ▮▮▮▮▮▮▮▮▮▮▮▮▮       \n" +
                         "                                                                         ▮▮ ▉▮▮▮ ▉▮▮▮▮▮▮      \n" +
                         "                                                                        ▮▮▮▉ ▮▮▮▉ ▮▮▮▮▮▮▮     \n" +
