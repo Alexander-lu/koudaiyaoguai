@@ -87,7 +87,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                     boShiTalking();
                     yanJiuSuoCount++;
                     while (ifStopThisWhile) {
-                        println("你要？（输入小锯鳄，火球鼠和菊草叶来挑选你的精灵伴侣）");
+                        println("你要？（输入xiaojue，huoqiushu和jucaoye来挑选你的精灵伴侣）");
                         print("> ");
                         String d1 = readLine();
                         switch (d1) {
@@ -103,7 +103,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 println("你获得了小锯鳄！");
                              pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
-                                Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
+                                Pokemon xiaoJuE = new Pokemon("xiaojue", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuE);
                                 getJinLingQiu();
                                 Items.add(new Item("xueping"));
@@ -124,11 +124,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 println("你获得了火球鼠！");
                               pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
-                                Pokemon huoQiuShu = new Pokemon("火球鼠", 1, 999, 999, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
+                                Pokemon huoQiuShu = new Pokemon("huoqiushu", 1, 999, 999, 20, 20, 0, "喷火 瞪眼 舍身冲撞 变圆");
                                 playerpokemon.add(huoQiuShu);
-                                Pokemon xiaoJuEE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
+                                Pokemon xiaoJuEE = new Pokemon("xiaojue", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuEE);
-                                Pokemon juCaoYewe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
+                                Pokemon juCaoYewe = new Pokemon("jucaoye", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYewe);
                                 getJinLingQiu();
                                 Items.add(new Item("xueping"));
@@ -147,7 +147,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 println("你获得了菊草叶！");
                              pause(DELAY * 2);
                                 changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
-                                Pokemon juCaoYe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
+                                Pokemon juCaoYe = new Pokemon("jucaoye", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYe);
                                 getJinLingQiu();
                                 Items.add(new Item("xueping"));
