@@ -14,6 +14,7 @@ public class Summoner  {
 
 
     public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey,boolean end , Engine bgc,Place run) {
+        bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
         boolean ifSelectPokemon= true;
         while (ifSelectPokemon) {
         int key = -1;
@@ -25,7 +26,6 @@ public class Summoner  {
         checkYourPokemon(a, program);
         boolean selectePokemon = true;
         while (selectePokemon) {
-          bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
             program.println("输入名字来选择出战的宝可梦");
             program.print("> ");
             String pickYourPokemon = program.readLine();
@@ -55,22 +55,22 @@ public class Summoner  {
                 int type = random.nextInt(7);
                 switch (type){
                     case 1:Skill.撞击(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 2:Skill.叫声(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 3:Skill.飞叶快刀(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了55点，还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 4:Skill.抓(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 5:Skill.龙卷风(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 6:Skill.起风(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     default:break;
                 }
