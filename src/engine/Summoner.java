@@ -58,19 +58,19 @@ public class Summoner  {
                         program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 2:Skill.叫声(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了叫声"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 3:Skill.飞叶快刀(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了飞叶快刀"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 4:Skill.抓(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了抓"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 5:Skill.龙卷风(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了龙卷风"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 6:Skill.起风(a.get(key));
-                        program.println("对方使用了撞击"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
+                        program.println("对方使用了起风"+a.get(key).name+"还剩下"+a.get(key).curHp + "点血量");
                         break;
                     default:break;
                 }
@@ -84,9 +84,9 @@ public class Summoner  {
 
             program.println();
             // 每一回合都首先从玩家开始行动
-            String userChoice = choose("请选择你的行动", program, "战斗", "背包", "换精灵", "逃跑");
-            if (userChoice.equals("战斗")) {
-                if (a.get(key).name.equals("小锯鳄")) {
+            String userChoice = choose("请选择你的行动", program, "zhandou", "beibao", "huanjinglin", "taopao");
+            if (userChoice.equals("zhandou")) {
+                if (a.get(key).name.equals("xiaojue")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         Picture.小锯鳄战斗(program);
@@ -128,7 +128,7 @@ public class Summoner  {
                         }
                     }
                 }
-                if (a.get(key).name.equals("火球鼠")) {
+                if (a.get(key).name.equals("huoqiushu")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         Picture.火球鼠战斗(program);
@@ -170,7 +170,7 @@ public class Summoner  {
                         }
                     }
                 }
-                if (a.get(key).name.equals("菊草叶")) {
+                if (a.get(key).name.equals("jucaoye")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         Picture.菊草叶战斗(program);
@@ -212,7 +212,7 @@ public class Summoner  {
                         }
                     }
                 }
-                if (a.get(key).name.equals("可达鸭")) {
+                if (a.get(key).name.equals("kedaya")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         program.println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
@@ -255,13 +255,13 @@ public class Summoner  {
                 }
                 continue;
             }
-            else if (userChoice.equals("背包")) {
+            else if (userChoice.equals("beibao")) {
                 continue;
             }
-            else if (userChoice.equals("换精灵")) {
+            else if (userChoice.equals("huanjinglin")) {
                 break;
             }
-            else if (userChoice.equals("逃跑")) {
+            else if (userChoice.equals("taopao")) {
 //                boolean success = randomGenerator.nextBoolean();
 //                if (success) {
 //                    program.println("逃跑成功！");
@@ -317,7 +317,7 @@ public class Summoner  {
             program.println("你现在共有" + a.size() + "只宝可梦，依次是：");
             for (int k = 0; k < a.size(); k++) {
                 int l = k + 1;
-                program.println(l + "." + a.get(k).getName() + " 等级：" + a.get(k).getLevel());
+                program.println(l + "." + a.get(k).getName() + " 等级：" + a.get(k).getLevel()+" 血量："+a.get(k).getCurHp());
             }
         }
     }

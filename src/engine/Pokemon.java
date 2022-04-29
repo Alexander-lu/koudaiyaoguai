@@ -92,18 +92,18 @@ public class Pokemon {
     }
     public static void loadPokemon(){
         //  代号小锯鳄
-        Pokemon 小锯鳄 = new Pokemon("小锯鳄",5,43,46,55,20,0,"技能");
+        Pokemon 小锯鳄 = new Pokemon("xiaojue",5,43,46,55,20,0,"技能");
         //    代号菊草叶
-        Pokemon 菊草叶 = new Pokemon("菊草叶",5,45,39,65,20,0,"技能");
+        Pokemon 菊草叶 = new Pokemon("jucaoye",5,45,39,65,20,0,"技能");
         //    代号火球鼠
-        Pokemon 火球鼠 = new Pokemon("火球鼠",5,50,43,60,0,0,"技能");
+        Pokemon 火球鼠 = new Pokemon("huoqiushu",5,50,43,60,0,0,"技能");
         //波波
-        Pokemon 波波 = new Pokemon("波波",3,30,25,30,0,0,"技能");
-        Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,25,20,23,0,0,"技能");
-        Pokemon 小拉达 = new Pokemon("小拉达",3,30,30,25,0,0,"技能");
-        Pokemon 地鼠 = new Pokemon("地鼠",4,40,25,35,0,0,"技能");
-        Pokemon 可达鸭 = new Pokemon("可达鸭",6,55,35,35,0,0,"技能");
-        Pokemon 尾立 = new Pokemon("尾立",3,35,30,34,0,0,"技能");
+        Pokemon 波波 = new Pokemon("bobo",3,30,25,30,0,0,"技能");
+        Pokemon 绿毛虫 = new Pokemon("lvmaochong",2,25,20,23,0,0,"技能");
+        Pokemon 小拉达 = new Pokemon("xiaolada",3,30,30,25,0,0,"技能");
+        Pokemon 地鼠 = new Pokemon("dishu",4,40,25,35,0,0,"技能");
+        Pokemon 可达鸭 = new Pokemon("kedaya",6,55,35,35,0,0,"技能");
+        Pokemon 尾立 = new Pokemon("weili",3,35,30,34,0,0,"技能");
 
     }
 }
