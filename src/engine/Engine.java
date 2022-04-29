@@ -916,6 +916,12 @@ break;
         println("“HEY！YOU！WHO ARE YOU！ME在这里晾内裤竟然发现YOU擅闯道馆？？！！”陌生男子惊道。");
 //        pause(DELAY);
         println("");
+        println("“你又是谁？竟趁我不备偷袭”" + playername + "愤愤道。");
+        //        pause(DELAY);
+        println("");
+        println("“我是道馆保安，保卫道馆平安，爱吃小熊饼干，工资只够三餐（不是......”");
+//        pause(DELAY);
+        println("");
         println("“这个啊，我们要穿越东边的山洞，但是山洞入口被阿速馆长控制了。”" + playername + "解释道，“我们是来打败馆长，拿取钥匙的。”");
 //        pause(DELAY);
 //        pause(DELAY);
@@ -1070,6 +1076,8 @@ break;
      */
     int shanDong30Count = 0;
     int shanDong41Count = 0;
+    int shanDong34Count = 0;
+
     /**
      * 山洞的剧情
      */
@@ -1077,11 +1085,19 @@ break;
         openShanDon();//进入山洞前的判断条件
 
         /**山洞30剧情*/
-        if (shanDong30Count == 0){
-        if (currPlace.getbianhao() == 30) {
-            shanDong30();
-            shanDong30Count++;
-        }}
+        if (shanDong30Count == 0) {
+            if (currPlace.getbianhao() == 30) {
+                shanDong30();
+                shanDong30Count++;
+            }
+        }
+
+        if (shanDong34Count == 0) {
+            if (currPlace.getbianhao() == 34) {
+                shanDong34();
+                shanDong34Count++;
+            }
+        }
 
         /**山洞41剧情*/
         if (shanDong41Count == 0) {
@@ -1126,16 +1142,16 @@ break;
         println("“好，我们终于进来了，快走吧。”pokemon说，“已经来到了山洞。“一定要把紫金石找到！”" + playername + "说。");
 //        pause(DELAY);
         println("");
-        println("“紫金石？你们说的是紫金石吗？”突然，地面上有只大岩蛇钻了出来。“竟敢觊觎我们祖传的宝物，我要让你们尝尝苦头！”大岩蛇使出了岩石封杀。");
+        println("“紫金石？你们说的是紫金石吗？”突然，地面上有只大岩蛇钻了出来。“就是你们觊觎我们祖传的宝物，我要让你们尝尝苦头！”大岩蛇使出了岩石封杀。");
 //        pause(DELAY);
         println("");
         println("“干嘛？紫金石是用来做研究的，对人和精灵都要做出贡献的，不是吗？”" + playername + "使出了泡沫光线，岩石封杀没打中。");
 //        pause(DELAY);
         println("");
-        println("“哈哈哈哈，原来如此，这么看起来你们还是执迷不悟，我来做你们的对手！”大岩蛇使出了龙息打" + playername + "，" + playername + "麻痹了。");
+        println("“哈哈哈哈，愚蠢的人类，毁我家园还不知悔改，这么看起来你们还是执迷不悟，我来做你们的对手！”大岩蛇使出了龙息打" + playername + "，" + playername + "麻痹了。");
 //        pause(DELAY);
         println("");
-        println("“" + playername + "，你没事吧？”pokemon大声叫道。");
+        println("“你在说什么呀？！" + playername + "，你没事吧？”pokemon大声叫道。");
 //        pause(DELAY);
         println("");
         println("“接下来就轮到你了！”大岩蛇又使出铁尾，想攻击pokemon。");
@@ -1148,6 +1164,45 @@ break;
 //        pause(DELAY);
         println("");
         println("说完，大岩蛇就沿着墙边飞快地爬进了山洞深处，刹那间消失不见。");
+    }
+
+    private void shanDong34() {
+        //        pause(DELAY);
+        println("");
+        println(" 人影越发清晰，一声微虚的声音缓缓道。");
+        //        pause(DELAY);
+        println("");
+        println("“哼哼，还是找了过来，看来今天难逃一劫......”");
+        //        pause(DELAY);
+        println("");
+        println("“你是什么人，为什么躲在这里？”");
+        //        pause(DELAY);
+        println("");
+        println("“呵，少废话，紫金石是不会交给你的！”");
+        //        pause(DELAY);
+        println("");
+        println("“看你如此模样，想必是已经见识过这山洞内精灵的厉害了。”");
+        //        pause(DELAY);
+        println("");
+        println("“吼，那又如何，紫金石在我手上，你能奈我何？待我吸收完了这石头的能量，将会是这世上最强的人了！！”");
+        //        pause(DELAY);
+        println("");
+        println("“没文化真是害死人，紫金石是不会帮助那些心存歹念的人的，这点尝试都没有。”");
+        //        pause(DELAY);
+        println("");
+        println("“纳尼？我说怎么吸了半天没动静......”");
+        //        pause(DELAY);
+        println("");
+        println("“你这强盗，交出紫金石！今日我要替人类清理门户！”");
+        //        pause(DELAY);
+        println("");
+        println("能在山洞里独行的人不可小觑，千万不要轻敌......");
+        //        pause(DELAY);
+        println("");
+        battleQiangDao();
+        //        pause(DELAY);
+        println("");
+        println("“人不为己天诛地灭，我拥有紫金石的力量有什么错！......错的不是我，是这个世界......”强盗含恨而死，败北。");
     }
 
     private void shanDong41() {
@@ -1217,6 +1272,22 @@ break;
 //        pause(DELAY);
         println("");
         println("”这还不简单，你手机里的那些APP争先恐后地在报告你的位置呐“");
+    }
+
+    private void battleQiangDao(){
+        if (currPlace.getbianhao() == 34 & ifStopThisWhile1) {
+            Summoner qiangDao = new Summoner();
+            ArrayList<Pokemon> b = new ArrayList<>();
+            Pokemon 可达鸭 = new Pokemon("可达鸭", 15, 55, 55, 20, 20, 0, "");
+            Pokemon 小拉达 = new Pokemon("小拉达", 17, 30, 30, 20, 20, 0, "");
+            Pokemon 波波 = new Pokemon("波波", 18, 30, 30, 20, 20, 0, "");
+            b.add(可达鸭);
+            b.add(小拉达);
+            b.add(波波);
+            qiangDao.npcBattle(playerpokemon, b, this, 0, gameEnded, this, currPlace);
+            qiangDao.npcBattle(playerpokemon, b, this, 1, gameEnded, this, currPlace);
+            qiangDao.npcBattle(playerpokemon, b, this, 2, gameEnded, this, currPlace);
+        }
     }
 
     /**
@@ -1410,6 +1481,7 @@ Items.add(new Item("精灵球"));
         }
     }
 
+    boolean shanDong34 = true;
     /**
      * 添加山洞刷怪的方法
      */
@@ -1508,8 +1580,10 @@ Items.add(new Item("精灵球"));
             addddd.npcBattle(playerpokemon, b, this, 1,gameEnded,this,currPlace);
             addddd.npcBattle(playerpokemon, b, this, 2,gameEnded,this,currPlace);
         }
-        if (currPlace.getbianhao() == 35 & ifStopThisWhile1) {
+
+        if (currPlace.getbianhao() == 35 & ifStopThisWhile1 & shanDong34) {
             Items.add(new Item("紫金石"));
+            shanDong34 = false;
         }
     }
 }
