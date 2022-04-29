@@ -42,7 +42,9 @@ public class Summoner  {
         while (true) {
             if (isbDead(b, bkey)) {
                 ifSelectPokemon= false;
-                program.println("战斗胜利！");
+                program.println("恭喜你赢得了战斗");
+                a.get(key).xp+=25;
+                a.get(key).levelup();
                bgc.changeMusic("res/mp3/Pokemon-gymFightSuccess03.mp3");
                 bgc.pause(1600*3);
                 bgc.changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");

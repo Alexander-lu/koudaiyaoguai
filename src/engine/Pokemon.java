@@ -75,8 +75,13 @@ public class Pokemon {
      * 宝可梦升级的方法
      */
     public void levelup() {
-        this.level++;
-        this.maxHp+=20;
+        if (this.xp>=50) {
+            this.xp= 0;
+            this.level++;
+            this.maxHp+=20;
+            this.curHp=this.maxHp;
+        }
+
     }
     public static void loadPokemon(){
         //  代号小锯鳄
