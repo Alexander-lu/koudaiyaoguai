@@ -14,7 +14,7 @@ public class Summoner  {
 
 
     public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey,boolean end , Engine bgc,Place run) {
-        bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
+        bgc.changeMusic( "res/mp3/Pokemon-fight04.mp3"); //与npc对战音乐
         boolean ifSelectPokemon= true;
         while (ifSelectPokemon) {
         int key = -1;
