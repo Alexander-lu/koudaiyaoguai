@@ -1500,5 +1500,8 @@ Items.add(new Item("精灵球"));
             addddd.npcBattle(playerpokemon, b, this, 1,gameEnded,this,currPlace);
             addddd.npcBattle(playerpokemon, b, this, 2,gameEnded,this,currPlace);
         }
+        if (currPlace.getbianhao() == 35 & ifStopThisWhile1) {
+            Items.add(new Item("紫金石"));
+        }
     }
 }
