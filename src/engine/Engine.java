@@ -334,9 +334,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("你现在到了" + place.getName());
         println(place.getMessage());
         if (place.getbaowu() != null) {
-            println("DEBUG - 这里有一个" + place.getbaowu());
+            println("这里有一个" + place.getbaowu());
         } else {
-            println("DEBUG - 这里什么都没有。");
+            println("这里什么都没有。");
         }
         currPlace = place;
     }
