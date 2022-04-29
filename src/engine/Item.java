@@ -122,7 +122,6 @@ public class Item {
     public void catchPokemon(ArrayList<Pokemon> playerpokemon, Pokemon enemypokemon, ConsoleProgram program) {
         if (playerpokemon.size() < 6) {
             playerpokemon.add(enemypokemon); //玩家宝可梦集合里增加宝可梦
-
             program.println("你抓住了 " + enemypokemon + "!  " + enemypokemon + "的信息是：" + enemypokemon.toString());
         } else {
             program.println("你无法捕捉更多的宝可梦！");
