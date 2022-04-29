@@ -607,31 +607,31 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               Picture.小锯鳄战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
-              println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
+              println("小锯鳄有技能：抓(z) 水枪(s) 咬碎(x) 蛮力(m)");
               println("（输入技能名称来使用技能");
               print("> ");
               String skillname1 = readLine();
 
               switch (skillname1) {
-                case "抓":
+                case "z":
                   Skill.抓(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "水枪":
+                case "s":
                   Skill.水枪(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "咬碎":
+                case "x":
                   Skill.咬碎(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "蛮力":
+                case "m":
                   Skill.蛮力(enemypokemon, playerpokemon.get(key));
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
@@ -646,31 +646,31 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               Picture.火球鼠战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
-              println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
+              println("火球鼠有技能：喷火(p) 瞪眼(d) 舍身冲撞(s) 变圆(b)");
               println("（输入技能名称来使用技能");
               print("> ");
               String skillname1 = readLine();
 
               switch (skillname1) {
-                case "喷火":
+                case "p":
                   Skill.喷火(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "瞪眼":
+                case "d":
                   Skill.瞪眼(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "舍身冲撞":
+                case "s":
                   Skill.舍身冲撞(enemypokemon, playerpokemon.get(key));
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "变圆":
+                case "b":
                   Skill.变圆(playerpokemon.get(key));
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
@@ -685,30 +685,30 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               Picture.菊草叶战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
-              println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
+              println("菊草叶有技能：撞击(z) 叫声(j) 飞叶快刀(f) 光合作用(g)");
               println("（输入技能名称来使用技能");
               print("> ");
               String skillname1 = readLine();
               switch (skillname1) {
-                case "撞击":
+                case "z":
                   Skill.撞击(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "叫声":
+                case "j":
                   Skill.叫声(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "飞叶快刀":
+                case "f":
                   Skill.飞叶快刀(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "光合作用":
+                case "g":
                   Skill.光合作用(playerpokemon.get(key));
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
@@ -722,30 +722,30 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
           if (playerpokemon.get(key).name.equals("kedaya")) {
             boolean ifStopThis = true;
             while (ifStopThis) {
-              println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
+              println("可达鸭有技能：乱抓(l) 瞬间失忆(s) 摇尾巴(y) 水泡(s)");
               println("（输入技能名称来使用技能");
               print("> ");
               String skillname1 = readLine();
               switch (skillname1) {
-                case "乱抓 ":
+                case "l":
                   Skill.乱抓(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "瞬间失忆":
+                case "s":
                   Skill.瞬间失忆(playerpokemon.get(key));
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "摇尾巴":
+                case "y":
                   Skill.摇尾巴(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "水泡":
+                case "s":
                   Skill.水泡(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
