@@ -1092,6 +1092,7 @@ break;
             }
         }
 
+        /**山洞34剧情*/
         if (shanDong34Count == 0) {
             if (currPlace.getbianhao() == 34) {
                 shanDong34();
@@ -1106,6 +1107,14 @@ break;
                 shanDong41Count++;
             }
         }
+
+        /**山洞42剧情*/
+        if (currPlace.getbianhao() == 42 & shanDong34){
+            shanDong42One();
+        } else if (currPlace.getbianhao() == 42 & !shanDong34) {
+            shanDong42Two();
+        }
+
     }
 
     private void openShanDon() {
@@ -1203,6 +1212,11 @@ break;
         //        pause(DELAY);
         println("");
         println("“人不为己天诛地灭，我拥有紫金石的力量有什么错！......错的不是我，是这个世界......”强盗含恨而死，败北。");
+        //        pause(DELAY);
+        println("");
+        println("劲敌终于打败了......快在附近找找紫金石在哪里。");
+        //        pause(DELAY);
+        println("");
     }
 
     private void shanDong41() {
@@ -1272,6 +1286,74 @@ break;
 //        pause(DELAY);
         println("");
         println("”这还不简单，你手机里的那些APP争先恐后地在报告你的位置呐“");
+    }
+
+    private void shanDong42One(){
+        pause(DELAY);
+        print("");
+        println("***************太阳不知何时探出了头***********");
+        pause(DELAY);
+        print("");
+        println("**************鱼肚白不知何时消失殆尽***********");
+        pause(DELAY);
+        print("");
+        println("**********只留下橘黄色渐变为火红色的辉煌*********");
+        pause(DELAY);
+        print("");
+        println("******************从远处眺望*****************");
+        pause(DELAY);
+        print("");
+        println("************远方农家烟囱升起的袅袅炊烟**********");
+        pause(DELAY);
+        print("");
+        println("*********好像糅进了这一大片无边无际的雾气中*******");
+        pause(DELAY);
+        print("");
+        println("***********又闻从山那边传来渺茫的歌声************");
+        pause(DELAY);
+        print("");
+        println("*************甜甜的像浣笑，声音虽微小************");
+        pause(DELAY);
+        print("");
+        println("**********令人情不自禁陶醉于这天籁之音中***********");
+        pause(DELAY);
+        print("");
+        println("**************你逐渐忘了自己的使命**************");
+        pause(DELAY);
+        print("");
+        println("**************只想在这像桃花源的地方************");
+        pause(DELAY);
+        pause(DELAY);
+        print("");
+        println("*******************了却残生******************");
+        gameEnded = true;
+    }
+
+    private void shanDong42Two(){
+        pause(DELAY);
+        print("");
+        println("洞口一阵强烈的白光闪过");
+        moveTo(places.get(1));
+        pause(DELAY);
+        println("");
+        println(playername + "和pokemon一起出现在了研究所的大厅里");
+        pause(DELAY);
+        println("");
+        println("“博士！”" + playername + " 和pokemon同时惊呼道，“我们怎么突然到了这里了？！”");
+        pause(DELAY);
+        println("");
+        println("“吼吼，孩子们，欢迎回来~！”博士笑道，“你们无意间触发了紫金石的神奇能力——超时空传送！”");
+        pause(DELAY);
+        println("");
+        println("“博士，你搁这儿玩红警呢，还超时空传送”" + playername + "咂舌道。");
+        pause(DELAY);
+        println("");
+        println("“哈哈哈，不管怎么样，你们都是英雄，人与精灵的和谐相处，离不开你们的付出！”");
+        pause(DELAY);
+        println("");
+        println("博士接着说：“自然的恩赐，同时也要回馈于自然，只有真正的懂得什么是和谐相处，建立生物命运共同体，才能够更好的造福精灵，造福人类啊......（此处省略一万字）”");
+        pause(DELAY);
+        println("");
     }
 
     private void battleQiangDao(){
