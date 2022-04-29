@@ -6,14 +6,14 @@ import acm.util.RandomGenerator;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Summoner extends Engine {
+public class Summoner  {
     RandomGenerator randomGenerator = RandomGenerator.getInstance();
     public String SummonerName;//名字
     public int age;//年龄
     ArrayList<Item> backpack;//道具背包
-    Engine bgc = new Engine();
 
-    public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey,boolean end) {
+
+    public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey,boolean end , Engine bgc,Place run) {
         boolean ifSelectPokemon= true;
         while (ifSelectPokemon) {
         int key = -1;
@@ -25,7 +25,7 @@ public class Summoner extends Engine {
         checkYourPokemon(a, program);
         boolean selectePokemon = true;
         while (selectePokemon) {
-           bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
+          bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
             program.println("输入名字来选择出战的宝可梦");
             program.print("> ");
             String pickYourPokemon = program.readLine();
@@ -43,8 +43,8 @@ public class Summoner extends Engine {
             if (isbDead(b, bkey)) {
                 ifSelectPokemon= false;
                 program.println("战斗胜利！");
-                bgc.changeMusic("res/mp3/Pokemon-gymFightSuccess03.mp3");
-                pause(DELAY*4);
+               bgc.changeMusic("res/mp3/Pokemon-gymFightSuccess03.mp3");
+                bgc.pause(1600*3);
                 bgc.changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
                 break;
             }
@@ -254,14 +254,17 @@ public class Summoner extends Engine {
                 break;
             }
             else if (userChoice.equals("逃跑")) {
-                boolean success = randomGenerator.nextBoolean();
-                if (success) {
-                    program.println("逃跑成功！");
-                    ifSelectPokemon= false;
-                    break;
-                } else {
+//                boolean success = randomGenerator.nextBoolean();
+//                if (success) {
+//                    program.println("逃跑成功！");
+//                    bgc.moveTo(run.getEast());
+//                    ifSelectPokemon= false;
+//                    break;
+//                } else {
                     program.println("逃跑失败！");
-                }
+                program.println("...");
+                program.println("你退无可退了！");
+//                }
             }
 
         }

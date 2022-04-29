@@ -331,7 +331,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
      *
      * @param place 要移动到的目的地
      */
-    private void moveTo(Place place) {
+    public void moveTo(Place place) {
         println("你现在到了" + place.getName());
         println(place.getMessage());
         if (place.getbaowu() != null) {
@@ -589,6 +589,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         String userChoice = choose("请选择你的行动", "战斗", "背包", "换精灵", "逃跑");
         if (userChoice.equals("战斗")) {
           if (playerpokemon.get(key).name.equals("小锯鳄")) {
+              Picture.小锯鳄战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
               println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
@@ -626,6 +627,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             }
           }
           if (playerpokemon.get(key).name.equals("火球鼠")) {
+              Picture.火球鼠战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
               println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
@@ -663,6 +665,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             }
           }
           if (playerpokemon.get(key).name.equals("菊草叶")) {
+              Picture.菊草叶战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
               println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
@@ -998,14 +1001,14 @@ break;
             Summoner enemyA = new Summoner();
             ArrayList<Pokemon> A = new ArrayList<>();
             Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
-            Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
-            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+//            Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
+//            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
             A.add(尾立);
-            A.add(金);
-            A.add(绿毛虫);
-            enemyA.npcBattle(playerpokemon, A, this, 0,gameEnded);
-            enemyA.npcBattle(playerpokemon, A, this, 1,gameEnded);
-            enemyA.npcBattle(playerpokemon, A, this, 2,gameEnded);
+//            A.add(金);
+//            A.add(绿毛虫);
+            enemyA.npcBattle(playerpokemon, A, this, 0,gameEnded,this,currPlace);
+//            enemyA.npcBattle(playerpokemon, A, this, 1,gameEnded,this,currPlace);
+//            enemyA.npcBattle(playerpokemon, A, this, 2,gameEnded,this,currPlace);
         }
     }
 
@@ -1018,13 +1021,13 @@ break;
             ArrayList<Pokemon> B = new ArrayList<>();
             Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
             Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
-            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+//            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
             B.add(尾立);
             B.add(金);
-            B.add(绿毛虫);
-            enemyB.npcBattle(playerpokemon, B, this, 0,gameEnded);
-            enemyB.npcBattle(playerpokemon, B, this, 1,gameEnded);
-            enemyB.npcBattle(playerpokemon, B, this, 2,gameEnded);
+//            B.add(绿毛虫);
+            enemyB.npcBattle(playerpokemon, B, this, 0,gameEnded,this,currPlace);
+            enemyB.npcBattle(playerpokemon, B, this, 1,gameEnded,this,currPlace);
+//            enemyB.npcBattle(playerpokemon, B, this, 2,gameEnded,this,currPlace);
         }
     }
 
@@ -1041,9 +1044,9 @@ break;
             C.add(尾立);
             C.add(金);
             C.add(绿毛虫);
-            enemyC.npcBattle(playerpokemon, C, this, 0,gameEnded);
-            enemyC.npcBattle(playerpokemon, C, this, 1,gameEnded);
-            enemyC.npcBattle(playerpokemon, C, this, 2,gameEnded);
+            enemyC.npcBattle(playerpokemon, C, this, 0,gameEnded,this,currPlace);
+            enemyC.npcBattle(playerpokemon, C, this, 1,gameEnded,this,currPlace);
+            enemyC.npcBattle(playerpokemon, C, this, 2,gameEnded,this,currPlace);
         }
     }
 
@@ -1488,9 +1491,9 @@ Items.add(new Item("精灵球"));
             b.add(可达鸭);
             b.add(小拉达);
             b.add(波波);
-            addddd.npcBattle(playerpokemon, b, this, 0,gameEnded);
-            addddd.npcBattle(playerpokemon, b, this, 1,gameEnded);
-            addddd.npcBattle(playerpokemon, b, this, 2,gameEnded);
+            addddd.npcBattle(playerpokemon, b, this, 0,gameEnded,this,currPlace);
+            addddd.npcBattle(playerpokemon, b, this, 1,gameEnded,this,currPlace);
+            addddd.npcBattle(playerpokemon, b, this, 2,gameEnded,this,currPlace);
         }
     }
 }
