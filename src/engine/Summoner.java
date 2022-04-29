@@ -90,7 +90,7 @@ public class Summoner  {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         Picture.小锯鳄战斗(program);
-                        program.println("小锯鳄有技能：抓 水枪 咬碎 蛮力");
+                        program.println("抓(z) 水枪(s) 咬碎(x) 蛮力(m)");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
                         String skillname1 = program.readLine();
@@ -132,7 +132,7 @@ public class Summoner  {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         Picture.火球鼠战斗(program);
-                        program.println("火球鼠有技能：喷火 瞪眼 舍身冲撞 变圆");
+                        program.println("火球鼠有技能：喷火(p) 瞪眼(d) 舍身冲撞(s) 变圆(b)");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
                         String skillname1 = program.readLine();
@@ -174,7 +174,7 @@ public class Summoner  {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
                         Picture.菊草叶战斗(program);
-                        program.println("菊草叶有技能：撞击 叫声 飞叶快刀 光合作用");
+                        program.println("菊草叶有技能：撞击(z) 叫声(j) 飞叶快刀(f) 光合作用(g)");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
                         String skillname1 = program.readLine();
@@ -215,7 +215,7 @@ public class Summoner  {
                 if (a.get(key).name.equals("kedaya")) {
                     boolean ifStopThis = true;
                     while (ifStopThis) {
-                        program.println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
+                        program.println("可达鸭有技能：乱抓(l) 瞬间失忆(s) 摇尾巴(y) 水泡(p)");
                         program.println("（输入技能名称来使用技能");
                         program.print("> ");
                         String skillname1 = program.readLine();
