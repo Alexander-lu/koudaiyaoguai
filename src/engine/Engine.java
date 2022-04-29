@@ -104,7 +104,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Items.add(new Item("血瓶"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
-                                println("你获得一个小锯鳄！");
                                 break;
                             case "火球鼠":
                                 Picture.火球鼠(this);
