@@ -511,7 +511,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             println("你现在共有" + playerpokemon.size() + "只宝可梦，依次是：");
             for (int k = 0; k < playerpokemon.size(); k++) {
                 int l = k + 1;
-                println(l + "." + playerpokemon.get(k).getName() + " 等级：" + playerpokemon.get(k).getLevel());
+                println(l + "." + playerpokemon.get(k).getName() + " 等级：" + playerpokemon.get(k).getLevel()+" 血量：" +playerpokemon.get(k).getCurHp());
             }
         }
     }

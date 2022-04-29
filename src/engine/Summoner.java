@@ -317,7 +317,7 @@ public class Summoner  {
             program.println("你现在共有" + a.size() + "只宝可梦，依次是：");
             for (int k = 0; k < a.size(); k++) {
                 int l = k + 1;
-                program.println(l + "." + a.get(k).getName() + " 等级：" + a.get(k).getLevel());
+                program.println(l + "." + a.get(k).getName() + " 等级：" + a.get(k).getLevel()+" 血量："+a.get(k).getCurHp());
             }
         }
     }
