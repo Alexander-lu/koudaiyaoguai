@@ -566,23 +566,23 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               break;
             case 2:
               Skill.叫声(playerpokemon.get(key));
-                println("对方使用了撞击"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
+                println("对方使用了叫声"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 3:
               Skill.飞叶快刀(playerpokemon.get(key));
-                println("对方使用了撞击"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
+                println("对方使用了飞叶快刀"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 4:
               Skill.抓(playerpokemon.get(key));
-                println("对方使用了撞击"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
+                println("对方使用了抓"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 5:
               Skill.龙卷风(playerpokemon.get(key));
-                println("对方使用了撞击"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
+                println("对方使用了龙卷风"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 6:
               Skill.起风(playerpokemon.get(key));
-                println("对方使用了撞击"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
+                println("对方使用了起风"+playerpokemon.get(key).name+"还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             default:
               break;
