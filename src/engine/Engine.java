@@ -1,6 +1,6 @@
 package engine;
 
-import acm.graphics.GImage;
+
 import acm.program.ConsoleProgram;
 import acm.util.RandomGenerator;
 
@@ -71,7 +71,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         /** 切换歌曲 */
         changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
         while (!gameEnded) {
-            /** 如果玩家第二次到研究所,触发和博士的对话 */
+            // 如果玩家第二次到研究所,触发和博士的对话
             if (yanJiuSuoCount == 2) {
                 if (currPlace.getbianhao() == 1) {
                     if (ifZijinStone) {
@@ -81,7 +81,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                 }
             }
             shanDongJuQing();//进入山洞前的判断条件
-            /** 如果玩家第一次到研究所,触发和博士的对话 */
+//             如果玩家第一次到研究所,触发和博士的对话
             if (yanJiuSuoCount == 1) {
                 if (currPlace.getbianhao() == 1) {
                     boShiTalking();
@@ -91,14 +91,14 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                         print("> ");
                         String d1 = readLine();
                         switch (d1) {
-                            case "小锯鳄":
+                            case "xiaojue":
                                 Picture.小锯鳄(this);
                                 println("小锯鳄个性较为好动，喜欢跳舞。有看到眼前活动的物体会忍不住一口咬下去的习性。结构发达的大下颚，咬碎物品的力量非常大，在对战中有很大的发挥空间。");
                              pause(DELAY);
-                                println("输入小锯鳄Yes 来获得小锯鳄");
+                                println("输入xiaojueyes 来获得小锯鳄");
                                 println("");
                                 break;
-                            case "小锯鳄Yes":
+                            case "xiaojueyes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了小锯鳄！");
                              pause(DELAY * 2);
@@ -106,20 +106,20 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Pokemon xiaoJuE = new Pokemon("小锯鳄", 1, 999, 999, 20, 20, 0, "抓 水枪 咬碎 蛮力");
                                 playerpokemon.add(xiaoJuE);
                                 getJinLingQiu();
-                                Items.add(new Item("血瓶"));
+                                Items.add(new Item("xueping"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
-                            case "火球鼠":
+                            case "huoqiushu":
                                 Picture.火球鼠(this);
                                 println("火球鼠是一种小型的双足宝可梦，身体上部有着浅蓝色的绒毛，暗面呈奶黄色。火球鼠看上去像针鼹和鼩鼱的结合。其针鼹的特征源自于背部窜出的火焰，而从整体形态方面来讲与鼩鼱的体型特征相近。");
                              pause(DELAY);
                                 println("火球鼠天性胆小，受到惊吓时总是将身体缩成球形。它自背部的红色斑点中喷出火焰，并用以自卫。");
                            pause(DELAY);
-                                println("输入火球鼠Yes 来获得火球鼠");
+                                println("输入huoqiushuyes 来获得火球鼠");
                                 println("");
                                 break;
-                            case "火球鼠Yes":
+                            case "huoqiushuyes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了火球鼠！");
                               pause(DELAY * 2);
@@ -131,18 +131,18 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Pokemon juCaoYewe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYewe);
                                 getJinLingQiu();
-                                Items.add(new Item("血瓶"));
+                                Items.add(new Item("xueping"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
-                            case "菊草叶":
+                            case "jucaoye":
                                 Picture.菊草叶(this);
                                 println("菊草叶是种主要色调是淡绿色的小型神奇宝贝，头上有一片深绿色的叶子，脖子长著一圈芽。它最大的特点是头上的大叶子，叶片长度常常超过身体其他部份的长度。");
                             pause(DELAY);
-                                println("输入菊草叶Yes 来获得菊草叶");
+                                println("输入jucaoyeyes 来获得菊草叶");
                                 println("");
                                 break;
-                            case "菊草叶Yes":
+                            case "jucaoyeyes":
                                 changeMusic("res/mp3/Pokemon-receiveItems.mp3");
                                 println("你获得了菊草叶！");
                              pause(DELAY * 2);
@@ -150,7 +150,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Pokemon juCaoYe = new Pokemon("菊草叶", 1, 999, 999, 20, 20, 0, "撞击 叫声 飞叶快刀 光合作用");
                                 playerpokemon.add(juCaoYe);
                                 getJinLingQiu();
-                                Items.add(new Item("血瓶"));
+                                Items.add(new Item("xueping"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
                                 break;
@@ -161,63 +161,63 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                 }
             }
 
-            /**道馆剧情*/
+//            道馆剧情
             daoGuanJuQing();
 
-            /**山洞剧情*/
+//            山洞剧情
             shanDongJuQing();
 
-            /** 如果玩家进入草丛，触发战斗 */
+//            如果玩家进入草丛，触发战斗
             caoCongShuaGuai();
-            /** 如果玩家进入山洞，触发战斗 */
+//            如果玩家进入山洞，触发战斗
             shanDongShuaGuai();
 
             println();
-            println("你要？（输入\"退出\"结束游戏）（输入\"搜索\"获取道具）（输入\"道具\"查看道具）（输入\"打开地图\"使用地图）（输入\"东南西北\"进入下一个地点）（输入\"宝可梦\"查看你的宝可梦）");
+            println("你要？（输入\"tuichu\"结束游戏）（输入\"sousuo\"获取道具）（输入\"daoju\"查看道具）（输入\"ditu\"使用地图）（输入\"dong|xi|nan|bei\"进入下一个地点）（输入\"pokemon\"查看你的宝可梦）");
             print("> ");
             String direction = readLine();
             switch (direction) {
-                case "东":
+                case "dong":
                     if (currPlace.getEast() != null) {
                         moveTo(currPlace.getEast());
                     } else {
                         println("那边好像无路可走了……");
                     }
                     break;
-                case "南":
+                case "nan":
                     if (currPlace.getSouth() != null) {
                         moveTo(currPlace.getSouth());
                     } else {
                         println("那边好像无路可走了……");
                     }
                     break;
-                case "西":
+                case "xi":
                     if (currPlace.getWest() != null) {
                         moveTo(currPlace.getWest());
                     } else {
                         println("那边好像无路可走了……");
                     }
                     break;
-                case "北":
+                case "bei":
                     if (currPlace.getNorth() != null) {
                         moveTo(currPlace.getNorth());
                     } else {
                         println("那边好像无路可走了……");
                     }
                     break;
-                case "搜索":
+                case "sousuo":
                     sousuo(currPlace);
                     break;
-                case "道具":
+                case "daoju":
                     chakan();
                     break;
-                case "宝可梦":
+                case "pokemon":
                     checkYourPokemon();
                     break;
-                case "打开地图":
+                case "ditu":
                     map.openMap(currPlace);
                     break;
-                case "退出":
+                case "tuichu":
                     gameEnded = true;
                     println("欢迎再来！");
                     break;
@@ -375,7 +375,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         // 读取地点
         int nPlaces = scanner.nextInt(); // 道路的数量
 
-        String a = scanner.next();
+        scanner.next();
         // 读取所有地点
         for (int i = 0; i < nPlaces; i++) {
             int d = scanner.nextInt();
@@ -410,7 +410,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         // 读取地点
         int nPlaces = scanner.nextInt(); // 地点的数量
         daoll = nPlaces;
-        String a = scanner.nextLine();
+        scanner.nextLine();
 
         // 读取所有地点
         for (int i = 0; i < nPlaces; i++) {
@@ -438,7 +438,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
     private void loadDaoju(Scanner scanner) {
         // 读取道具
         int nPlaces = scanner.nextInt(); // 道具的数量
-        String a = scanner.next();
+        scanner.next();
         // 读取所有地点
         for (int i = 0; i < nPlaces; i++) {
             int d = scanner.nextInt();
@@ -531,7 +531,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         checkYourPokemon();
         boolean selectePokemon = true; //设定循坏条件判断是否成功选取出战精灵
         while (selectePokemon) {
-            println("输入名字来选择出战的宝可梦");
+            println("输入名字pinyin来选择出战的宝可梦");
             print("> ");
             String pickYourPokemon = readLine();
             for (int i = 0; i < playerpokemon.size(); i++) {
@@ -601,9 +601,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
           }
         println();
         // 每一回合都首先从玩家开始行动
-        String userChoice = choose("请选择你的行动", "战斗", "背包", "换精灵", "逃跑");
-        if (userChoice.equals("战斗")) {
-          if (playerpokemon.get(key).name.equals("小锯鳄")) {
+        String userChoice = choose("请选择你的行动", "zhandou", "beibao", "huanjingling", "taopao");
+        if (userChoice.equals("zhandou")) {
+          if (playerpokemon.get(key).name.equals("xiaojue")) {
               Picture.小锯鳄战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
@@ -642,7 +642,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               }
             }
           }
-          if (playerpokemon.get(key).name.equals("火球鼠")) {
+          if (playerpokemon.get(key).name.equals("huoqiushu")) {
               Picture.火球鼠战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
@@ -681,7 +681,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               }
             }
           }
-          if (playerpokemon.get(key).name.equals("菊草叶")) {
+          if (playerpokemon.get(key).name.equals("jucaoye")) {
               Picture.菊草叶战斗(this);
             boolean ifStopThis = true;
             while (ifStopThis) {
@@ -719,7 +719,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               }
             }
           }
-          if (playerpokemon.get(key).name.equals("可达鸭")) {
+          if (playerpokemon.get(key).name.equals("kedaya")) {
             boolean ifStopThis = true;
             while (ifStopThis) {
               println("可达鸭有技能：乱抓 瞬间失忆 摇尾巴 水泡");
@@ -757,7 +757,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
             }
           }
           continue;
-        } else if (userChoice.equals("背包")) {
+        } else if (userChoice.equals("beibao")) {
             chakan();
             boolean selectePokemon2 = true; //设定循坏条件判断是否成功选取出战精灵
             while (selectePokemon2) {
@@ -767,11 +767,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                 for (int i = 0; i < Items.size(); i++) {
                     if (pickYourItem.equals(Items.get(i).name)) {
                         switch (pickYourItem){
-                            case "精灵球":Item a = new Item();
+                            case "jinglingqiu":Item a = new Item();
                             a.catchPokemon(playerpokemon,enemypokemon,this);
                                 Skill.抓精灵(enemypokemon);
                             break;
-                            case "血瓶":Item bb = new Item();
+                            case "xueping":Item bb = new Item();
                                 bb.useHpBottle(playerpokemon.get(key),this);
                                 break;
                             default:
@@ -781,9 +781,9 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                 }
             }
           continue;
-        } else if (userChoice.equals("换精灵")) {
+        } else if (userChoice.equals("huanjingling")) {
 break;
-        } else if (userChoice.equals("逃跑")) {
+        } else if (userChoice.equals("taopao")) {
           boolean success = randomGenerator.nextBoolean();
           if (success) {
             println("逃跑成功！");
@@ -843,11 +843,11 @@ break;
      * 道馆的剧情
      */
     private void daoGuanJuQing() {
-        /**道馆入口*/
+//        道馆入口
         if (currPlace.getbianhao() == 43 && daoGuanCount == 1) {
             daoGuanRuKou();
         }
-        /**道馆前院*/
+//        道馆前院
         if (daoGuanCount == 1) {
             if (currPlace.getbianhao() == 44) {
                 daoGuanQianYuan();
@@ -855,7 +855,7 @@ break;
             }
         }
 
-        /**道馆内院*/
+//        道馆内院
         if (daoGuanCount == 2) {
             if (currPlace.getbianhao() == 48) {
                 daoGuanNeiYuan();
@@ -863,7 +863,7 @@ break;
             }
         }
 
-        /**道馆正房*/
+//        道馆正房
         if (daoGuanCount == 3) {
             if (currPlace.getbianhao() == 51) {
                 daoGuanZhengFang();
@@ -1024,9 +1024,9 @@ break;
         if (currPlace.getbianhao() == 45 & ifStopThisWhile1) {
             Summoner enemyA = new Summoner();
             ArrayList<Pokemon> A = new ArrayList<>();
-            Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+            Pokemon 尾立 = new Pokemon("weili", 2, 40, 40, 20, 20, 0, "");
 //            Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
-//            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+//            Pokemon 绿毛虫 = new Pokemon("lvmaochong, 2, 40, 40, 20, 20, 0, "");
             A.add(尾立);
 //            A.add(金);
 //            A.add(绿毛虫);
@@ -1043,9 +1043,9 @@ break;
         if (currPlace.getbianhao() == 48 & ifStopThisWhile1) {
             Summoner enemyB = new Summoner();
             ArrayList<Pokemon> B = new ArrayList<>();
-            Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+            Pokemon 尾立 = new Pokemon("weili", 2, 40, 40, 20, 20, 0, "");
             Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
-//            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+//            Pokemon 绿毛虫 = new Pokemon("lvmaochong, 2, 40, 40, 20, 20, 0, "");
             B.add(尾立);
             B.add(金);
 //            B.add(绿毛虫);
@@ -1062,9 +1062,9 @@ break;
         if (currPlace.getbianhao() == 51 & ifStopThisWhile1) {
             Summoner enemyC = new Summoner();
             ArrayList<Pokemon> C = new ArrayList<>();
-            Pokemon 尾立 = new Pokemon("尾立", 2, 40, 40, 20, 20, 0, "");
+            Pokemon 尾立 = new Pokemon("weili", 2, 40, 40, 20, 20, 0, "");
             Pokemon 金 = new Pokemon("金", 2, 40, 40, 20, 20, 0, "");
-            Pokemon 绿毛虫 = new Pokemon("绿毛虫", 2, 40, 40, 20, 20, 0, "");
+            Pokemon 绿毛虫 = new Pokemon("lvmaochong", 2, 40, 40, 20, 20, 0, "");
             C.add(尾立);
             C.add(金);
             C.add(绿毛虫);
@@ -1365,9 +1365,9 @@ break;
         if (currPlace.getbianhao() == 34 & ifStopThisWhile1) {
             Summoner qiangDao = new Summoner();
             ArrayList<Pokemon> b = new ArrayList<>();
-            Pokemon 可达鸭 = new Pokemon("可达鸭", 15, 55, 55, 20, 20, 0, "");
-            Pokemon 小拉达 = new Pokemon("小拉达", 17, 30, 30, 20, 20, 0, "");
-            Pokemon 波波 = new Pokemon("波波", 18, 30, 30, 20, 20, 0, "");
+            Pokemon 可达鸭 = new Pokemon("kedaya", 15, 55, 55, 20, 20, 0, "");
+            Pokemon 小拉达 = new Pokemon("xiaolada", 17, 30, 30, 20, 20, 0, "");
+            Pokemon 波波 = new Pokemon("bobo", 18, 30, 30, 20, 20, 0, "");
             b.add(可达鸭);
             b.add(小拉达);
             b.add(波波);
@@ -1378,10 +1378,10 @@ break;
     }
 
     /**
-     * 获得精灵球的方法
+     * 获得jinglingqiu的方法
      */
     private void getJinLingQiu() {
-Items.add(new Item("精灵球"));
+Items.add(new Item("jinglingqiu"));
     }
 
     /**
@@ -1426,7 +1426,7 @@ Items.add(new Item("精灵球"));
             boolean success = randomGenerator.nextBoolean();
             if (success) {
 
-                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 4, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(地鼠);
@@ -1435,7 +1435,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 17 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 30, 30, 20, 20, 0, "");
+                Pokemon 尾立 = new Pokemon("weili", 2, 30, 30, 20, 20, 0, "");
                 Picture.尾立(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(尾立);
@@ -1444,7 +1444,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 8 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 30, 30, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("bobo", 3, 30, 30, 20, 20, 0, "");
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 Picture.波波(this);
                 battle(波波);
@@ -1453,7 +1453,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 10 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("xiaolada", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
                 changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(小拉达);
@@ -1462,7 +1462,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 20 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 4, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 4, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(地鼠);
@@ -1471,7 +1471,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 11 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 尾立 = new Pokemon("尾立", 2, 35, 35, 20, 20, 0, "");
+                Pokemon 尾立 = new Pokemon("weili", 2, 35, 35, 20, 20, 0, "");
                 Picture.尾立(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(尾立);
@@ -1480,7 +1480,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 19 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 40, 40, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("bobo", 3, 40, 40, 20, 20, 0, "");
                 Picture.波波(this);
                 changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(波波);
@@ -1489,7 +1489,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 5 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("xiaolada", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
@@ -1498,7 +1498,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 14 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 40, 40, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("bobo", 3, 40, 40, 20, 20, 0, "");
                 Picture.波波(this);
                 changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(波波);
@@ -1507,7 +1507,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 12 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 3, 40, 40, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("bobo", 3, 40, 40, 20, 20, 0, "");
                 Picture.波波(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(波波);
@@ -1516,7 +1516,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 21 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("xiaolada", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
@@ -1525,7 +1525,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 18 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 5, 30, 30, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("xiaolada", 5, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
                 changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(小拉达);
@@ -1534,7 +1534,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 4 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 10, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 10, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(地鼠);
@@ -1543,7 +1543,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 3 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 10, 30, 30, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("xiaolada", 10, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
@@ -1552,7 +1552,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 2 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 可达鸭 = new Pokemon("可达鸭", 20, 200, 200, 20, 20, 0, "");
+                Pokemon 可达鸭 = new Pokemon("kedaya", 20, 200, 200, 20, 20, 0, "");
                 Picture.可达鸭(this);
                 changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(可达鸭);
@@ -1560,7 +1560,7 @@ Items.add(new Item("精灵球"));
         }if (currPlace.getbianhao() == 7 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 绿毛虫 = new Pokemon("绿毛虫",2,25,20,23,0,0,"技能");
+                Pokemon 绿毛虫 = new Pokemon("lvmaochong",2,25,20,23,0,0,"技能");
                 Picture.绿毛虫(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(绿毛虫);
@@ -1576,7 +1576,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 29 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(地鼠);
@@ -1585,7 +1585,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 30 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(地鼠);
@@ -1594,7 +1594,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 31 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(地鼠);
@@ -1603,7 +1603,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 32 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(地鼠);
@@ -1612,7 +1612,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 33 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 1500, 1500, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 15, 1500, 1500, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(地鼠);
@@ -1621,7 +1621,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 36 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 地鼠 = new Pokemon("地鼠", 15, 40, 40, 20, 20, 0, "");
+                Pokemon 地鼠 = new Pokemon("dishu", 15, 40, 40, 20, 20, 0, "");
                 Picture.地鼠(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(地鼠);
@@ -1630,7 +1630,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 37 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 金 = new Pokemon("尾立", 15, 35, 35, 20, 20, 0, "");
+                Pokemon 金 = new Pokemon("weili", 15, 35, 35, 20, 20, 0, "");
                 Picture.尾立(this);
                 changeMusic("res/mp3/Pokemon-fight.mp3");
                 battle(金);
@@ -1639,7 +1639,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 38 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 波波 = new Pokemon("波波", 15, 30, 30, 20, 20, 0, "");
+                Pokemon 波波 = new Pokemon("bobo", 15, 30, 30, 20, 20, 0, "");
                 Picture.波波(this);
                 changeMusic("res/mp3/Pokemon-fight2.mp3");
                 battle(波波);
@@ -1648,7 +1648,7 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 39 & ifStopThisWhile1) {
             boolean success = randomGenerator.nextBoolean();
             if (success) {
-                Pokemon 小拉达 = new Pokemon("小拉达", 15, 30, 30, 20, 20, 0, "");
+                Pokemon 小拉达 = new Pokemon("xiaolada", 15, 30, 30, 20, 20, 0, "");
                 Picture.小拉达(this);
                 changeMusic("res/mp3/Pokemon-fight3.mp3");
                 battle(小拉达);
@@ -1657,9 +1657,9 @@ Items.add(new Item("精灵球"));
         if (currPlace.getbianhao() == 34 & ifStopThisWhile1) {
             Summoner addddd = new Summoner();
             ArrayList<Pokemon> b = new ArrayList<>();
-            Pokemon 可达鸭 = new Pokemon("可达鸭", 15, 55, 55, 20, 20, 0, "");
-            Pokemon 小拉达 = new Pokemon("小拉达", 17, 30, 30, 20, 20, 0, "");
-            Pokemon 波波 = new Pokemon("波波", 18, 30, 30, 20, 20, 0, "");
+            Pokemon 可达鸭 = new Pokemon("kedaya", 15, 55, 55, 20, 20, 0, "");
+            Pokemon 小拉达 = new Pokemon("xiaolada", 17, 30, 30, 20, 20, 0, "");
+            Pokemon 波波 = new Pokemon("bobo", 18, 30, 30, 20, 20, 0, "");
             b.add(可达鸭);
             b.add(小拉达);
             b.add(波波);
