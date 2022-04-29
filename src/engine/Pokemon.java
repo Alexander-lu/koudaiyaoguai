@@ -58,7 +58,7 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return "『" + name + "』" + "等级为" + level  + "，当前有血量" + curHp + "/" + maxHp + "，攻击力是" + attack+"防御力是" + defence;
+        return "『" + name + "』" + "等级为" + level  + "，当前有血量" + curHp + "/" + maxHp;
     }
 
     /**
