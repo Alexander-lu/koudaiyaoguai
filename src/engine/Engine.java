@@ -553,21 +553,27 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
           switch (type) {
             case 1:
               Skill.撞击(playerpokemon.get(key));
+              println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 2:
               Skill.叫声(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 3:
               Skill.飞叶快刀(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了55点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 4:
               Skill.抓(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 5:
               Skill.龙卷风(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 6:
               Skill.起风(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             default:
               break;
