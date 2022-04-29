@@ -101,18 +101,17 @@ public class Item {
 
     public void useHpBottle(Pokemon pokemon, ConsoleProgram program) {
         if (pokemon.maxHp > 0) {
-            int hpIncreased = 15;
+            int hpIncreased = 40;
             if (hpIncreased > (pokemon.maxHp - pokemon.curHp)) {
                 hpIncreased = pokemon.maxHp - pokemon.curHp;
             }
             pokemon.curHp += hpIncreased;
             hpBottle--;
-            program.println(String.format("成功回血%d。当前血量%d, 还剩%d瓶回血药。", hpIncreased, pokemon.curHp, hpBottle));
+            program.println(String.format("成功回血%d。当前血量%d。", hpIncreased, pokemon.curHp));
         } else {
             program.println("回血失败：回血药已用完。");
         }
     }
-
 
 //使用精灵球的方法
 
@@ -130,4 +129,3 @@ public class Item {
         }
     }
 }
-
