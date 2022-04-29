@@ -42,28 +42,35 @@ public class Summoner  {
         while (true) {
             if (isbDead(b, bkey)) {
                 ifSelectPokemon= false;
-
+                program.println("恭喜你赢得了战斗");
+                a.get(key).xp+=25;
+                a.get(key).levelup(program);
+               bgc.changeMusic("res/mp3/Pokemon-gymFightSuccess03.mp3");
+                bgc.pause(1600*3);
+                bgc.changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
                 break;
             }
-            program.println("战斗胜利！");
-            bgc.changeMusic("res/mp3/Pokemon-gymFightSuccess03.mp3");
-            bgc.pause(1600*3);
-            bgc.changeMusic("res/mp3/Pokemon-outsideWalk02.mp3");
             if (isbAlive(b, bkey)) {
                 Random random = new Random();
                 int type = random.nextInt(7);
                 switch (type){
                     case 1:Skill.撞击(a.get(key));
+                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 2:Skill.叫声(a.get(key));
+                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 3:Skill.飞叶快刀(a.get(key));
+                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了55点，还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 4:Skill.抓(a.get(key));
+                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 5:Skill.龙卷风(a.get(key));
+                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
                         break;
                     case 6:Skill.起风(a.get(key));
+                        program.println("对方使用了撞击"+a.get(key).name+"血量减少了40点，还剩下"+a.get(key).curHp + "点血量");
                         break;
                     default:break;
                 }

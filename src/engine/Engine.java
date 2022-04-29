@@ -104,7 +104,6 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                                 Items.add(new Item("血瓶"));
                                 ifStopThisWhile = false;
                                 ifStopThisWhile1 = true;
-                                println("你获得一个小锯鳄！");
                                 break;
                             case "火球鼠":
                                 Picture.火球鼠(this);
@@ -272,7 +271,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("妈妈：喂 " + playername + " 空木博士在找你。可能是要你帮忙。忘了！给，带上你的地图");
 //        pause(DELAY);
         println("");
-        println("输入搜索获得修理好的地图");
+        println("输入搜索获得地图");
     }
 
     /**
@@ -545,8 +544,11 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         if (isEnemyDead(enemypokemon)) {
             ifSelectPokemon= false;
             changeMusic("res/mp3/Pokemon-wildPokemonFightSuccess02.mp3");
-            println("你战胜了 "+ enemypokemon + "!");
+
             pause(DELAY*5);
+            println("恭喜你赢得了战斗");
+            playerpokemon.get(key).xp+=25;
+            playerpokemon.get(key).levelup(this);
             changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
           break;
         }
@@ -556,21 +558,27 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
           switch (type) {
             case 1:
               Skill.撞击(playerpokemon.get(key));
+              println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 2:
               Skill.叫声(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 3:
               Skill.飞叶快刀(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了55点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 4:
               Skill.抓(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 5:
               Skill.龙卷风(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             case 6:
               Skill.起风(playerpokemon.get(key));
+                println("对方使用了撞击"+playerpokemon.get(key).name+"血量减少了40点，还剩下"+playerpokemon.get(key).curHp + "点血量");
               break;
             default:
               break;
@@ -1499,6 +1507,9 @@ Items.add(new Item("精灵球"));
             addddd.npcBattle(playerpokemon, b, this, 0,gameEnded,this,currPlace);
             addddd.npcBattle(playerpokemon, b, this, 1,gameEnded,this,currPlace);
             addddd.npcBattle(playerpokemon, b, this, 2,gameEnded,this,currPlace);
+        }
+        if (currPlace.getbianhao() == 35 & ifStopThisWhile1) {
+            Items.add(new Item("紫金石"));
         }
     }
 }
