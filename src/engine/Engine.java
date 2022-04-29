@@ -541,9 +541,12 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
 
         println(playerpokemon.get(key).toString());
         println(enemypokemon.toString());
-      while (true) {
+      while (true) {//野怪对战判断成败
         if (isEnemyDead(enemypokemon)) {
             ifSelectPokemon= false;
+            changeMusic("res/mp3/Pokemon-wildPokemonFightSuccess02.mp3");
+            println("你战胜了 "+ enemypokemon + "!");
+            pause(DELAY*5);
             changeMusic("res/mp3/Pokemon-outsideWalk.mp3");
           break;
         }
@@ -596,6 +599,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               println("（输入技能名称来使用技能");
               print("> ");
               String skillname1 = readLine();
+
               switch (skillname1) {
                 case "抓":
                   Skill.抓(enemypokemon);
@@ -634,6 +638,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
               println("（输入技能名称来使用技能");
               print("> ");
               String skillname1 = readLine();
+
               switch (skillname1) {
                 case "喷火":
                   Skill.喷火(enemypokemon);
