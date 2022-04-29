@@ -271,7 +271,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
         println("妈妈：喂 " + playername + " 空木博士在找你。可能是要你帮忙。忘了！给，带上你的地图");
 //        pause(DELAY);
         println("");
-        println("输入搜索获得修理好的地图");
+        println("输入搜索获得地图");
     }
 
     /**
