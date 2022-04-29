@@ -14,6 +14,7 @@ public class Summoner  {
 
 
     public void npcBattle(ArrayList<Pokemon> a, ArrayList<Pokemon> b, ConsoleProgram program, int bkey,boolean end , Engine bgc,Place run) {
+        bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
         boolean ifSelectPokemon= true;
         while (ifSelectPokemon) {
         int key = -1;
@@ -25,7 +26,6 @@ public class Summoner  {
         checkYourPokemon(a, program);
         boolean selectePokemon = true;
         while (selectePokemon) {
-          bgc.changeMusic( "res/mp3/Pokemon-fight2.mp3"); //与npc对战音乐
             program.println("输入名字来选择出战的宝可梦");
             program.print("> ");
             String pickYourPokemon = program.readLine();
