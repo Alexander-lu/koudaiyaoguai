@@ -722,7 +722,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
           if (playerpokemon.get(key).name.equals("kedaya")) {
             boolean ifStopThis = true;
             while (ifStopThis) {
-              println("可达鸭有技能：乱抓(l) 瞬间失忆(s) 摇尾巴(y) 水泡(s)");
+              println("可达鸭有技能：乱抓(l) 瞬间失忆(s) 摇尾巴(y) 水泡(p)");
               println("（输入技能名称来使用技能");
               print("> ");
               String skillname1 = readLine();
@@ -745,7 +745,7 @@ public class Engine extends ConsoleProgram implements Backgroundmusic2 {
                     println(enemypokemon.toString());
                   ifStopThis = false;
                   break;
-                case "s":
+                case "p":
                   Skill.水泡(enemypokemon);
                     println(playerpokemon.get(key).toString());
                     println(enemypokemon.toString());
