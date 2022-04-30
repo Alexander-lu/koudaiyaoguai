@@ -49,7 +49,7 @@ public interface Backgroundmusic2 {
                         player = new Player(new FileInputStream(file));
                         player.play();
                     }
-                } catch (Exception ex) {
+                } catch (Exception e) {
                      e.printStackTrace();
                 }
             }
