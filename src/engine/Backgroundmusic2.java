@@ -45,13 +45,10 @@ public interface Backgroundmusic2 {
             public void run() {
                 try {
                     player.play();
-                    while (true) {
-                                if (player.isComplete()) {
-                                    player = new Player(new FileInputStream(file));
-                                  player.play();
-                                }
-                               }
-                } catch (JavaLayerException | FileNotFoundException ex) {
+                    if (player.isComplete()) {
+                        player.play();
+                    }
+                } catch (JavaLayerException ex) {
                     System.err.println("Problem playing audio: " + ex);
                 }
             }
